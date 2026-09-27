@@ -1,1 +1,6039 @@
-{"name":"bud-financial-data"}
+{
+  "NAME": "BUD-FINANCIAL-DATA",
+  "Name": "BudFinancialData",
+  "def": "bud-financial-data-openapi.json",
+  "main": {
+    "api": {
+      "entity": {},
+      "guide": {}
+    },
+    "custom": {
+      "plurals": {}
+    },
+    "def": {
+      "desc": ""
+    },
+    "kit": {
+      "author": {
+        "name": "",
+        "url": ""
+      },
+      "config": {
+        "docs_order": [
+          "ts",
+          "py",
+          "php",
+          "go",
+          "rb",
+          "lua"
+        ],
+        "headers": {
+          "content-type": "application/json"
+        },
+        "repr": "auto"
+      },
+      "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "github-pages": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "github-pages",
+            "name": "github-pages",
+            "origname": "",
+            "output": {
+              "path": "docs"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          },
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
+      "entity": {
+        "correct_financial_data": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "created_at": {
+              "a": true,
+              "h": "Created At",
+              "n": "created_at",
+              "r": true,
+              "sh": "Date that the custom merchant was created, compliant with RFC3339.",
+              "t": "`$STRING`"
+            },
+            "custom_merchant_id": {
+              "a": true,
+              "fo": "uuid",
+              "h": "Custom Merchant Id",
+              "n": "custom_merchant_id",
+              "r": true,
+              "sh": "UUID representing the custom merchant.",
+              "t": "`$STRING`"
+            },
+            "data": {
+              "a": true,
+              "h": "Data",
+              "n": "data",
+              "r": true,
+              "sh": "List of merchant that matched the query.",
+              "t": "`$ARRAY`"
+            },
+            "frequency": {
+              "a": true,
+              "h": "Frequency",
+              "n": "frequency",
+              "r": true,
+              "sh": "The frequency to assign.",
+              "t": "`$STRING`"
+            },
+            "include_similar": {
+              "a": true,
+              "h": "Include Similar",
+              "n": "include_similar",
+              "r": false,
+              "sh": "Apply the correction to the whole group of transactions similar to the specified transaction, rather than just the transaction itself",
+              "t": "`$BOOLEAN`"
+            },
+            "logo_feedback": {
+              "a": true,
+              "h": "Logo Feedback",
+              "n": "logo_feedback",
+              "r": true,
+              "sh": "The type of feedback for the merchant.",
+              "t": "`$STRING`"
+            },
+            "metadata": {
+              "a": true,
+              "h": "Metadata",
+              "n": "metadata",
+              "r": true,
+              "sh": "Metadata associated with the response schema",
+              "t": "`$OBJECT`"
+            },
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "sh": "The display name of the custom merchant to be created",
+              "t": "`$STRING`"
+            },
+            "online_or_billing_only": {
+              "a": true,
+              "h": "Online Or Billing Only",
+              "n": "online_or_billing_only",
+              "op": {
+                "list": {
+                  "req": true,
+                  "type": "`$BOOLEAN`"
+                }
+              },
+              "r": false,
+              "sh": "This is used to indicate if the custom merchant being created is an exclusively online or billing merchant.",
+              "t": "`$BOOLEAN`"
+            },
+            "operation_id": {
+              "a": true,
+              "h": "Operation Id",
+              "n": "operation_id",
+              "r": true,
+              "sh": "A unique identifier/reference associated with a given endpoint/operation",
+              "t": "`$STRING`"
+            },
+            "reference_transaction_id": {
+              "a": true,
+              "h": "Reference Transaction Id",
+              "n": "reference_transaction_id",
+              "r": false,
+              "sh": "The transaction whose group the specified transactions should join or leave.",
+              "t": "`$STRING`"
+            },
+            "rule_definition": {
+              "a": true,
+              "h": "Rule Definition",
+              "n": "rule_definition",
+              "r": true,
+              "sh": "The definition of the rule, mirroring the request body that created it.",
+              "t": "`$OBJECT`"
+            },
+            "rule_type": {
+              "a": true,
+              "h": "Rule Type",
+              "n": "rule_type",
+              "r": true,
+              "sh": "The type of correction rule",
+              "t": "`$STRING`"
+            },
+            "similar": {
+              "a": true,
+              "h": "Similar",
+              "n": "similar",
+              "r": false,
+              "sh": "Whether the specified transactions are similar to each other (or to `reference_transaction_id`, if supplied)",
+              "t": "`$BOOLEAN`"
+            },
+            "suggested_logo": {
+              "a": true,
+              "h": "Suggested Logo",
+              "n": "suggested_logo",
+              "r": false,
+              "t": "`$STRING`"
+            },
+            "suggested_url": {
+              "a": true,
+              "h": "Suggested Url",
+              "n": "suggested_url",
+              "op": {
+                "list": {
+                  "req": true,
+                  "type": "`$STRING`"
+                }
+              },
+              "r": false,
+              "sh": "A suggested URL for the merchant, to help bud identify it and expand our merchant database.",
+              "t": "`$STRING`"
+            },
+            "transaction_id": {
+              "a": true,
+              "h": "Transaction Id",
+              "n": "transaction_id",
+              "r": true,
+              "sh": "The unique identifier for the transaction",
+              "t": "`$STRING`"
+            },
+            "transaction_ids": {
+              "a": true,
+              "h": "Transaction Ids",
+              "n": "transaction_ids",
+              "r": true,
+              "sh": "The transactions the rule applies to",
+              "t": "`$ARRAY`"
+            }
+          },
+          "name": "correct_financial_data",
+          "op": {
+            "create": {
+              "input": "data",
+              "name": "create",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /corrections/v2/categories",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/corrections/v2/categories",
+                  "q": {
+                    "exist": [
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "corrections"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "categories"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /corrections/v2/custom-merchants",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/corrections/v2/custom-merchants",
+                  "q": {
+                    "exist": [
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "corrections"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "custom-merchants"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /corrections/v3/regularity",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/corrections/v3/regularity",
+                  "q": {
+                    "exist": [
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "corrections"
+                    },
+                    {
+                      "lit": "v3"
+                    },
+                    {
+                      "lit": "regularity"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /corrections/v3/regularity/end",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/corrections/v3/regularity/end",
+                  "q": {
+                    "exist": [
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "corrections"
+                    },
+                    {
+                      "lit": "v3"
+                    },
+                    {
+                      "lit": "regularity"
+                    },
+                    {
+                      "lit": "end"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /corrections/v3/similar",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/corrections/v3/similar",
+                  "q": {
+                    "exist": [
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "corrections"
+                    },
+                    {
+                      "lit": "v3"
+                    },
+                    {
+                      "lit": "similar"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /corrections/v2/merchant-feedback/merchant/{merchant_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "merchant_id",
+                        "or": "merchant_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/corrections/v2/merchant-feedback/merchant/{merchant_id}",
+                  "q": {
+                    "exist": [
+                      "merchant_id",
+                      "x_client_id"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "corrections"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "merchant-feedback"
+                    },
+                    {
+                      "lit": "merchant"
+                    },
+                    {
+                      "var": "merchant_id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            },
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /corrections/v2/custom-merchants",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/corrections/v2/custom-merchants",
+                  "q": {
+                    "exist": [
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "corrections"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "custom-merchants"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                }
+              ]
+            },
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /corrections/v2/merchants/search/{merchant_query}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "merchant_query",
+                        "or": "merchant_query",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/corrections/v2/merchants/search/{merchant_query}",
+                  "q": {
+                    "exist": [
+                      "merchant_query",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "corrections"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "merchants"
+                    },
+                    {
+                      "lit": "search"
+                    },
+                    {
+                      "var": "merchant_query"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /corrections/v3/rules/{rule_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "rule_id",
+                        "or": "rule_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/corrections/v3/rules/{rule_id}",
+                  "q": {
+                    "exist": [
+                      "rule_id",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "corrections"
+                    },
+                    {
+                      "lit": "v3"
+                    },
+                    {
+                      "lit": "rules"
+                    },
+                    {
+                      "var": "rule_id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                }
+              ]
+            },
+            "remove": {
+              "input": "data",
+              "name": "remove",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "DELETE /corrections/v3/rules/{rule_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "rule_id",
+                        "or": "rule_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "DELETE",
+                  "o": "/corrections/v3/rules/{rule_id}",
+                  "q": {
+                    "exist": [
+                      "rule_id",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "corrections"
+                    },
+                    {
+                      "lit": "v3"
+                    },
+                    {
+                      "lit": "rules"
+                    },
+                    {
+                      "var": "rule_id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "customer_merchant_correction": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "data": {
+              "a": true,
+              "h": "Data",
+              "n": "data",
+              "r": true,
+              "t": "`$ARRAY`"
+            },
+            "metadata": {
+              "a": true,
+              "h": "Metadata",
+              "n": "metadata",
+              "r": true,
+              "sh": "Metadata associated with the merchant correction response schema",
+              "t": "`$OBJECT`"
+            },
+            "operation_id": {
+              "a": true,
+              "h": "Operation Id",
+              "n": "operation_id",
+              "r": true,
+              "t": "`$STRING`"
+            }
+          },
+          "name": "customer_merchant_correction",
+          "op": {
+            "create": {
+              "input": "data",
+              "name": "create",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /corrections/v2/merchants",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/corrections/v2/merchants",
+                  "q": {
+                    "exist": [
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "corrections"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "merchants"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "label": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "created_at": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Created At",
+              "n": "created_at",
+              "r": true,
+              "sh": "RFC3339 timestamp at which the label was created.",
+              "t": "`$STRING`"
+            },
+            "id": {
+              "a": true,
+              "fo": "uuid",
+              "h": "Id",
+              "n": "id",
+              "r": true,
+              "sh": "Unique identifier of the label.",
+              "t": "`$STRING`"
+            },
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "sh": "Display name for the new label.",
+              "t": "`$STRING`"
+            },
+            "updated_at": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Updated At",
+              "n": "updated_at",
+              "r": true,
+              "sh": "RFC3339 timestamp at which the label was last updated.",
+              "t": "`$STRING`"
+            }
+          },
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "label",
+          "op": {
+            "create": {
+              "input": "data",
+              "name": "create",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /financial/v2/transactions/labels",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/financial/v2/transactions/labels",
+                  "q": {
+                    "exist": [
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "transactions"
+                    },
+                    {
+                      "lit": "labels"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                }
+              ]
+            },
+            "update": {
+              "input": "data",
+              "name": "update",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "PATCH /financial/v2/transactions/labels/{label_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "label_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "PATCH",
+                  "o": "/financial/v2/transactions/labels/{label_id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "label_id": "id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "transactions"
+                    },
+                    {
+                      "lit": "labels"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "list_label": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "created_at": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Created At",
+              "n": "created_at",
+              "r": true,
+              "sh": "RFC3339 timestamp at which the label was created.",
+              "t": "`$STRING`"
+            },
+            "id": {
+              "a": true,
+              "fo": "uuid",
+              "h": "Id",
+              "n": "id",
+              "r": true,
+              "sh": "Unique identifier of the label.",
+              "t": "`$STRING`"
+            },
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "sh": "Display name of the label.",
+              "t": "`$STRING`"
+            },
+            "updated_at": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Updated At",
+              "n": "updated_at",
+              "r": true,
+              "sh": "RFC3339 timestamp at which the label was last updated.",
+              "t": "`$STRING`"
+            }
+          },
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "list_label",
+          "op": {
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /financial/v2/transactions/labels",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/financial/v2/transactions/labels",
+                  "q": {
+                    "exist": [
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "transactions"
+                    },
+                    {
+                      "lit": "labels"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.data`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "list_transaction": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "account_id": {
+              "a": true,
+              "h": "Account Id",
+              "n": "account_id",
+              "r": true,
+              "sh": "Identifier for the account associated with the transaction.",
+              "t": "`$STRING`"
+            },
+            "amount": {
+              "a": true,
+              "h": "Amount",
+              "n": "amount",
+              "r": true,
+              "sh": "The monetary amount.",
+              "t": "`$OBJECT`"
+            },
+            "client_attributes": {
+              "a": true,
+              "h": "Client Attributes",
+              "n": "client_attributes",
+              "r": false,
+              "sh": "An optional map of key-value string pairs that allows clients to attach arbitrary metadata to the transaction.",
+              "t": "`$OBJECT`"
+            },
+            "counterparty": {
+              "a": true,
+              "h": "Counterparty",
+              "n": "counterparty",
+              "r": false,
+              "sh": "An object containing details of the counterparty in this transaction",
+              "t": "`$OBJECT`"
+            },
+            "credit_debit_indicator": {
+              "a": true,
+              "h": "Credit Debit Indicator",
+              "n": "credit_debit_indicator",
+              "r": true,
+              "sh": "Credit/Debit Indicator",
+              "t": "`$STRING`"
+            },
+            "date_time": {
+              "a": true,
+              "h": "Date Time",
+              "n": "date_time",
+              "r": true,
+              "sh": "Date that the transaction occured compliant with RFC3339.",
+              "t": "`$STRING`"
+            },
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": true,
+              "sh": "Description of the transaction.",
+              "t": "`$STRING`"
+            },
+            "enrichments": {
+              "a": true,
+              "h": "Enrichments",
+              "n": "enrichments",
+              "r": false,
+              "sh": "Contextual enrichments associated with a Transaction",
+              "t": "`$OBJECT`"
+            },
+            "labels": {
+              "a": true,
+              "h": "Labels",
+              "n": "labels",
+              "r": false,
+              "sh": "Customer-defined labels currently attached to this transaction.",
+              "t": "`$ARRAY`"
+            },
+            "merchant_category_code": {
+              "a": true,
+              "h": "Merchant Category Code",
+              "n": "merchant_category_code",
+              "r": false,
+              "sh": "Merchant category code conforming to ISO 18245, related to the type of services or goods the merchant provides for the transaction.",
+              "t": "`$STRING`"
+            },
+            "posted_date_time": {
+              "a": true,
+              "de": true,
+              "h": "Posted Date Time",
+              "n": "posted_date_time",
+              "r": false,
+              "sh": "Date the assets involved in the transaction transferred compliant with RFC3339.",
+              "t": "`$STRING`"
+            },
+            "provider": {
+              "a": true,
+              "h": "Provider",
+              "n": "provider",
+              "r": false,
+              "sh": "Name of the transaction source provider.",
+              "t": "`$STRING`"
+            },
+            "running_balance": {
+              "a": true,
+              "h": "Running Balance",
+              "n": "running_balance",
+              "r": true,
+              "sh": "The running balance for the account that the transaction takes place against",
+              "t": "`$OBJECT`"
+            },
+            "running_balance_credit_debit_indicator": {
+              "a": true,
+              "h": "Running Balance Credit Debit Indicator",
+              "n": "running_balance_credit_debit_indicator",
+              "r": false,
+              "sh": "Credit/Debit Indicator for the running balance field",
+              "t": "`$STRING`"
+            },
+            "status": {
+              "a": true,
+              "h": "Status",
+              "n": "status",
+              "r": true,
+              "sh": "Status of the transaction.",
+              "t": "`$STRING`"
+            },
+            "suggested_description": {
+              "a": true,
+              "h": "Suggested Description",
+              "n": "suggested_description",
+              "r": true,
+              "sh": "The description Bud suggests client apps show for a given transaction.",
+              "t": "`$STRING`"
+            },
+            "suggested_logo": {
+              "a": true,
+              "h": "Suggested Logo",
+              "n": "suggested_logo",
+              "r": false,
+              "sh": "The logo Bud suggests client apps show for a given transaction.",
+              "t": "`$STRING`"
+            },
+            "tags": {
+              "a": true,
+              "h": "Tags",
+              "n": "tags",
+              "r": false,
+              "sh": "A list of potential tags associated with the transaction after contextual enrichment, which can be used for filtering.",
+              "t": "`$ARRAY`"
+            },
+            "transaction_id": {
+              "a": true,
+              "h": "Transaction Id",
+              "n": "transaction_id",
+              "r": true,
+              "sh": "Unique identifier for the transaction.",
+              "t": "`$STRING`"
+            },
+            "transaction_type": {
+              "a": true,
+              "h": "Transaction Type",
+              "n": "transaction_type",
+              "r": false,
+              "sh": "The code and a description of the transaction type.",
+              "t": "`$OBJECT`"
+            },
+            "value_date_time": {
+              "a": true,
+              "h": "Value Date Time",
+              "n": "value_date_time",
+              "r": false,
+              "sh": "Date the assets involved in the transaction transferred compliant with RFC3339.",
+              "t": "`$STRING`"
+            }
+          },
+          "name": "list_transaction",
+          "op": {
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /financial/v2/transactions",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "5bd9ecaf31fc2d5172fd89cb61b89fc6",
+                        "k": "query",
+                        "n": "account_id",
+                        "or": "account_id",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "bills",
+                        "k": "query",
+                        "n": "category_l1",
+                        "or": "category_l1",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "tv_and_broadband",
+                        "k": "query",
+                        "n": "category_l2",
+                        "or": "category_l2",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "credit",
+                        "k": "query",
+                        "n": "credit_debit_indicator",
+                        "or": "credit_debit_indicator",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2022-05-28T00:00:00Z",
+                        "k": "query",
+                        "n": "date_from",
+                        "or": "date_from",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2022-05-29T00:00:00Z",
+                        "k": "query",
+                        "n": "date_to",
+                        "or": "date_to",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": [
+                          "benefit"
+                        ],
+                        "k": "query",
+                        "n": "exclude_tag",
+                        "or": "exclude_tag",
+                        "r": false,
+                        "t": "`$ARRAY`"
+                      },
+                      {
+                        "a": true,
+                        "ex": [
+                          "1f10e6de-0f5f-4d8c-987a-9635a9d1b8c6"
+                        ],
+                        "k": "query",
+                        "n": "include_label_id",
+                        "or": "include_label_id",
+                        "r": false,
+                        "t": "`$ARRAY`"
+                      },
+                      {
+                        "a": true,
+                        "ex": [
+                          "regular-transaction"
+                        ],
+                        "k": "query",
+                        "n": "include_tag",
+                        "or": "include_tag",
+                        "r": false,
+                        "t": "`$ARRAY`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "netflix",
+                        "k": "query",
+                        "n": "merchant",
+                        "or": "merchant",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": 100,
+                        "k": "query",
+                        "n": "page_size",
+                        "or": "page_size",
+                        "r": false,
+                        "t": "`$INTEGER`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "eyJvZmZzZXQiOjEwMH0",
+                        "k": "query",
+                        "n": "page_token",
+                        "or": "page_token",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "booked",
+                        "k": "query",
+                        "n": "status",
+                        "or": "status",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2024-06-01T11:00:00Z",
+                        "k": "query",
+                        "n": "updated_after",
+                        "or": "updated_after",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/financial/v2/transactions",
+                  "q": {
+                    "exist": [
+                      "account_id",
+                      "category_l1",
+                      "category_l2",
+                      "credit_debit_indicator",
+                      "date_from",
+                      "date_to",
+                      "exclude_tag",
+                      "include_label_id",
+                      "include_tag",
+                      "merchant",
+                      "page_size",
+                      "page_token",
+                      "status",
+                      "updated_after",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "transactions"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "manage_financial_data": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "label_id": {
+              "a": true,
+              "fo": "uuid",
+              "h": "Label Id",
+              "n": "label_id",
+              "r": true,
+              "sh": "Identifier of the label to attach.",
+              "t": "`$STRING`"
+            }
+          },
+          "name": "manage_financial_data",
+          "op": {
+            "create": {
+              "input": "data",
+              "name": "create",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /financial/v2/transactions/{transaction_id}/labels",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "transaction_id",
+                        "or": "transaction_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/financial/v2/transactions/{transaction_id}/labels",
+                  "q": {
+                    "exist": [
+                      "transaction_id",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "transactions"
+                    },
+                    {
+                      "var": "transaction_id"
+                    },
+                    {
+                      "lit": "labels"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            },
+            "remove": {
+              "input": "data",
+              "name": "remove",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "DELETE /financial/v2/transactions/{transaction_id}/labels/{label_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "label_id",
+                        "or": "label_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "transaction_id",
+                        "or": "transaction_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "DELETE",
+                  "o": "/financial/v2/transactions/{transaction_id}/labels/{label_id}",
+                  "q": {
+                    "exist": [
+                      "label_id",
+                      "transaction_id",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "transactions"
+                    },
+                    {
+                      "var": "transaction_id"
+                    },
+                    {
+                      "lit": "labels"
+                    },
+                    {
+                      "var": "label_id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "DELETE /financial/v2/accounts/{account_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "account_id",
+                        "or": "account_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "DELETE",
+                  "o": "/financial/v2/accounts/{account_id}",
+                  "q": {
+                    "exist": [
+                      "account_id",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "accounts"
+                    },
+                    {
+                      "var": "account_id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "DELETE /v1/provider/{provider}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "provider",
+                        "or": "provider",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "DELETE",
+                  "o": "/v1/provider/{provider}",
+                  "q": {
+                    "exist": [
+                      "provider",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v1"
+                    },
+                    {
+                      "lit": "provider"
+                    },
+                    {
+                      "var": "provider"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "$.main.kit.entity.label"
+              ]
+            ]
+          }
+        },
+        "manage_transaction_label": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
+            }
+          },
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "manage_transaction_label",
+          "op": {
+            "remove": {
+              "input": "data",
+              "name": "remove",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "DELETE /financial/v2/transactions/labels/{label_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "label_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "DELETE",
+                  "o": "/financial/v2/transactions/labels/{label_id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "label_id": "id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "transactions"
+                    },
+                    {
+                      "lit": "labels"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "retrieve_financial_data": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "account_category": {
+              "a": true,
+              "h": "Account Category",
+              "n": "account_category",
+              "r": false,
+              "sh": "The account category that the account type is a part of Currently supported values include (but are not necessarily limited to): - `credit` - `depository` - `insurance` - `investment` - `loan` - `savings` - `other`",
+              "t": "`$STRING`"
+            },
+            "account_id": {
+              "a": true,
+              "h": "Account Id",
+              "n": "account_id",
+              "op": {
+                "list": {
+                  "req": false,
+                  "type": "`$STRING`"
+                }
+              },
+              "r": true,
+              "sh": "A unique id associated with the account.",
+              "t": "`$STRING`"
+            },
+            "account_name": {
+              "a": true,
+              "h": "Account Name",
+              "n": "account_name",
+              "r": false,
+              "sh": "The name associated with the account, this is often a friendly name assigned to the account to make it easier to refer to.",
+              "t": "`$STRING`"
+            },
+            "account_type": {
+              "a": true,
+              "h": "Account Type",
+              "n": "account_type",
+              "r": false,
+              "sh": "The type of account.",
+              "t": "`$STRING`"
+            },
+            "balances": {
+              "a": true,
+              "h": "Balances",
+              "n": "balances",
+              "op": {
+                "list": {
+                  "req": true,
+                  "type": "`$ARRAY`"
+                }
+              },
+              "r": false,
+              "sh": "The balances ingested for the account.",
+              "t": "`$OBJECT`"
+            },
+            "booked": {
+              "a": true,
+              "h": "Booked",
+              "n": "booked",
+              "r": true,
+              "sh": "The current balance of the account",
+              "t": "`$ANY`"
+            },
+            "closed_at": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Closed At",
+              "n": "closed_at",
+              "r": false,
+              "sh": "The datetime the account was closed in the format [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339).",
+              "t": "`$STRING`"
+            },
+            "credit_lines": {
+              "a": true,
+              "h": "Credit Lines",
+              "n": "credit_lines",
+              "r": false,
+              "sh": "The latest credit limit available for the account.",
+              "t": "`$OBJECT`"
+            },
+            "currency": {
+              "a": true,
+              "h": "Currency",
+              "n": "currency",
+              "r": true,
+              "sh": "The three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) of the monetary amount.",
+              "t": "`$STRING`"
+            },
+            "data": {
+              "a": true,
+              "h": "Data",
+              "n": "data",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "date": {
+              "a": true,
+              "h": "Date",
+              "n": "date",
+              "r": true,
+              "sh": "The date of the given balance in the format [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339).",
+              "t": "`$STRING`"
+            },
+            "details": {
+              "a": true,
+              "h": "Details",
+              "n": "details",
+              "r": false,
+              "sh": "Provides more details for the authorised payment.",
+              "t": "`$ARRAY`"
+            },
+            "first_transaction_date": {
+              "a": true,
+              "fo": "date-time",
+              "h": "First Transaction Date",
+              "n": "first_transaction_date",
+              "r": true,
+              "sh": "The date of the first transaction that bud has stored for this account.",
+              "t": "`$STRING`"
+            },
+            "frequency": {
+              "a": true,
+              "h": "Frequency",
+              "n": "frequency",
+              "r": false,
+              "sh": "The frequency of the authorised payment.",
+              "t": "`$STRING`"
+            },
+            "holder": {
+              "a": true,
+              "h": "Holder",
+              "n": "holder",
+              "r": false,
+              "sh": "The account holder.",
+              "t": "`$OBJECT`"
+            },
+            "holders": {
+              "a": true,
+              "h": "Holders",
+              "n": "holders",
+              "r": false,
+              "sh": "The account holder(s).",
+              "t": "`$ARRAY`"
+            },
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": true,
+              "sh": "The id for the authorised payment.",
+              "t": "`$STRING`"
+            },
+            "identifiers": {
+              "a": true,
+              "h": "Identifiers",
+              "n": "identifiers",
+              "r": false,
+              "sh": "These are wellknown fields which uniquely identify the account.",
+              "t": "`$OBJECT`"
+            },
+            "last_transaction_date": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Last Transaction Date",
+              "n": "last_transaction_date",
+              "r": true,
+              "sh": "The date of the last transaction that bud has stored for this account.",
+              "t": "`$STRING`"
+            },
+            "metadata": {
+              "a": true,
+              "h": "Metadata",
+              "n": "metadata",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "sh": "The name of the payment.",
+              "t": "`$STRING`"
+            },
+            "opening_date_time": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Opening Date Time",
+              "n": "opening_date_time",
+              "r": false,
+              "sh": "The datetime the account was opened in the format [RFC 3339]",
+              "t": "`$STRING`"
+            },
+            "operation_id": {
+              "a": true,
+              "h": "Operation Id",
+              "n": "operation_id",
+              "r": true,
+              "t": "`$STRING`"
+            },
+            "pending": {
+              "a": true,
+              "h": "Pending",
+              "n": "pending",
+              "r": true,
+              "sh": "The balance of the account if all pending transactions have settled.",
+              "t": "`$ANY`"
+            },
+            "provider": {
+              "a": true,
+              "h": "Provider",
+              "n": "provider",
+              "r": false,
+              "sh": "The account's provider, this is usually the bank or building society the account is held with.",
+              "t": "`$STRING`"
+            },
+            "provider_display_name": {
+              "a": true,
+              "h": "Provider Display Name",
+              "n": "provider_display_name",
+              "r": false,
+              "sh": "The display name for the account's provider.",
+              "t": "`$STRING`"
+            },
+            "provider_logo": {
+              "a": true,
+              "h": "Provider Logo",
+              "n": "provider_logo",
+              "r": false,
+              "sh": "A link to an image for the accounts provider's logo.",
+              "t": "`$STRING`"
+            },
+            "reference": {
+              "a": true,
+              "h": "Reference",
+              "n": "reference",
+              "r": true,
+              "sh": "The reference associated with the authorised payment.",
+              "t": "`$STRING`"
+            },
+            "restriction": {
+              "a": true,
+              "h": "Restriction",
+              "n": "restriction",
+              "r": false,
+              "sh": "The restriction on the account, if any.",
+              "t": "`$STRING`"
+            },
+            "status": {
+              "a": true,
+              "h": "Status",
+              "n": "status",
+              "op": {
+                "list": {
+                  "req": true,
+                  "type": "`$STRING`"
+                }
+              },
+              "r": false,
+              "sh": "The status of the account.",
+              "t": "`$STRING`"
+            },
+            "suggested_name": {
+              "a": true,
+              "h": "Suggested Name",
+              "n": "suggested_name",
+              "r": true,
+              "sh": "The name Bud suggests client apps show for the account.",
+              "t": "`$STRING`"
+            },
+            "transaction_windows": {
+              "a": true,
+              "h": "Transaction Windows",
+              "n": "transaction_windows",
+              "r": false,
+              "sh": "The transaction windows indicate for which periods we have full coverage of transactions ingested for the account.",
+              "t": "`$ARRAY`"
+            },
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": true,
+              "sh": "The type of the authorised payment.",
+              "t": "`$STRING`"
+            },
+            "usage_type": {
+              "a": true,
+              "h": "Usage Type",
+              "n": "usage_type",
+              "r": false,
+              "sh": "The intended usage of the account.",
+              "t": "`$STRING`"
+            }
+          },
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "retrieve_financial_data",
+          "op": {
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /financial/v3/accounts",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "current_account",
+                        "k": "query",
+                        "n": "account_type",
+                        "or": "account_type",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "GBP",
+                        "k": "query",
+                        "n": "currency",
+                        "or": "currency",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": true,
+                        "k": "query",
+                        "n": "exclude_restricted",
+                        "or": "exclude_restricted",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "joint",
+                        "k": "query",
+                        "n": "holder_relationship_type",
+                        "or": "holder_relationship_type",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": true,
+                        "k": "query",
+                        "n": "include_all_balance",
+                        "or": "include_all_balance",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "BankOfBud",
+                        "k": "query",
+                        "n": "provider",
+                        "or": "provider",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "personal",
+                        "k": "query",
+                        "n": "usage_type",
+                        "or": "usage_type",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/financial/v3/accounts",
+                  "q": {
+                    "exist": [
+                      "account_type",
+                      "currency",
+                      "exclude_restricted",
+                      "holder_relationship_type",
+                      "include_all_balance",
+                      "provider",
+                      "usage_type",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v3"
+                    },
+                    {
+                      "lit": "accounts"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /financial/v2/accounts",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "current_account",
+                        "k": "query",
+                        "n": "account_type",
+                        "or": "account_type",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "GBP",
+                        "k": "query",
+                        "n": "currency",
+                        "or": "currency",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": true,
+                        "k": "query",
+                        "n": "exclude_restricted",
+                        "or": "exclude_restricted",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "joint",
+                        "k": "query",
+                        "n": "holder_relationship_type",
+                        "or": "holder_relationship_type",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "BankOfBud",
+                        "k": "query",
+                        "n": "provider",
+                        "or": "provider",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "personal",
+                        "k": "query",
+                        "n": "usage_type",
+                        "or": "usage_type",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/financial/v2/accounts",
+                  "q": {
+                    "exist": [
+                      "account_type",
+                      "currency",
+                      "exclude_restricted",
+                      "holder_relationship_type",
+                      "provider",
+                      "usage_type",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "accounts"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /financial/v2/accounts/{account_id}/balances",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "account_id",
+                        "or": "account_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "date_time",
+                        "k": "query",
+                        "n": "date_field",
+                        "or": "date_field",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2019-02-29T12:23:00Z",
+                        "k": "query",
+                        "n": "from",
+                        "or": "from",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "daily",
+                        "k": "query",
+                        "n": "granularity",
+                        "or": "granularity",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2019-02-29T12:23:00Z",
+                        "k": "query",
+                        "n": "to",
+                        "or": "to",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/financial/v2/accounts/{account_id}/balances",
+                  "q": {
+                    "exist": [
+                      "account_id",
+                      "date_field",
+                      "from",
+                      "granularity",
+                      "to",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "accounts"
+                    },
+                    {
+                      "var": "account_id"
+                    },
+                    {
+                      "lit": "balances"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /financial/v3/accounts/{account_id}/balances",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "account_id",
+                        "or": "account_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "date_time",
+                        "k": "query",
+                        "n": "date_field",
+                        "or": "date_field",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2019-02-29T12:23:00Z",
+                        "k": "query",
+                        "n": "from",
+                        "or": "from",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "daily",
+                        "k": "query",
+                        "n": "granularity",
+                        "or": "granularity",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2019-02-29T12:23:00Z",
+                        "k": "query",
+                        "n": "to",
+                        "or": "to",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/financial/v3/accounts/{account_id}/balances",
+                  "q": {
+                    "exist": [
+                      "account_id",
+                      "date_field",
+                      "from",
+                      "granularity",
+                      "to",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v3"
+                    },
+                    {
+                      "lit": "accounts"
+                    },
+                    {
+                      "var": "account_id"
+                    },
+                    {
+                      "lit": "balances"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /financial/v2/authorised-payments",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "account_id",
+                        "or": "account_id",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": 100,
+                        "k": "query",
+                        "n": "page_size",
+                        "or": "page_size",
+                        "r": false,
+                        "t": "`$INTEGER`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "eyJvZmZzZXQiOjEwMH0",
+                        "k": "query",
+                        "n": "page_token",
+                        "or": "page_token",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "active",
+                        "k": "query",
+                        "n": "status",
+                        "or": "status",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "direct_debit",
+                        "k": "query",
+                        "n": "type",
+                        "or": "type",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/financial/v2/authorised-payments",
+                  "q": {
+                    "exist": [
+                      "account_id",
+                      "page_size",
+                      "page_token",
+                      "status",
+                      "type",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "authorised-payments"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /financial/v2/balances",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "date_time",
+                        "k": "query",
+                        "n": "date_field",
+                        "or": "date_field",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2019-02-29T12:23:00Z",
+                        "k": "query",
+                        "n": "from",
+                        "or": "from",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "daily",
+                        "k": "query",
+                        "n": "granularity",
+                        "or": "granularity",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2019-02-29T12:23:00Z",
+                        "k": "query",
+                        "n": "to",
+                        "or": "to",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/financial/v2/balances",
+                  "q": {
+                    "exist": [
+                      "date_field",
+                      "from",
+                      "granularity",
+                      "to",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "balances"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /financial/v3/balances",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "date_time",
+                        "k": "query",
+                        "n": "date_field",
+                        "or": "date_field",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2019-02-29T12:23:00Z",
+                        "k": "query",
+                        "n": "from",
+                        "or": "from",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "daily",
+                        "k": "query",
+                        "n": "granularity",
+                        "or": "granularity",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "2019-02-29T12:23:00Z",
+                        "k": "query",
+                        "n": "to",
+                        "or": "to",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/financial/v3/balances",
+                  "q": {
+                    "exist": [
+                      "date_field",
+                      "from",
+                      "granularity",
+                      "to",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v3"
+                    },
+                    {
+                      "lit": "balances"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /financial/v3/accounts/transaction-dates",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/financial/v3/accounts/transaction-dates",
+                  "q": {
+                    "exist": [
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v3"
+                    },
+                    {
+                      "lit": "accounts"
+                    },
+                    {
+                      "lit": "transaction-dates"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            },
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /financial/v2/accounts/{account_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "account_id",
+                        "or": "account_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/financial/v2/accounts/{account_id}",
+                  "q": {
+                    "exist": [
+                      "account_id",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "accounts"
+                    },
+                    {
+                      "var": "account_id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /financial/v3/accounts/{account_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "account_id",
+                        "or": "account_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/financial/v3/accounts/{account_id}",
+                  "q": {
+                    "exist": [
+                      "account_id",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "financial"
+                    },
+                    {
+                      "lit": "v3"
+                    },
+                    {
+                      "lit": "accounts"
+                    },
+                    {
+                      "var": "account_id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "similar": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "data": {
+              "a": true,
+              "h": "Data",
+              "n": "data",
+              "r": true,
+              "t": "`$ARRAY`"
+            },
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "t": "`$STRING`"
+            },
+            "metadata": {
+              "a": true,
+              "h": "Metadata",
+              "n": "metadata",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "operation_id": {
+              "a": true,
+              "h": "Operation Id",
+              "n": "operation_id",
+              "r": true,
+              "t": "`$STRING`"
+            }
+          },
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "similar",
+          "op": {
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /corrections/v2/categories/similar/{transaction_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "transaction_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "exclude_source",
+                        "or": "exclude_source",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/corrections/v2/categories/similar/{transaction_id}",
+                  "q": {
+                    "exist": [
+                      "exclude_source",
+                      "id",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "transaction_id": "id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "corrections"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "categories"
+                    },
+                    {
+                      "lit": "similar"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                },
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /corrections/v2/merchants/similar/{transaction_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "header": [
+                      {
+                        "a": true,
+                        "ex": "8711bbef-b357-4c2d-97ca-0d9df4206e9a",
+                        "k": "header",
+                        "n": "x_client_id",
+                        "or": "x_client_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "c3339af9-2426-44d4-9c4d-ddb8fd281e23",
+                        "k": "header",
+                        "n": "x_customer_id",
+                        "or": "x_customer_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_idempotent_identifier",
+                        "or": "x_customer_idempotent_identifier",
+                        "r": false,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "k": "header",
+                        "n": "x_customer_secret",
+                        "or": "x_customer_secret",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "params": [
+                      {
+                        "a": true,
+                        "k": "param",
+                        "n": "id",
+                        "or": "transaction_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ],
+                    "query": [
+                      {
+                        "a": true,
+                        "k": "query",
+                        "n": "exclude_source",
+                        "or": "exclude_source",
+                        "r": false,
+                        "t": "`$BOOLEAN`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/corrections/v2/merchants/similar/{transaction_id}",
+                  "q": {
+                    "exist": [
+                      "exclude_source",
+                      "id",
+                      "x_client_id",
+                      "x_customer_id",
+                      "x_customer_idempotent_identifier",
+                      "x_customer_secret"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "transaction_id": "id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "corrections"
+                    },
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "merchants"
+                    },
+                    {
+                      "lit": "similar"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        }
+      },
+      "feature": {
+        "debug": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "max": 100,
+              "redact": [
+                "authorization",
+                "cookie",
+                "set-cookie",
+                "api-key",
+                "apikey",
+                "x-api-key",
+                "idempotency-key"
+              ]
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "onEntry": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "description": "Request/response capture ring buffer for debugging",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreDone": {
+              "active": true,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": true,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "PreUnexpected": {
+              "active": true,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "debug",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Debug capture",
+          "transport": "none",
+          "version": "0.0.1"
+        },
+        "idempotency": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "header": "Idempotency-Key",
+              "methods": [
+                "POST",
+                "PUT",
+                "PATCH",
+                "DELETE"
+              ],
+              "ops": [
+                "create",
+                "update",
+                "remove"
+              ]
+            },
+            "optspec": {
+              "keygen": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "description": "Idempotency keys for safe retries of mutating operations",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "idempotency",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Idempotency",
+          "transport": "none",
+          "version": "0.0.1"
+        },
+        "metrics": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false
+            },
+            "optspec": {
+              "now": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "description": "Statistics capture: per-operation counters and latency",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreDone": {
+              "active": true,
+              "await": false
+            },
+            "PrePoint": {
+              "active": true,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "PreUnexpected": {
+              "active": true,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "metrics",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Metrics",
+          "transport": "none",
+          "version": "0.0.1"
+        },
+        "paging": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "afterVar": "after",
+              "cursorParam": "cursor",
+              "firstVar": "first",
+              "limitParam": "limit",
+              "pageParam": "page",
+              "startPage": 1
+            },
+            "optspec": {
+              "limit": "`$NUMBER`",
+              "ops": "`$LIST`"
+            },
+            "strict": false
+          },
+          "description": "Pagination signals for list operations",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": true,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "paging",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Paging",
+          "transport": "none",
+          "version": "0.0.1"
+        },
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "description": "Client-side rate limiting via a token bucket",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Rate limiting",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "description": "Automatic retry of transient failures with exponential backoff",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Retry",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "test": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
+          },
+          "description": "In-memory mock transport for testing without a live server",
+          "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": true,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": true,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PrePoint": {
+              "active": true,
+              "await": false
+            },
+            "PreRequest": {
+              "active": true,
+              "await": false
+            },
+            "PreResponse": {
+              "active": true,
+              "await": false
+            },
+            "PreResult": {
+              "active": true,
+              "await": false
+            },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
+              "await": false
+            }
+          },
+          "name": "test",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Test transport",
+          "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "description": "Per-request timeout with transport abort",
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "js": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Timeout",
+          "transport": "wrap",
+          "version": "0.0.1"
+        }
+      },
+      "flow": {
+        "BasicCorrectFinancialDataFlow": {
+          "active": true,
+          "entity": "correct_financial_data",
+          "key$": "BasicCorrectFinancialDataFlow",
+          "kind": "basic",
+          "name": "BasicCorrectFinancialDataFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "correct_financial_data_ref01"
+              },
+              "m": {
+                "merchant_id": "merchant01"
+              },
+              "o": "create",
+              "s": [],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "correct_financial_data_ref01"
+                  }
+                }
+              ]
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "correct_financial_data_ref01",
+                "srcdatavar": "correct_financial_data_ref01_data",
+                "suffix": "_dt0"
+              },
+              "m": {
+                "id": "correct_financial_data01"
+              },
+              "o": "load",
+              "s": [],
+              "v": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-correct_financial_data_ref01"
+                  }
+                }
+              ]
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "correct_financial_data_ref01",
+                "suffix": "_rm0"
+              },
+              "m": {
+                "id": "correct_financial_data01"
+              },
+              "o": "remove",
+              "s": [],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "suffix": "_rt0"
+              },
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemNotExists",
+                  "def": {
+                    "ref": "correct_financial_data_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicCustomerMerchantCorrectionFlow": {
+          "active": true,
+          "entity": "customer_merchant_correction",
+          "key$": "BasicCustomerMerchantCorrectionFlow",
+          "kind": "basic",
+          "name": "BasicCustomerMerchantCorrectionFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "customer_merchant_correction_ref01"
+              },
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
+            }
+          ]
+        },
+        "BasicLabelFlow": {
+          "active": true,
+          "entity": "label",
+          "key$": "BasicLabelFlow",
+          "kind": "basic",
+          "name": "BasicLabelFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "label_ref01"
+              },
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "label_ref01",
+                "srcdatavar": "label_ref01_data",
+                "suffix": "_up0",
+                "textfield": "created_at"
+              },
+              "m": {},
+              "o": "update",
+              "s": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-label_ref01"
+                  }
+                }
+              ],
+              "v": []
+            }
+          ]
+        },
+        "BasicListLabelFlow": {
+          "active": true,
+          "entity": "list_label",
+          "key$": "BasicListLabelFlow",
+          "kind": "basic",
+          "name": "BasicListLabelFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "list_label_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicListTransactionFlow": {
+          "active": true,
+          "entity": "list_transaction",
+          "key$": "BasicListTransactionFlow",
+          "kind": "basic",
+          "name": "BasicListTransactionFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "list_transaction_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicManageFinancialDataFlow": {
+          "active": true,
+          "entity": "manage_financial_data",
+          "key$": "BasicManageFinancialDataFlow",
+          "kind": "basic",
+          "name": "BasicManageFinancialDataFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "manage_financial_data_ref01"
+              },
+              "m": {
+                "transaction_id": "transaction01"
+              },
+              "o": "create",
+              "s": [],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "manage_financial_data_ref01",
+                "suffix": "_rm0"
+              },
+              "m": {
+                "id": "manage_financial_data01"
+              },
+              "o": "remove",
+              "s": [],
+              "v": []
+            }
+          ]
+        },
+        "BasicManageTransactionLabelFlow": {
+          "active": true,
+          "entity": "manage_transaction_label",
+          "key$": "BasicManageTransactionLabelFlow",
+          "kind": "basic",
+          "name": "BasicManageTransactionLabelFlow",
+          "param": {},
+          "step": []
+        },
+        "BasicRetrieveFinancialDataFlow": {
+          "active": true,
+          "entity": "retrieve_financial_data",
+          "key$": "BasicRetrieveFinancialDataFlow",
+          "kind": "basic",
+          "name": "BasicRetrieveFinancialDataFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "retrieve_financial_data_ref01"
+                  }
+                }
+              ]
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "retrieve_financial_data_ref01",
+                "srcdatavar": "retrieve_financial_data_ref01_data",
+                "suffix": "_dt0"
+              },
+              "m": {
+                "id": "retrieve_financial_data01"
+              },
+              "o": "load",
+              "s": [],
+              "v": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-retrieve_financial_data_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicSimilarFlow": {
+          "active": true,
+          "entity": "similar",
+          "key$": "BasicSimilarFlow",
+          "kind": "basic",
+          "name": "BasicSimilarFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "similar_ref01",
+                "srcdatavar": "similar_ref01_data",
+                "suffix": "_dt0"
+              },
+              "m": {
+                "id": "similar01"
+              },
+              "o": "load",
+              "s": [],
+              "v": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-similar_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "info": {
+        "contact": {
+          "email": "contact@thisisbud.com",
+          "name": "API Support",
+          "url": "http://www.thisisbud.com/support"
+        },
+        "description": "These endpoints handle the aggregation and retrieval of financial data. They are designed to be generic across a range of ingestion sources and regions.\n",
+        "security": {
+          "in": "header",
+          "name": "Authorization",
+          "prefix": "Bearer",
+          "scheme": "OAuth2",
+          "type": "oauth2"
+        },
+        "servers": [
+          {
+            "description": "Bud sandbox",
+            "url": "https://api-sandbox.thisisbud.com"
+          }
+        ],
+        "summary": "These endpoints handle the aggregation and retrieval of financial data.",
+        "title": "Financial Data API",
+        "version": "1.0.0",
+        "website": "https://thisisbud.com",
+        "x-logo": {
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATAAAABuCAQAAAAKAYdLAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH4wQDDggcbXcx7wAABeJJREFUeNrt3W2IFVUcx/HvXRW1VdQedy1bZVfoYX0osVQyfSGElKbRA5oFIaIlhAkWUYm6gvqqDMHMoBeKlhayCCZC2AMRPay7aJrSZmauZhQqaj7t7u1Fi965987s7D1n7pk7/j73zX2Y85//mXt2Zu45Z2ZBREREREREREREREREREREREREREREREREREREREREREREREREROIiZSFGH+YxgsOs5U/X1bFiPDPpQT3bu1DmcaZyg+vErWpjD+s47zoN6Mte0qRJc4Iq18lYMJv2jvosD11mRUeJpD32UO7664BFGQl94DoZY704fbU2rQwKVWYwbc6bQlSPBaYbtMz4K7nP53lpGkK/q8+7MTxUmeEWtmJcGX+j5psmM0I3l9vCirKAV36OuE46QsbfaHL/9opnL9tcpxBf3V0nkAgzWMRj9HadhrH+3Gk7pBqYDZdY3oXfnHE2gc1U2gyoQ6Rk+pKZdgOqgYnXF7TYDGe3gcWgW85QH9cJxMAVm8HsNrBqhhV1U9g33XUCzo1gsM1wdhtYio8ZWsytYdksFrpOwbGhbLYb0PavyLs5wA+c9v28lRa+Zzt/+y5RwwKqaOCdgCjZRvEit/A1a7jou8xwJjOMAb7D+ylqqCmw1imeZ0oCBrv7Mzp+/QofFTDCdZG13Jw3Wi1nOpbZT9+QGUziUkeZ3T49z+P4pqCRuCkhM1jjfMwwqsdG182rsAaWJs0JxuWJ9knGEq+EzODHjDLTcj5NsbjgwehwDazm6vyL5D2MG5i7booKdjE25917M57XhoxUG1hmJUsjrmWtlVl18ZQ2DeCyH6ycT7kpIJ+wuQWVeZJXI69HcpsXHDQN4LajtZIlkcbvzWqn9St1R3nPNIT93wzt/MSZPO+nqKA65699Nos5FdHmgZkMzHnvIj9zLm9+Q7jd0nqP8VtkdSqWNppYxT+u08g+yW8OnKRXw4ac08hnPUscyvjkw5AZXM4os9jzyY6sdZ3h5YC++jLm0lrASf50T5krzEn0QbOLbB8in2FvwKfNPJczCXd0hLV7wPPqL8bybt691//aWWfhkPo2681PjZPDbgP7lYZOl1nNJs9rW4elXD2zfkK8wIFOy2w1XuuWyOpTkuw2sHOhlqrzvIqu59gbuYEdIcqcjSyb65SLX5EHOepgrbuKtJ6nHNQtxtx0U5xM8DoXMkez7K5xM7Tp4iS4WOvszvss5feSP9Fvo5EVnDDfHGJfpd157Y48xFRGmfaEaWcu/qqYZxpCDcxcqR8Mg9xlGkANzNz+BDcx4zEJNTBzv5gPCSeXTvJtmM+3PJqIKdNj6GE3pJsG5mIwOMp1ptnABgd1sq+G7ebnXZncHCKjG3+M1zpLTzMz7AZ00cBG5pmlFb3JmkQTSpPd21HZbWD9Qy21zPPK/zricNH6+B7mvZFreTpEtAFWt0dpsnoWZreBVTG+kyVS1GVN4/vDd9lJVIRY5yzfPdPlrPHHdTwYItr1bkLcTia8M1qPM9F3yRRjcuaYprNmHxzyfNbQyQlnGTM47ynhndFan7WuCywLODz35I2sC9DCXheZHBNpsXvZmu1fkZXs5rjPnPzb8hyAzrIzINr9HOBIwNXat+ZcleS1hame1714izc55jNvbVDBtz7pyWuJuI15P/tnx1F0UwzsQpprO5nil2KIQSZbqcspnwp57+iu2MQT1mMmhNue/MMR3xfwMi8VYRhnmJqXP/MG1lZwyVNMy9l/FR4tf/mdvB553Uz2sXFn+n1YaGCNBZZr5mH25by7xzCb3PKrmM+lgmK1BV4hdc0+2g2zjq8m1wlAOY1dvqXGKep87oZYzUmDW3Vs8+myuIf6Am6AsiT0Nljp/CYl0Twaze9ZaaN3u5w5jAy5L2ylhe/4nAu+S1Qwl+oCsrjCV2wM2KXfwSPUcmPIGv9LPZ91Ye1TEnEb80ztNLE+Dv8MS0RERERERERERERERERERERERERERERERERERERERERERERERERs+Q/rhi5WauEgfQAAAABJRU5ErkJggg=="
+        }
+      },
+      "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "in": "",
+          "name": "",
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
+      "phase": {
+        "build": {
+          "active": true
+        },
+        "top": {
+          "active": true
+        }
+      },
+      "repo": {
+        "host": "github.com",
+        "path": ""
+      },
+      "target": {
+        "go": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "feature": {
+            "fullset": [
+              "test/feature_test.go"
+            ],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-financial-data",
+            "package": "",
+            "path": ""
+          },
+          "name": "go",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "",
+              "package": "",
+              "state": "pending",
+              "url": "",
+              "vault": {
+                "alias": "",
+                "env": "",
+                "recipe": ""
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-financial-data",
+            "package": "",
+            "path": ""
+          },
+          "name": "go-cli",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "phase": {
+            "agentguide": {
+              "active": false
+            },
+            "entity": {
+              "active": false
+            },
+            "feature": {
+              "active": false
+            },
+            "readme": {
+              "active": false
+            },
+            "test": {
+              "active": false
+            }
+          },
+          "provides": {},
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "",
+              "package": "",
+              "state": "pending",
+              "url": "",
+              "vault": {
+                "alias": "",
+                "env": "",
+                "recipe": ""
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "root"
+            },
+            "version": "0.0.1"
+          },
+          "superseded": [],
+          "title": "Go CLI"
+        },
+        "go-mcp": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-financial-data",
+            "package": "",
+            "path": ""
+          },
+          "name": "go-mcp",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "phase": {
+            "agentguide": {
+              "active": false
+            },
+            "entity": {
+              "active": false
+            },
+            "feature": {
+              "active": false
+            },
+            "readme": {
+              "active": false
+            },
+            "test": {
+              "active": false
+            }
+          },
+          "provides": {},
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "",
+              "package": "",
+              "state": "pending",
+              "url": "",
+              "vault": {
+                "alias": "",
+                "env": "",
+                "recipe": ""
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "root"
+            },
+            "version": "0.0.1"
+          },
+          "superseded": [],
+          "title": "Go MCP server"
+        },
+        "js": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "dotenv": {
+              "active": true,
+              "kind": "dev",
+              "version": "^17.4.2"
+            }
+          },
+          "ext": "js",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-financial-data",
+            "package": "",
+            "path": ""
+          },
+          "name": "js",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "npm",
+              "package": "",
+              "state": "pending",
+              "url": "https://registry.npmjs.org",
+              "vault": {
+                "alias": "npm",
+                "env": "",
+                "recipe": "npm"
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "superseded": [
+            "test/runner.js"
+          ],
+          "title": "JavaScript"
+        },
+        "lua": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "--"
+          },
+          "deps": {
+            "dkjson": {
+              "active": true,
+              "kind": "prod",
+              "version": "2.5"
+            }
+          },
+          "ext": "lua",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-financial-data",
+            "package": "",
+            "path": ""
+          },
+          "name": "lua",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "luarocks",
+              "package": "",
+              "state": "pending",
+              "url": "https://luarocks.org",
+              "vault": {
+                "alias": "luarocks",
+                "env": "LUAROCKS_API_KEY",
+                "recipe": ""
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
+          "title": "Lua"
+        },
+        "php": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "php",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-financial-data",
+            "package": "",
+            "path": ""
+          },
+          "name": "php",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "packagist",
+              "package": "",
+              "state": "pending",
+              "url": "https://packagist.org",
+              "vault": {
+                "alias": "packagist",
+                "env": "PACKAGIST_API_TOKEN",
+                "recipe": ""
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
+          "title": "PHP"
+        },
+        "py": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "#"
+          },
+          "deps": {
+            "requests": {
+              "active": true,
+              "kind": "prod",
+              "version": "2.33"
+            }
+          },
+          "ext": "py",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-financial-data",
+            "package": "",
+            "path": ""
+          },
+          "name": "py",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "pypi",
+              "package": "",
+              "state": "pending",
+              "url": "https://pypi.org",
+              "vault": {
+                "alias": "pypi",
+                "env": "",
+                "recipe": "pypi"
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
+          "title": "Python"
+        },
+        "ts": {
+          "active": true,
+          "author": {
+            "name": "",
+            "url": ""
+          },
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "feature": {
+            "fullset": [],
+            "trim": true
+          },
+          "module": {
+            "goversion": "",
+            "name": "bud-financial-data",
+            "package": "",
+            "path": ""
+          },
+          "name": "ts",
+          "origname": "",
+          "output": {
+            "adopt": false,
+            "create": true,
+            "path": "",
+            "repo": "",
+            "root": false,
+            "sdkrel": ""
+          },
+          "package": "@voxgig/sdkgen",
+          "provides": {
+            "schema": true,
+            "sekreto": true
+          },
+          "publish": {
+            "registry": {
+              "active": false,
+              "name": "npm",
+              "package": "",
+              "state": "pending",
+              "url": "https://registry.npmjs.org",
+              "vault": {
+                "alias": "npm",
+                "env": "",
+                "recipe": "npm"
+              }
+            },
+            "tag": {
+              "active": true,
+              "prefix": "",
+              "vault": {
+                "alias": "github",
+                "recipe": "github"
+              },
+              "via": "port"
+            },
+            "version": "0.0.1"
+          },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
+          "title": "TypeScript"
+        }
+      },
+      "test": {
+        "live": {
+          "app": false,
+          "base": "",
+          "strict": true
+        }
+      }
+    }
+  },
+  "name": "bud-financial-data",
+  "name-": "bud-financial-data",
+  "name_": "bud_financial_data",
+  "name__orig": "bud-financial-data",
+  "origin": "voxgig-sdk"
+}

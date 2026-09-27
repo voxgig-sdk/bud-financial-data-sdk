@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "customer_merchant_correction": {
+      "CUSTOMER_MERCHANT_CORRECTION00": {
+        "data": [],
+        "metadata": {},
+        "operation_id": "OPERATION01",
+        "id": "CUSTOMER_MERCHANT_CORRECTION00"
+      },
+      "CUSTOMER_MERCHANT_CORRECTION01": {
+        "data": [],
+        "metadata": {},
+        "operation_id": "OPERATION01",
+        "id": "CUSTOMER_MERCHANT_CORRECTION01"
+      },
+      "CUSTOMER_MERCHANT_CORRECTION02": {
+        "data": [],
+        "metadata": {},
+        "operation_id": "OPERATION01",
+        "id": "CUSTOMER_MERCHANT_CORRECTION02"
+      }
+    }
+  },
+  "new": {
+    "customer_merchant_correction": {
+      "customer_merchant_correction_ref01": {
+        "data": [],
+        "metadata": {},
+        "operation_id": "OPERATION01"
+      }
+    }
+  },
+  "requests": {
+    "POST /corrections/v2/merchants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

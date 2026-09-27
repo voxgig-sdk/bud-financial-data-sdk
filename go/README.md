@@ -1,0 +1,1091 @@
+# BudFinancialData Golang SDK
+
+
+
+The Golang SDK for the BudFinancialData API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
+
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.CorrectFinancialData(nil)` — each with the same small set of operations (`List`, `Load`, `Create`, `Update`, `Remove`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
+> Also generated from this model: `go-cli`, `go-mcp`, `js`, `lua`, `php`, `py`, `ts` — see
+> the [top-level README](../README.md).
+
+
+## Install
+```bash
+go get github.com/voxgig-sdk/bud-financial-data-sdk/go@latest
+```
+
+The Go module proxy resolves the version from the `go/vX.Y.Z` GitHub
+release tag — see [Releases](https://github.com/voxgig-sdk/bud-financial-data-sdk/releases) for the available versions.
+
+To vendor from a local checkout instead, clone this repo alongside your
+project and add a `replace` directive pointing at the checked-out
+`go/` directory:
+
+```bash
+go mod edit -replace github.com/voxgig-sdk/bud-financial-data-sdk/go=../bud-financial-data-sdk/go
+```
+
+
+## Tutorial: your first API call
+
+This tutorial walks through creating a client, listing entities, and
+loading a specific record.
+
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    sdk "github.com/voxgig-sdk/bud-financial-data-sdk/go"
+)
+
+func main() {
+    client := sdk.NewBudFinancialDataSDK(map[string]any{
+        "apikey": os.Getenv("BUD_FINANCIAL_DATA_APIKEY"),
+    })
+
+    // List correctFinancialData records — the value is the array of records itself.
+    correctFinancialDatas, err := client.CorrectFinancialData(nil).List(nil, nil)
+    if err != nil {
+        panic(err)
+    }
+    for _, item := range correctFinancialDatas.([]any) {
+        fmt.Println(item)
+    }
+
+    // Load a single correctFinancialData — the value is the loaded record.
+    correctFinancialData, err := client.CorrectFinancialData(nil).Load(map[string]any{"rule_id": "example_rule_id"}, nil)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(correctFinancialData)
+
+    // Create a correctFinancialData.
+    created, err := client.CorrectFinancialData(nil).Create(map[string]any{"merchant_id": "example_merchant_id", "created_at": "example_created_at", "custom_merchant_id": "example_custom_merchant_id", "data": []any{}, "frequency": "example_frequency", "logo_feedback": "example_logo_feedback", "metadata": map[string]any{}, "name": "example_name", "operation_id": "example_operation_id", "rule_definition": map[string]any{}, "rule_type": "example_rule_type", "transaction_id": "example_transaction_id", "transaction_ids": []any{}}, nil)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(created)
+
+    // Remove a correctFinancialData.
+    removed, err := client.CorrectFinancialData(nil).Remove(map[string]any{"rule_id": "example_rule_id"}, nil)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(removed)
+}
+```
+
+
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+listtransactions, err := client.ListTransaction(nil).List(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = listtransactions
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
+```
+
+
+## How-to guides
+
+### Make a direct HTTP request
+
+For endpoints not covered by entity methods:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example"},
+})
+if err != nil {
+    panic(err)
+}
+
+if result["ok"] == true {
+    fmt.Println(result["status"]) // 200
+    fmt.Println(result["data"])   // response body
+}
+```
+
+### Prepare a request without sending it
+
+```go
+fetchdef, err := client.Prepare(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "DELETE",
+    "params": map[string]any{"id": "example"},
+})
+if err != nil {
+    panic(err)
+}
+
+fmt.Println(fetchdef["url"])
+fmt.Println(fetchdef["method"])
+fmt.Println(fetchdef["headers"])
+```
+
+### Use test mode
+
+Create a mock client for unit testing — no server required:
+
+```go
+client := sdk.Test()
+
+listTransaction, err := client.ListTransaction(nil).List(
+    nil, nil,
+)
+if err != nil {
+    panic(err)
+}
+fmt.Println(listTransaction) // the returned mock data
+```
+
+### Use a custom fetch function
+
+Replace the HTTP transport with your own function:
+
+```go
+mockFetch := func(url string, init map[string]any) (map[string]any, error) {
+    return map[string]any{
+        "status":     200,
+        "statusText": "OK",
+        "headers":    map[string]any{},
+        "json": (func() any)(func() any {
+            return map[string]any{"id": "mock01"}
+        }),
+    }, nil
+}
+
+client := sdk.NewBudFinancialDataSDK(map[string]any{
+    "base": "http://localhost:8080",
+    "system": map[string]any{
+        "fetch": (func(string, map[string]any) (map[string]any, error))(mockFetch),
+    },
+})
+```
+
+### Run live tests
+
+Create a `.env.local` file at the project root:
+
+```
+BUD_FINANCIAL_DATA_TEST_LIVE=TRUE
+BUD_FINANCIAL_DATA_APIKEY=<your-key>
+```
+
+Then run:
+
+```bash
+cd go && go test ./test/...
+```
+
+
+## Reference
+
+### NewBudFinancialDataSDK
+
+```go
+func NewBudFinancialDataSDK(options map[string]any) *BudFinancialDataSDK
+```
+
+Creates a new SDK client.
+
+| Option | Type | Description |
+| --- | --- | --- |
+| `"apikey"` | `string` | API key for authentication. |
+| `"base"` | `string` | Base URL of the API server. |
+| `"prefix"` | `string` | URL path prefix prepended to all requests. |
+| `"suffix"` | `string` | URL path suffix appended to all requests. |
+| `"feature"` | `map[string]any` | Feature activation flags. |
+| `"extend"` | `[]any` | Additional Feature instances to load. |
+| `"system"` | `map[string]any` | System overrides (e.g. custom `"fetch"` function). |
+
+### TestSDK
+
+```go
+func TestSDK(testopts map[string]any, sdkopts map[string]any) *BudFinancialDataSDK
+```
+
+Creates a test-mode client with mock transport. Both arguments may be `nil`.
+
+### BudFinancialDataSDK methods
+
+| Method | Signature | Description |
+| --- | --- | --- |
+| `OptionsMap` | `() map[string]any` | Deep copy of current SDK options. |
+| `GetUtility` | `() *Utility` | Copy of the SDK utility object. |
+| `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
+| `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
+| `CorrectFinancialData` | `(data map[string]any) BudFinancialDataEntity` | Create a CorrectFinancialData entity instance. |
+| `CustomerMerchantCorrection` | `(data map[string]any) BudFinancialDataEntity` | Create a CustomerMerchantCorrection entity instance. |
+| `Label` | `(data map[string]any) BudFinancialDataEntity` | Create a Label entity instance. |
+| `ListLabel` | `(data map[string]any) BudFinancialDataEntity` | Create a ListLabel entity instance. |
+| `ListTransaction` | `(data map[string]any) BudFinancialDataEntity` | Create a ListTransaction entity instance. |
+| `ManageFinancialData` | `(data map[string]any) BudFinancialDataEntity` | Create a ManageFinancialData entity instance. |
+| `ManageTransactionLabel` | `(data map[string]any) BudFinancialDataEntity` | Create a ManageTransactionLabel entity instance. |
+| `RetrieveFinancialData` | `(data map[string]any) BudFinancialDataEntity` | Create a RetrieveFinancialData entity instance. |
+| `Similar` | `(data map[string]any) BudFinancialDataEntity` | Create a Similar entity instance. |
+
+### Entity interface (BudFinancialDataEntity)
+
+All entities implement the `BudFinancialDataEntity` interface.
+
+| Method | Signature | Description |
+| --- | --- | --- |
+| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
+| `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
+| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
+| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
+| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
+| `Data` | `(args ...any) any` | Get or set entity data. |
+| `Match` | `(args ...any) any` | Get or set entity match criteria. |
+| `Make` | `() Entity` | Create a new instance with the same options. |
+| `GetName` | `() string` | Return the entity name. |
+
+### Result shape
+
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
+
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
+
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    correctFinancialData, err := client.CorrectFinancialData(nil).List(map[string]any{/* fields */}, nil)
+    if err != nil { /* handle */ }
+    // correctFinancialData is the returned record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
+
+### Entities
+
+#### CorrectFinancialData
+
+| Field | Description |
+| --- | --- |
+| `"created_at"` | Date that the custom merchant was created, compliant with RFC3339. |
+| `"custom_merchant_id"` | UUID representing the custom merchant. |
+| `"data"` | List of merchant that matched the query. |
+| `"frequency"` | The frequency to assign. |
+| `"include_similar"` | Apply the correction to the whole group of transactions similar to the specified transaction, rather than just the transaction itself |
+| `"logo_feedback"` | The type of feedback for the merchant. |
+| `"metadata"` | Metadata associated with the response schema |
+| `"name"` | The display name of the custom merchant to be created |
+| `"online_or_billing_only"` | This is used to indicate if the custom merchant being created is an exclusively online or billing merchant. |
+| `"operation_id"` | A unique identifier/reference associated with a given endpoint/operation |
+| `"reference_transaction_id"` | The transaction whose group the specified transactions should join or leave. |
+| `"rule_definition"` | The definition of the rule, mirroring the request body that created it. |
+| `"rule_type"` | The type of correction rule |
+| `"similar"` | Whether the specified transactions are similar to each other (or to `reference_transaction_id`, if supplied) |
+| `"suggested_logo"` |  |
+| `"suggested_url"` | A suggested URL for the merchant, to help bud identify it and expand our merchant database. |
+| `"transaction_id"` | The unique identifier for the transaction |
+| `"transaction_ids"` | The transactions the rule applies to |
+
+Operations: Create, List, Load, Remove.
+
+API path: `/corrections/v2/categories`
+
+#### CustomerMerchantCorrection
+
+| Field | Description |
+| --- | --- |
+| `"data"` |  |
+| `"metadata"` | Metadata associated with the merchant correction response schema |
+| `"operation_id"` |  |
+
+Operations: Create.
+
+API path: `/corrections/v2/merchants`
+
+#### Label
+
+| Field | Description |
+| --- | --- |
+| `"created_at"` | RFC3339 timestamp at which the label was created. |
+| `"id"` | Unique identifier of the label. |
+| `"name"` | Display name for the new label. |
+| `"updated_at"` | RFC3339 timestamp at which the label was last updated. |
+
+Operations: Create, Update.
+
+API path: `/financial/v2/transactions/labels`
+
+#### ListLabel
+
+| Field | Description |
+| --- | --- |
+| `"created_at"` | RFC3339 timestamp at which the label was created. |
+| `"id"` | Unique identifier of the label. |
+| `"name"` | Display name of the label. |
+| `"updated_at"` | RFC3339 timestamp at which the label was last updated. |
+
+Operations: List.
+
+API path: `/financial/v2/transactions/labels`
+
+#### ListTransaction
+
+| Field | Description |
+| --- | --- |
+| `"account_id"` | Identifier for the account associated with the transaction. |
+| `"amount"` | The monetary amount. |
+| `"client_attributes"` | An optional map of key-value string pairs that allows clients to attach arbitrary metadata to the transaction. |
+| `"counterparty"` | An object containing details of the counterparty in this transaction |
+| `"credit_debit_indicator"` | Credit/Debit Indicator |
+| `"date_time"` | Date that the transaction occured compliant with RFC3339. |
+| `"description"` | Description of the transaction. |
+| `"enrichments"` | Contextual enrichments associated with a Transaction |
+| `"labels"` | Customer-defined labels currently attached to this transaction. |
+| `"merchant_category_code"` | Merchant category code conforming to ISO 18245, related to the type of services or goods the merchant provides for the transaction. |
+| `"posted_date_time"` | Date the assets involved in the transaction transferred compliant with RFC3339. |
+| `"provider"` | Name of the transaction source provider. |
+| `"running_balance"` | The running balance for the account that the transaction takes place against |
+| `"running_balance_credit_debit_indicator"` | Credit/Debit Indicator for the running balance field |
+| `"status"` | Status of the transaction. |
+| `"suggested_description"` | The description Bud suggests client apps show for a given transaction. |
+| `"suggested_logo"` | The logo Bud suggests client apps show for a given transaction. |
+| `"tags"` | A list of potential tags associated with the transaction after contextual enrichment, which can be used for filtering. |
+| `"transaction_id"` | Unique identifier for the transaction. |
+| `"transaction_type"` | The code and a description of the transaction type. |
+| `"value_date_time"` | Date the assets involved in the transaction transferred compliant with RFC3339. |
+
+Operations: List.
+
+API path: `/financial/v2/transactions`
+
+#### ManageFinancialData
+
+| Field | Description |
+| --- | --- |
+| `"label_id"` | Identifier of the label to attach. |
+
+Operations: Create, Remove.
+
+API path: `/financial/v2/transactions/{transaction_id}/labels`
+
+#### ManageTransactionLabel
+
+| Field | Description |
+| --- | --- |
+| `"id"` |  |
+
+Operations: Remove.
+
+API path: `/financial/v2/transactions/labels/{label_id}`
+
+#### RetrieveFinancialData
+
+| Field | Description |
+| --- | --- |
+| `"account_category"` | The account category that the account type is a part of Currently supported values include (but are not necessarily limited to): - `credit` - `depository` - `insurance` - `investment` - `loan` - `savings` - `other` |
+| `"account_id"` | A unique id associated with the account. |
+| `"account_name"` | The name associated with the account, this is often a friendly name assigned to the account to make it easier to refer to. |
+| `"account_type"` | The type of account. |
+| `"balances"` | The balances ingested for the account. |
+| `"booked"` | The current balance of the account |
+| `"closed_at"` | The datetime the account was closed in the format [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339). |
+| `"credit_lines"` | The latest credit limit available for the account. |
+| `"currency"` | The three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) of the monetary amount. |
+| `"data"` |  |
+| `"date"` | The date of the given balance in the format [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339). |
+| `"details"` | Provides more details for the authorised payment. |
+| `"first_transaction_date"` | The date of the first transaction that bud has stored for this account. |
+| `"frequency"` | The frequency of the authorised payment. |
+| `"holder"` | The account holder. |
+| `"holders"` | The account holder(s). |
+| `"id"` | The id for the authorised payment. |
+| `"identifiers"` | These are wellknown fields which uniquely identify the account. |
+| `"last_transaction_date"` | The date of the last transaction that bud has stored for this account. |
+| `"metadata"` |  |
+| `"name"` | The name of the payment. |
+| `"opening_date_time"` | The datetime the account was opened in the format [RFC 3339] |
+| `"operation_id"` |  |
+| `"pending"` | The balance of the account if all pending transactions have settled. |
+| `"provider"` | The account's provider, this is usually the bank or building society the account is held with. |
+| `"provider_display_name"` | The display name for the account's provider. |
+| `"provider_logo"` | A link to an image for the accounts provider's logo. |
+| `"reference"` | The reference associated with the authorised payment. |
+| `"restriction"` | The restriction on the account, if any. |
+| `"status"` | The status of the account. |
+| `"suggested_name"` | The name Bud suggests client apps show for the account. |
+| `"transaction_windows"` | The transaction windows indicate for which periods we have full coverage of transactions ingested for the account. |
+| `"type"` | The type of the authorised payment. |
+| `"usage_type"` | The intended usage of the account. |
+
+Operations: List, Load.
+
+API path: `/financial/v3/accounts`
+
+#### Similar
+
+| Field | Description |
+| --- | --- |
+| `"data"` |  |
+| `"id"` |  |
+| `"metadata"` |  |
+| `"operation_id"` |  |
+
+Operations: Load.
+
+API path: `/corrections/v2/categories/similar/{transaction_id}`
+
+
+
+## Entities
+
+
+### CorrectFinancialData
+
+Create an instance: `correctFinancialData := client.CorrectFinancialData(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `string` | Date that the custom merchant was created, compliant with RFC3339. |
+| `custom_merchant_id` | `string` | UUID representing the custom merchant. |
+| `data` | `[]any` | List of merchant that matched the query. |
+| `frequency` | `string` | The frequency to assign. |
+| `include_similar` | `bool` | Apply the correction to the whole group of transactions similar to the specified transaction, rather than just the transaction itself |
+| `logo_feedback` | `string` | The type of feedback for the merchant. |
+| `metadata` | `map[string]any` | Metadata associated with the response schema |
+| `name` | `string` | The display name of the custom merchant to be created |
+| `online_or_billing_only` | `bool` | This is used to indicate if the custom merchant being created is an exclusively online or billing merchant. |
+| `operation_id` | `string` | A unique identifier/reference associated with a given endpoint/operation |
+| `reference_transaction_id` | `string` | The transaction whose group the specified transactions should join or leave. |
+| `rule_definition` | `map[string]any` | The definition of the rule, mirroring the request body that created it. |
+| `rule_type` | `string` | The type of correction rule |
+| `similar` | `bool` | Whether the specified transactions are similar to each other (or to `reference_transaction_id`, if supplied) |
+| `suggested_logo` | `string` |  |
+| `suggested_url` | `string` | A suggested URL for the merchant, to help bud identify it and expand our merchant database. |
+| `transaction_id` | `string` | The unique identifier for the transaction |
+| `transaction_ids` | `[]any` | The transactions the rule applies to |
+
+#### Example: Load
+
+```go
+correctFinancialData, err := client.CorrectFinancialData(nil).Load(map[string]any{"rule_id": "rule_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(correctFinancialData) // the loaded record
+```
+
+#### Example: List
+
+```go
+correctFinancialDatas, err := client.CorrectFinancialData(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(correctFinancialDatas) // the array of records
+```
+
+#### Example: Create
+
+```go
+result, err := client.CorrectFinancialData(nil).Create(map[string]any{
+    "merchant_id": "example_merchant_id",
+    "created_at": "example_created_at",
+    "custom_merchant_id": "example_custom_merchant_id",
+    "data": []any{},
+    "frequency": "example_frequency",
+    "logo_feedback": "example_logo_feedback",
+    "metadata": map[string]any{},
+    "name": "example_name",
+    "operation_id": "example_operation_id",
+    "rule_definition": map[string]any{},
+    "rule_type": "example_rule_type",
+    "transaction_id": "example_transaction_id",
+    "transaction_ids": []any{},
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
+
+### CustomerMerchantCorrection
+
+Create an instance: `customerMerchantCorrection := client.CustomerMerchantCorrection(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `data` | `[]any` |  |
+| `metadata` | `map[string]any` | Metadata associated with the merchant correction response schema |
+| `operation_id` | `string` |  |
+
+#### Example: Create
+
+```go
+result, err := client.CustomerMerchantCorrection(nil).Create(map[string]any{
+    "data": []any{},
+    "metadata": map[string]any{},
+    "operation_id": "example_operation_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
+
+### Label
+
+Create an instance: `label := client.Label(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Update(data, ctrl)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `string` | RFC3339 timestamp at which the label was created. |
+| `id` | `string` | Unique identifier of the label. |
+| `name` | `string` | Display name for the new label. |
+| `updated_at` | `string` | RFC3339 timestamp at which the label was last updated. |
+
+#### Example: Create
+
+```go
+result, err := client.Label(nil).Create(map[string]any{
+    "created_at": "example_created_at",
+    "id": "example_id",
+    "name": "example_name",
+    "updated_at": "example_updated_at",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
+
+### ListLabel
+
+Create an instance: `listLabel := client.ListLabel(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `string` | RFC3339 timestamp at which the label was created. |
+| `id` | `string` | Unique identifier of the label. |
+| `name` | `string` | Display name of the label. |
+| `updated_at` | `string` | RFC3339 timestamp at which the label was last updated. |
+
+#### Example: List
+
+```go
+listLabels, err := client.ListLabel(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(listLabels) // the array of records
+```
+
+
+### ListTransaction
+
+Create an instance: `listTransaction := client.ListTransaction(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_id` | `string` | Identifier for the account associated with the transaction. |
+| `amount` | `map[string]any` | The monetary amount. |
+| `client_attributes` | `map[string]any` | An optional map of key-value string pairs that allows clients to attach arbitrary metadata to the transaction. |
+| `counterparty` | `map[string]any` | An object containing details of the counterparty in this transaction |
+| `credit_debit_indicator` | `string` | Credit/Debit Indicator |
+| `date_time` | `string` | Date that the transaction occured compliant with RFC3339. |
+| `description` | `string` | Description of the transaction. |
+| `enrichments` | `map[string]any` | Contextual enrichments associated with a Transaction |
+| `labels` | `[]any` | Customer-defined labels currently attached to this transaction. |
+| `merchant_category_code` | `string` | Merchant category code conforming to ISO 18245, related to the type of services or goods the merchant provides for the transaction. |
+| `posted_date_time` | `string` | Date the assets involved in the transaction transferred compliant with RFC3339. |
+| `provider` | `string` | Name of the transaction source provider. |
+| `running_balance` | `map[string]any` | The running balance for the account that the transaction takes place against |
+| `running_balance_credit_debit_indicator` | `string` | Credit/Debit Indicator for the running balance field |
+| `status` | `string` | Status of the transaction. |
+| `suggested_description` | `string` | The description Bud suggests client apps show for a given transaction. |
+| `suggested_logo` | `string` | The logo Bud suggests client apps show for a given transaction. |
+| `tags` | `[]any` | A list of potential tags associated with the transaction after contextual enrichment, which can be used for filtering. |
+| `transaction_id` | `string` | Unique identifier for the transaction. |
+| `transaction_type` | `map[string]any` | The code and a description of the transaction type. |
+| `value_date_time` | `string` | Date the assets involved in the transaction transferred compliant with RFC3339. |
+
+#### Example: List
+
+```go
+listTransactions, err := client.ListTransaction(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(listTransactions) // the array of records
+```
+
+
+### ManageFinancialData
+
+Create an instance: `manageFinancialData := client.ManageFinancialData(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Create(data, ctrl)` | Create a new entity with the given data. |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `label_id` | `string` | Identifier of the label to attach. |
+
+#### Example: Create
+
+```go
+result, err := client.ManageFinancialData(nil).Create(map[string]any{
+    "transaction_id": "example_transaction_id",
+    "label_id": "example_label_id",
+}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
+```
+
+
+### ManageTransactionLabel
+
+Create an instance: `manageTransactionLabel := client.ManageTransactionLabel(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Remove(match, ctrl)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `id` | `string` |  |
+
+
+### RetrieveFinancialData
+
+Create an instance: `retrieveFinancialData := client.RetrieveFinancialData(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `account_category` | `string` | The account category that the account type is a part of Currently supported values include (but are not necessarily limited to): - `credit` - `depository` - `insurance` - `investment` - `loan` - `savings` - `other` |
+| `account_id` | `string` | A unique id associated with the account. |
+| `account_name` | `string` | The name associated with the account, this is often a friendly name assigned to the account to make it easier to refer to. |
+| `account_type` | `string` | The type of account. |
+| `balances` | `map[string]any` | The balances ingested for the account. |
+| `booked` | `any` | The current balance of the account |
+| `closed_at` | `string` | The datetime the account was closed in the format [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339). |
+| `credit_lines` | `map[string]any` | The latest credit limit available for the account. |
+| `currency` | `string` | The three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) of the monetary amount. |
+| `data` | `map[string]any` |  |
+| `date` | `string` | The date of the given balance in the format [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339). |
+| `details` | `[]any` | Provides more details for the authorised payment. |
+| `first_transaction_date` | `string` | The date of the first transaction that bud has stored for this account. |
+| `frequency` | `string` | The frequency of the authorised payment. |
+| `holder` | `map[string]any` | The account holder. |
+| `holders` | `[]any` | The account holder(s). |
+| `id` | `string` | The id for the authorised payment. |
+| `identifiers` | `map[string]any` | These are wellknown fields which uniquely identify the account. |
+| `last_transaction_date` | `string` | The date of the last transaction that bud has stored for this account. |
+| `metadata` | `map[string]any` |  |
+| `name` | `string` | The name of the payment. |
+| `opening_date_time` | `string` | The datetime the account was opened in the format [RFC 3339] |
+| `operation_id` | `string` |  |
+| `pending` | `any` | The balance of the account if all pending transactions have settled. |
+| `provider` | `string` | The account's provider, this is usually the bank or building society the account is held with. |
+| `provider_display_name` | `string` | The display name for the account's provider. |
+| `provider_logo` | `string` | A link to an image for the accounts provider's logo. |
+| `reference` | `string` | The reference associated with the authorised payment. |
+| `restriction` | `string` | The restriction on the account, if any. |
+| `status` | `string` | The status of the account. |
+| `suggested_name` | `string` | The name Bud suggests client apps show for the account. |
+| `transaction_windows` | `[]any` | The transaction windows indicate for which periods we have full coverage of transactions ingested for the account. |
+| `type` | `string` | The type of the authorised payment. |
+| `usage_type` | `string` | The intended usage of the account. |
+
+#### Example: Load
+
+```go
+retrieveFinancialData, err := client.RetrieveFinancialData(nil).Load(map[string]any{"account_id": "account_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(retrieveFinancialData) // the loaded record
+```
+
+#### Example: List
+
+```go
+retrieveFinancialDatas, err := client.RetrieveFinancialData(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(retrieveFinancialDatas) // the array of records
+```
+
+
+### Similar
+
+Create an instance: `similar := client.Similar(nil)`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `data` | `[]any` |  |
+| `id` | `string` |  |
+| `metadata` | `map[string]any` |  |
+| `operation_id` | `string` |  |
+
+#### Example: Load
+
+```go
+similar, err := client.Similar(nil).Load(map[string]any{"id": "similar_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(similar) // the loaded record
+```
+
+## Features
+
+This SDK ships 8 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`debug`](#debug) | Debug capture |
+| [`idempotency`](#idempotency) | Idempotency |
+| [`metrics`](#metrics) | Metrics |
+| [`paging`](#paging) | Paging |
+| [`ratelimit`](#ratelimit) | Rate limiting |
+| [`retry`](#retry) | Retry |
+| [`test`](#test) | Test transport |
+| [`timeout`](#timeout) | Timeout |
+
+> **Order matters for `ratelimit`, `retry`, `timeout`.** These wrap the
+> transport, so each one wraps whatever is already installed: the order you
+> activate them in IS the nesting order. Activating them as an ordered list
+> rather than a map is what fixes that order.
+
+### debug
+
+Debug capture.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `max` | `100` |
+| `redact` | `['authorization', 'cookie', 'set-cookie', 'api-key', 'apikey', 'x-api-key', 'idempotency-key']` |
+
+Set `feature.debug.active` to enable it, then override any of the options above.
+
+### idempotency
+
+Idempotency.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `header` | `'Idempotency-Key'` |
+| `methods` | `['POST', 'PUT', 'PATCH', 'DELETE']` |
+| `ops` | `['create', 'update', 'remove']` |
+
+Set `feature.idempotency.active` to enable it, then override any of the options above.
+
+### metrics
+
+Metrics.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.metrics.active` to enable it, then override any of the options above.
+
+### paging
+
+Paging.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `afterVar` | `'after'` |
+| `cursorParam` | `'cursor'` |
+| `firstVar` | `'first'` |
+| `limitParam` | `'limit'` |
+| `pageParam` | `'page'` |
+| `startPage` | `1` |
+
+Set `feature.paging.active` to enable it, then override any of the options above.
+
+### ratelimit
+
+Rate limiting.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `burst` | `5` |
+| `rate` | `5` |
+
+Set `feature.ratelimit.active` to enable it, then override any of the options above.
+
+`ratelimit` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### retry
+
+Retry.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `factor` | `2` |
+| `maxDelay` | `2000` |
+| `minDelay` | `50` |
+| `retries` | `2` |
+| `statuses` | `[408, 425, 429, 500, 502, 503, 504]` |
+
+Set `feature.retry.active` to enable it, then override any of the options above.
+
+`retry` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+### test
+
+Test transport.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
+
+### timeout
+
+Timeout.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+| `ms` | `30000` |
+
+Set `feature.timeout.active` to enable it, then override any of the options above.
+
+`timeout` wraps the transport, so its position among the other
+transport features decides what it sees. A feature activated later wraps one
+activated earlier.
+
+
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
+
+### The operation pipeline
+
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
+
+```
+PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
+```
+
+- **PrePoint**: Resolves which API endpoint to call based on the
+  operation name and entity configuration.
+- **PreSpec**: Builds the HTTP spec — URL, method, headers, body —
+  from the resolved point and the caller's parameters.
+- **PreRequest**: Sends the HTTP request. Features can intercept here
+  to replace the transport (as TestFeature does with mocks).
+- **PreResponse**: Parses the raw HTTP response.
+- **PreResult**: Extracts the business data from the parsed response.
+- **PreDone**: Final stage before returning to the caller. Entity
+  state (match, data) is updated here.
+
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
+
+### Features and hooks
+
+Features are the extension mechanism. A feature implements the
+`Feature` interface and provides hooks — functions keyed by pipeline
+stage names.
+
+The SDK ships with built-in features:
+
+- **DebugFeature**: Debug capture
+- **IdempotencyFeature**: Idempotency
+- **MetricsFeature**: Metrics
+- **PagingFeature**: Paging
+- **RatelimitFeature**: Rate limiting
+- **RetryFeature**: Retry
+- **TestFeature**: Test transport
+- **TimeoutFeature**: Timeout
+
+Features are initialized in order. Hooks fire in the order features
+were added, so later features can override earlier ones.
+
+### Data as maps
+
+The Go SDK uses `map[string]any` throughout rather than typed structs.
+This mirrors the dynamic nature of the API and keeps the SDK
+flexible — no code generation is needed when the API schema changes.
+
+Use `core.ToMapAny()` to safely cast results and nested data.
+
+### Package structure
+
+```
+github.com/voxgig-sdk/bud-financial-data-sdk/go/
+├── bud-financial-data.go        # Root package — type aliases and constructors
+├── core/               # SDK core — client, types, pipeline
+├── entity/             # Entity implementations
+├── feature/            # Built-in features (Base, Test, Log)
+├── utility/            # Utility functions and struct library
+└── test/               # Test suites
+```
+
+The root package (`github.com/voxgig-sdk/bud-financial-data-sdk/go`) re-exports everything needed
+for normal use. Import sub-packages only when you need specific types
+like `core.ToMapAny`.
+
+### Entity state
+
+Entity instances are stateful. After a successful `List`, the entity
+stores the returned data and match criteria internally.
+
+```go
+listtransaction := client.ListTransaction(nil)
+listtransaction.List(nil, nil)
+
+// listtransaction.Data() now returns the listtransaction data from the last list
+// listtransaction.Match() returns the last match criteria
+```
+
+Call `Make()` to create a fresh instance with the same configuration
+but no stored state.
+
+### Direct vs entity access
+
+The entity interface handles URL construction, parameter placement,
+and response parsing automatically. Use it for standard CRUD operations.
+
+`Direct()` gives full control over the HTTP request. Use it for
+non-standard endpoints, bulk operations, or any path not modelled as
+an entity. `Prepare()` builds the request without sending it — useful
+for debugging or custom transport.
+
+
+## Full Reference
+
+See [REFERENCE.md](REFERENCE.md) for complete API reference
+documentation including all method signatures, entity field schemas,
+and detailed usage examples.

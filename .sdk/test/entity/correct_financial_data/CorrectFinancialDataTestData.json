@@ -1,0 +1,154 @@
+{
+  "existing": {
+    "correct_financial_data": {
+      "CORRECT_FINANCIAL_DATA00": {
+        "created_at": "sb4",
+        "custom_merchant_id": "CUSTOM_MERCHANT01",
+        "data": [],
+        "frequency": "sb7",
+        "include_similar": true,
+        "logo_feedback": "sb9",
+        "metadata": {},
+        "name": "sbb",
+        "online_or_billing_only": true,
+        "operation_id": "OPERATION01",
+        "reference_transaction_id": "REFERENCE_TRANSACTION01",
+        "rule_definition": {},
+        "rule_type": "sc0",
+        "similar": false,
+        "suggested_logo": "sc2",
+        "suggested_url": "sc3",
+        "transaction_id": "TRANSACTION01",
+        "transaction_ids": [],
+        "merchant_id": "MERCHANT01",
+        "merchant_query": "MERCHANT_QUERY01",
+        "rule_id": "RULE01",
+        "id": "CORRECT_FINANCIAL_DATA00"
+      },
+      "CORRECT_FINANCIAL_DATA01": {
+        "created_at": "s168",
+        "custom_merchant_id": "CUSTOM_MERCHANT01",
+        "data": [],
+        "frequency": "s16b",
+        "include_similar": true,
+        "logo_feedback": "s16d",
+        "metadata": {},
+        "name": "s16f",
+        "online_or_billing_only": true,
+        "operation_id": "OPERATION01",
+        "reference_transaction_id": "REFERENCE_TRANSACTION01",
+        "rule_definition": {},
+        "rule_type": "s174",
+        "similar": false,
+        "suggested_logo": "s176",
+        "suggested_url": "s177",
+        "transaction_id": "TRANSACTION01",
+        "transaction_ids": [],
+        "merchant_id": "MERCHANT01",
+        "merchant_query": "MERCHANT_QUERY01",
+        "rule_id": "RULE01",
+        "id": "CORRECT_FINANCIAL_DATA01"
+      },
+      "CORRECT_FINANCIAL_DATA02": {
+        "created_at": "s21c",
+        "custom_merchant_id": "CUSTOM_MERCHANT01",
+        "data": [],
+        "frequency": "s21f",
+        "include_similar": true,
+        "logo_feedback": "s221",
+        "metadata": {},
+        "name": "s223",
+        "online_or_billing_only": true,
+        "operation_id": "OPERATION01",
+        "reference_transaction_id": "REFERENCE_TRANSACTION01",
+        "rule_definition": {},
+        "rule_type": "s228",
+        "similar": false,
+        "suggested_logo": "s22a",
+        "suggested_url": "s22b",
+        "transaction_id": "TRANSACTION01",
+        "transaction_ids": [],
+        "merchant_id": "MERCHANT01",
+        "merchant_query": "MERCHANT_QUERY01",
+        "rule_id": "RULE01",
+        "id": "CORRECT_FINANCIAL_DATA02"
+      }
+    }
+  },
+  "new": {
+    "correct_financial_data": {
+      "correct_financial_data_ref01": {
+        "created_at": "s2d0",
+        "custom_merchant_id": "CUSTOM_MERCHANT01",
+        "data": [],
+        "frequency": "s2d3",
+        "include_similar": true,
+        "logo_feedback": "s2d5",
+        "metadata": {},
+        "name": "s2d7",
+        "online_or_billing_only": true,
+        "operation_id": "OPERATION01",
+        "reference_transaction_id": "REFERENCE_TRANSACTION01",
+        "rule_definition": {},
+        "rule_type": "s2dc",
+        "similar": false,
+        "suggested_logo": "s2de",
+        "suggested_url": "s2df",
+        "transaction_id": "TRANSACTION01",
+        "transaction_ids": []
+      }
+    }
+  },
+  "requests": {
+    "POST /corrections/v2/categories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /corrections/v2/custom-merchants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /corrections/v3/regularity": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /corrections/v3/regularity/end": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /corrections/v3/similar": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /corrections/v2/merchant-feedback/merchant/{merchant_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /corrections/v2/custom-merchants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /corrections/v2/merchants/search/{merchant_query}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /corrections/v3/rules/{rule_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /corrections/v3/rules/{rule_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

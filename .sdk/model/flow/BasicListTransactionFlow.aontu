@@ -1,0 +1,22 @@
+# BasicListTransactionFlow
+
+main: kit: flow: BasicListTransactionFlow:
+{
+  entity: "list_transaction",
+  kind: "basic",
+  name: "BasicListTransactionFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "list_transaction_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicListTransactionFlow"
+}

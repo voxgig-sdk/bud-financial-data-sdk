@@ -1,0 +1,369 @@
+# Entity: list_transaction
+
+main: kit: entity: list_transaction: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      r: true
+      sh: "Identifier for the account associated with the transaction."
+      t: "`$STRING`"
+    }
+    amount: {
+      h: "Amount"
+      n: "amount"
+      r: true
+      sh: "The monetary amount."
+      t: "`$OBJECT`"
+    }
+    client_attributes: {
+      h: "Client Attributes"
+      n: "client_attributes"
+      r: false
+      sh: "An optional map of key-value string pairs that allows clients to attach arbitrary metadata to the transaction."
+      t: "`$OBJECT`"
+    }
+    counterparty: {
+      h: "Counterparty"
+      n: "counterparty"
+      r: false
+      sh: "An object containing details of the counterparty in this transaction"
+      t: "`$OBJECT`"
+    }
+    credit_debit_indicator: {
+      h: "Credit Debit Indicator"
+      n: "credit_debit_indicator"
+      r: true
+      sh: "Credit/Debit Indicator"
+      t: "`$STRING`"
+    }
+    date_time: {
+      h: "Date Time"
+      n: "date_time"
+      r: true
+      sh: "Date that the transaction occured compliant with RFC3339."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: true
+      sh: "Description of the transaction."
+      t: "`$STRING`"
+    }
+    enrichments: {
+      h: "Enrichments"
+      n: "enrichments"
+      r: false
+      sh: "Contextual enrichments associated with a Transaction"
+      t: "`$OBJECT`"
+    }
+    labels: {
+      h: "Labels"
+      n: "labels"
+      r: false
+      sh: "Customer-defined labels currently attached to this transaction."
+      t: "`$ARRAY`"
+    }
+    merchant_category_code: {
+      h: "Merchant Category Code"
+      n: "merchant_category_code"
+      r: false
+      sh: "Merchant category code conforming to ISO 18245, related to the type of services or goods the merchant provides for the transaction."
+      t: "`$STRING`"
+    }
+    posted_date_time: {
+      de: true
+      h: "Posted Date Time"
+      n: "posted_date_time"
+      r: false
+      sh: "Date the assets involved in the transaction transferred compliant with RFC3339."
+      t: "`$STRING`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: false
+      sh: "Name of the transaction source provider."
+      t: "`$STRING`"
+    }
+    running_balance: {
+      h: "Running Balance"
+      n: "running_balance"
+      r: true
+      sh: "The running balance for the account that the transaction takes place against"
+      t: "`$OBJECT`"
+    }
+    running_balance_credit_debit_indicator: {
+      h: "Running Balance Credit Debit Indicator"
+      n: "running_balance_credit_debit_indicator"
+      r: false
+      sh: "Credit/Debit Indicator for the running balance field"
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "Status of the transaction."
+      t: "`$STRING`"
+    }
+    suggested_description: {
+      h: "Suggested Description"
+      n: "suggested_description"
+      r: true
+      sh: "The description Bud suggests client apps show for a given transaction."
+      t: "`$STRING`"
+    }
+    suggested_logo: {
+      h: "Suggested Logo"
+      n: "suggested_logo"
+      r: false
+      sh: "The logo Bud suggests client apps show for a given transaction."
+      t: "`$STRING`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      sh: "A list of potential tags associated with the transaction after contextual enrichment, which can be used for filtering."
+      t: "`$ARRAY`"
+    }
+    transaction_id: {
+      h: "Transaction Id"
+      n: "transaction_id"
+      r: true
+      sh: "Unique identifier for the transaction."
+      t: "`$STRING`"
+    }
+    transaction_type: {
+      h: "Transaction Type"
+      n: "transaction_type"
+      r: false
+      sh: "The code and a description of the transaction type."
+      t: "`$OBJECT`"
+    }
+    value_date_time: {
+      h: "Value Date Time"
+      n: "value_date_time"
+      r: false
+      sh: "Date the assets involved in the transaction transferred compliant with RFC3339."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "list_transaction"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /financial/v2/transactions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "5bd9ecaf31fc2d5172fd89cb61b89fc6"
+                k: "query"
+                n: "account_id"
+                or: "account_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "bills"
+                k: "query"
+                n: "category_l1"
+                or: "category_l1"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "tv_and_broadband"
+                k: "query"
+                n: "category_l2"
+                or: "category_l2"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "credit"
+                k: "query"
+                n: "credit_debit_indicator"
+                or: "credit_debit_indicator"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2022-05-28T00:00:00Z"
+                k: "query"
+                n: "date_from"
+                or: "date_from"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2022-05-29T00:00:00Z"
+                k: "query"
+                n: "date_to"
+                or: "date_to"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: [
+                  "benefit"
+                ]
+                k: "query"
+                n: "exclude_tag"
+                or: "exclude_tag"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: [
+                  "1f10e6de-0f5f-4d8c-987a-9635a9d1b8c6"
+                ]
+                k: "query"
+                n: "include_label_id"
+                or: "include_label_id"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: [
+                  "regular-transaction"
+                ]
+                k: "query"
+                n: "include_tag"
+                or: "include_tag"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: "netflix"
+                k: "query"
+                n: "merchant"
+                or: "merchant"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 100
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "eyJvZmZzZXQiOjEwMH0"
+                k: "query"
+                n: "page_token"
+                or: "page_token"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "booked"
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2024-06-01T11:00:00Z"
+                k: "query"
+                n: "updated_after"
+                or: "updated_after"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/financial/v2/transactions"
+          q: {
+            exist: [
+              "account_id"
+              "category_l1"
+              "category_l2"
+              "credit_debit_indicator"
+              "date_from"
+              "date_to"
+              "exclude_tag"
+              "include_label_id"
+              "include_tag"
+              "merchant"
+              "page_size"
+              "page_token"
+              "status"
+              "updated_after"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "financial"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "transactions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,37 @@
+# BasicLabelFlow
+
+main: kit: flow: BasicLabelFlow:
+{
+  entity: "label",
+  kind: "basic",
+  name: "BasicLabelFlow",
+  step: [
+    {
+      i: {
+        ref: "label_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "label_ref01",
+        srcdatavar: "label_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-label_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLabelFlow"
+}

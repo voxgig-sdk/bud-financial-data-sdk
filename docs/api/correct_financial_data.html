@@ -1,0 +1,1784 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CorrectFinancialData | Financial Data API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Financial Data API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/bud-financial-data-sdk">voxgig-sdk/bud-financial-data-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Financial Data API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a aria-current="page" href="../api/correct_financial_data.html">CorrectFinancialData</a><div class="nav-sections"><a class="nav-section" href="#post-correctionsv2categories">POST /corrections/v2/categories</a>
+<a class="nav-section" href="#post-correctionsv2custom-merchants">POST /corrections/v2/custom-merchants</a>
+<a class="nav-section" href="#post-correctionsv3regularity">POST /corrections/v3/regularity</a>
+<a class="nav-section" href="#post-correctionsv3regularityend">POST /corrections/v3/regularity/end</a>
+<a class="nav-section" href="#post-correctionsv3similar">POST /corrections/v3/similar</a>
+<a class="nav-section" href="#post-correctionsv2merchant-feedbackmerchantmerchant_id">POST /corrections/v2/merchant-feedback/merchant/{merchant_id}</a>
+<a class="nav-section" href="#get-correctionsv2custom-merchants">GET /corrections/v2/custom-merchants</a>
+<a class="nav-section" href="#get-correctionsv2merchantssearchmerchant_query">GET /corrections/v2/merchants/search/{merchant_query}</a>
+<a class="nav-section" href="#get-correctionsv3rulesrule_id">GET /corrections/v3/rules/{rule_id}</a>
+<a class="nav-section" href="#delete-correctionsv3rulesrule_id">DELETE /corrections/v3/rules/{rule_id}</a></div>
+<a href="../api/customer_merchant_correction.html">CustomerMerchantCorrection</a>
+<a href="../api/label.html">Label</a>
+<a href="../api/list_label.html">ListLabel</a>
+<a href="../api/list_transaction.html">ListTransaction</a>
+<a href="../api/manage_financial_data.html">ManageFinancialData</a>
+<a href="../api/manage_transaction_label.html">ManageTransactionLabel</a>
+<a href="../api/retrieve_financial_data.html">RetrieveFinancialData</a>
+<a href="../api/similar.html">Similar</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="correctfinancialdata">CorrectFinancialData</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-correctionsv2categories"><code>/corrections/v2/categories</code></a></td>
+<td><code>create</code></td>
+<td>The request was successfully processed</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-correctionsv2custom-merchants"><code>/corrections/v2/custom-merchants</code></a></td>
+<td><code>create</code></td>
+<td>Created</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-correctionsv3regularity"><code>/corrections/v3/regularity</code></a></td>
+<td><code>create</code></td>
+<td>The request was successfully processed</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-correctionsv3regularityend"><code>/corrections/v3/regularity/end</code></a></td>
+<td><code>create</code></td>
+<td>The request was successfully processed</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-correctionsv3similar"><code>/corrections/v3/similar</code></a></td>
+<td><code>create</code></td>
+<td>The request was successfully processed</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-correctionsv2merchant-feedbackmerchantmerchant_id"><code>/corrections/v2/merchant-feedback/merchant/{merchant_id}</code></a></td>
+<td><code>create</code></td>
+<td>Accepted</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-correctionsv2custom-merchants"><code>/corrections/v2/custom-merchants</code></a></td>
+<td><code>list</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-correctionsv2merchantssearchmerchant_query"><code>/corrections/v2/merchants/search/{merchant_query}</code></a></td>
+<td><code>load</code></td>
+<td>The request was successfully processed</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-correctionsv3rulesrule_id"><code>/corrections/v3/rules/{rule_id}</code></a></td>
+<td><code>load</code></td>
+<td>The request was successfully processed</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-correctionsv3rulesrule_id"><code>/corrections/v3/rules/{rule_id}</code></a></td>
+<td><code>remove</code></td>
+<td>The rule was successfully deleted</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">correct_financial_datas, err := client.CorrectFinancialData(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(correct_financial_datas)
+correct_financial_data, err := client.CorrectFinancialData(nil).Load(map[string]any{&quot;rule_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(correct_financial_data)
+created, err := client.CorrectFinancialData(nil).Create(map[string]any{&quot;merchant_id&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;custom_merchant_id&quot;: &quot;example&quot;, &quot;data&quot;: []any{}, &quot;frequency&quot;: &quot;example&quot;, &quot;logo_feedback&quot;: &quot;example&quot;, &quot;metadata&quot;: map[string]any{}, &quot;name&quot;: &quot;example&quot;, &quot;operation_id&quot;: &quot;example&quot;, &quot;rule_definition&quot;: map[string]any{}, &quot;rule_type&quot;: &quot;example&quot;, &quot;transaction_id&quot;: &quot;example&quot;, &quot;transaction_ids&quot;: []any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+removed, err := client.CorrectFinancialData(nil).Remove(map[string]any{&quot;rule_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const correct_financial_datas = await client.CorrectFinancialData().list()
+const correct_financial_data = await client.CorrectFinancialData().load({ rule_id: &quot;example&quot; })
+const created = await client.CorrectFinancialData().create({ merchant_id: &quot;example&quot;, created_at: &quot;example&quot;, custom_merchant_id: &quot;example&quot;, data: [], frequency: &quot;example&quot;, logo_feedback: &quot;example&quot;, metadata: {}, name: &quot;example&quot;, operation_id: &quot;example&quot;, rule_definition: {}, rule_type: &quot;example&quot;, transaction_id: &quot;example&quot;, transaction_ids: [] })
+await client.CorrectFinancialData().remove({ rule_id: &quot;example&quot; })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local correct_financial_datas, err = client:CorrectFinancialData():list()
+local correct_financial_data, err = client:CorrectFinancialData():load({ rule_id = &quot;example&quot; })
+local created, err = client:CorrectFinancialData():create({ merchant_id = &quot;example&quot;, created_at = &quot;example&quot;, custom_merchant_id = &quot;example&quot;, data = {}, frequency = &quot;example&quot;, logo_feedback = &quot;example&quot;, metadata = {}, name = &quot;example&quot;, operation_id = &quot;example&quot;, rule_definition = {}, rule_type = &quot;example&quot;, transaction_id = &quot;example&quot;, transaction_ids = {} })
+local removed, err = client:CorrectFinancialData():remove({ rule_id = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$correct_financial_datas = $client-&gt;CorrectFinancialData()-&gt;list();
+$correct_financial_data = $client-&gt;CorrectFinancialData()-&gt;load([&quot;rule_id&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;CorrectFinancialData()-&gt;create([&quot;merchant_id&quot; =&gt; &quot;example&quot;, &quot;created_at&quot; =&gt; &quot;example&quot;, &quot;custom_merchant_id&quot; =&gt; &quot;example&quot;, &quot;data&quot; =&gt; [], &quot;frequency&quot; =&gt; &quot;example&quot;, &quot;logo_feedback&quot; =&gt; &quot;example&quot;, &quot;metadata&quot; =&gt; [], &quot;name&quot; =&gt; &quot;example&quot;, &quot;operation_id&quot; =&gt; &quot;example&quot;, &quot;rule_definition&quot; =&gt; [], &quot;rule_type&quot; =&gt; &quot;example&quot;, &quot;transaction_id&quot; =&gt; &quot;example&quot;, &quot;transaction_ids&quot; =&gt; []]);
+$client-&gt;CorrectFinancialData()-&gt;remove([&quot;rule_id&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">correct_financial_datas = client.CorrectFinancialData().list()
+correct_financial_data = client.CorrectFinancialData().load({&quot;rule_id&quot;: &quot;example&quot;})
+created = client.CorrectFinancialData().create({ &quot;merchant_id&quot;: &quot;example&quot;, &quot;created_at&quot;: &quot;example&quot;, &quot;custom_merchant_id&quot;: &quot;example&quot;, &quot;data&quot;: [], &quot;frequency&quot;: &quot;example&quot;, &quot;logo_feedback&quot;: &quot;example&quot;, &quot;metadata&quot;: {}, &quot;name&quot;: &quot;example&quot;, &quot;operation_id&quot;: &quot;example&quot;, &quot;rule_definition&quot;: {}, &quot;rule_type&quot;: &quot;example&quot;, &quot;transaction_id&quot;: &quot;example&quot;, &quot;transaction_ids&quot;: [] })
+client.CorrectFinancialData().remove({&quot;rule_id&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const correct_financial_datas = await client.CorrectFinancialData().list()
+const correct_financial_data = await client.CorrectFinancialData().load({ rule_id: &quot;example&quot; })
+const created = await client.CorrectFinancialData().create({ merchant_id: &quot;example&quot;, created_at: &quot;example&quot;, custom_merchant_id: &quot;example&quot;, data: [], frequency: &quot;example&quot;, logo_feedback: &quot;example&quot;, metadata: {}, name: &quot;example&quot;, operation_id: &quot;example&quot;, rule_definition: {}, rule_type: &quot;example&quot;, transaction_id: &quot;example&quot;, transaction_ids: [] })
+await client.CorrectFinancialData().remove({ rule_id: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Date that the custom merchant was created, compliant with RFC3339.</td>
+</tr>
+<tr>
+<td><code>custom_merchant_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>UUID representing the custom merchant.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>List of merchant that matched the query.</td>
+</tr>
+<tr>
+<td><code>frequency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The frequency to assign.</td>
+</tr>
+<tr>
+<td><code>include_similar</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Apply the correction to the whole group of transactions similar to the specified transaction, rather than just the transaction itself</td>
+</tr>
+<tr>
+<td><code>logo_feedback</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type of feedback for the merchant.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Metadata associated with the response schema</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The display name of the custom merchant to be created</td>
+</tr>
+<tr>
+<td><code>online_or_billing_only</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>This is used to indicate if the custom merchant being created is an exclusively online or billing merchant.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+<tr>
+<td><code>reference_transaction_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The transaction whose group the specified transactions should join or leave.</td>
+</tr>
+<tr>
+<td><code>rule_definition</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The definition of the rule, mirroring the request body that created it.</td>
+</tr>
+<tr>
+<td><code>rule_type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type of correction rule</td>
+</tr>
+<tr>
+<td><code>similar</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the specified transactions are similar to each other (or to <code>reference_transaction_id</code>, if supplied)</td>
+</tr>
+<tr>
+<td><code>suggested_logo</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Suggested Logo</td>
+</tr>
+<tr>
+<td><code>suggested_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A suggested URL for the merchant, to help bud identify it and expand our merchant database.</td>
+</tr>
+<tr>
+<td><code>transaction_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the transaction</td>
+</tr>
+<tr>
+<td><code>transaction_ids</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>The transactions the rule applies to</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-correctionsv2categories" class="operation" data-method="post"><code>POST</code> /corrections/v2/categories</h3>
+<p>Operation ID: <code>corrections_v2_categories_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>X-Customer-Secret</code> | <code>header</code> | <code>string</code> | No | The Bud Customer secret used to encrypt customer data. This is required only if the customer secret is not already stored with Bud. |</p>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[].category_l1</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the category that the transaction should be assigned</td>
+</tr>
+<tr>
+<td><code>[].category_l2</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the subcategory that the transaction should be assigned</td>
+</tr>
+<tr>
+<td><code>[].include_similar</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Correct the category of other similar transactions to the specified transaction</td>
+</tr>
+<tr>
+<td><code>[].transaction_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the transaction</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">[
+  {
+    &quot;category_l1&quot;: &quot;food_and_drink&quot;,
+    &quot;category_l2&quot;: &quot;coffee&quot;,
+    &quot;include_similar&quot;: false,
+    &quot;transaction_id&quot;: &quot;7affc586-5600-4434-ac5f-1a845260d7d9&quot;
+  }
+]
+</code></pre>
+<h4 id="responses">Responses</h4>
+<h5 id="200-the-request-was-successfully-processed" class="status" data-status="2xx">200: The request was successfully processed</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].category_l1</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the category that the transaction should be assigned</td>
+</tr>
+<tr>
+<td><code>data[].category_l2</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the subcategory that the transaction should be assigned</td>
+</tr>
+<tr>
+<td><code>data[].include_similar</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Correct the category of other similar transactions to the specified transaction</td>
+</tr>
+<tr>
+<td><code>data[].transaction_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the transaction</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Metadata associated with the response schema</td>
+</tr>
+<tr>
+<td><code>metadata.results</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The number of category correction rules created</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;category_l1&quot;: &quot;food_and_drink&quot;,
+      &quot;category_l2&quot;: &quot;coffee&quot;,
+      &quot;include_similar&quot;: false,
+      &quot;transaction_id&quot;: &quot;7affc586-5600-4434-ac5f-1a845260d7d9&quot;
+    }
+  ],
+  &quot;metadata&quot;: {
+    &quot;results&quot;: 1
+  },
+  &quot;operation_id&quot;: &quot;corrections_v2_categories_post&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;validation_error&quot;,
+  &quot;errors&quot;: {
+    &quot;X-Client-ID&quot;: &quot;This value should not be blank&quot;
+  },
+  &quot;message&quot;: &quot;Bad request payload&quot;,
+  &quot;operation_id&quot;: &quot;corrections_v2_categories_post&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="405-an-unexpected-http-method-was-used" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="post-correctionsv2custom-merchants" class="operation" data-method="post"><code>POST</code> /corrections/v2/custom-merchants</h3>
+<p>Operation ID: <code>corrections_v2_custom_merchants_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |</p>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The display name of the custom merchant to be created</td>
+</tr>
+<tr>
+<td><code>online_or_billing_only</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>This is used to indicate if the custom merchant being created is an exclusively online or billing merchant.</td>
+</tr>
+<tr>
+<td><code>suggested_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A suggested URL for the merchant, to help bud identify it and expand our merchant database.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="201-created" class="status" data-status="2xx">201: Created</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.custom_merchant_id</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>enum: corrections_v2_custom_merchants_post</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="400-the-request-contains-an-invalid-payload-1" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;validation_errors&quot;: [
+      &quot;name cannot be empty&quot;
+    ]
+  },
+  &quot;message&quot;: &quot;validation failed&quot;,
+  &quot;operation_id&quot;: &quot;corrections_v2_custom_merchants_post&quot;
+}
+</code></pre>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-1">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="post-correctionsv3regularity" class="operation" data-method="post"><code>POST</code> /corrections/v3/regularity</h3>
+<p>Operation ID: <code>corrections_v3_regularity_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |</p>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>frequency</code></td>
+<td><code>enum: unknown, daily, weekly, biweekly, monthly, quarterly</code></td>
+<td>Yes</td>
+<td>The frequency to assign. <code>unknown</code> marks the transaction (or group) as not regular.</td>
+</tr>
+<tr>
+<td><code>include_similar</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Apply the correction to the whole group of transactions similar to the specified transaction, rather than just the transaction itself</td>
+</tr>
+<tr>
+<td><code>transaction_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier for the transaction</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;frequency&quot;: &quot;biweekly&quot;,
+  &quot;include_similar&quot;: true,
+  &quot;transaction_id&quot;: &quot;f7bcefff-248e-4485-9aed-3ed45462255e&quot;
+}
+</code></pre>
+<h4 id="responses-2">Responses</h4>
+<h5 id="201-the-request-was-successfully-processed" class="status" data-status="2xx">201: The request was successfully processed</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.rule_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique identifier for the created correction rule</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;rule_id&quot;: &quot;f7b27dc2-fd30-4dd4-9f50-1d1713733811&quot;
+  },
+  &quot;operation_id&quot;: &quot;corrections_v3_regularity_post&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload-2" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;validation_error&quot;,
+  &quot;errors&quot;: {
+    &quot;transaction_id&quot;: &quot;This value should not be blank&quot;
+  },
+  &quot;message&quot;: &quot;Bad request payload&quot;,
+  &quot;operation_id&quot;: &quot;corrections_v3_regularity_post&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-1" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="405-an-unexpected-http-method-was-used-1" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-2">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="post-correctionsv3regularityend" class="operation" data-method="post"><code>POST</code> /corrections/v3/regularity/end</h3>
+<p>Operation ID: <code>corrections_v3_regularity_end_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |</p>
+<h4 id="request-body-3">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transaction_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique identifier of the last valid occurrence in the group. Any transactions in the group dated after this one become non-regular.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;transaction_id&quot;: &quot;f7bcefff-248e-4485-9aed-3ed45462255e&quot;
+}
+</code></pre>
+<h4 id="responses-3">Responses</h4>
+<h5 id="201-the-request-was-successfully-processed-1" class="status" data-status="2xx">201: The request was successfully processed</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.rule_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique identifier for the created correction rule</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;rule_id&quot;: &quot;f7b27dc2-fd30-4dd4-9f50-1d1713733811&quot;
+  },
+  &quot;operation_id&quot;: &quot;corrections_v3_regularity_end_post&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload-3" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;validation_error&quot;,
+  &quot;errors&quot;: {
+    &quot;transaction_id&quot;: &quot;This value should not be blank&quot;
+  },
+  &quot;message&quot;: &quot;Bad request payload&quot;,
+  &quot;operation_id&quot;: &quot;corrections_v3_regularity_end_post&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-2" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="405-an-unexpected-http-method-was-used-2" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-3">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="post-correctionsv3similar" class="operation" data-method="post"><code>POST</code> /corrections/v3/similar</h3>
+<p>Operation ID: <code>corrections_v3_similar_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |</p>
+<h4 id="request-body-4">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reference_transaction_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The transaction whose group the specified transactions should join or leave. If omitted, the rule applies to the group formed by <code>transaction_ids</code> themselves.</td>
+</tr>
+<tr>
+<td><code>similar</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the specified transactions are similar to each other (or to <code>reference_transaction_id</code>, if supplied)</td>
+</tr>
+<tr>
+<td><code>transaction_ids</code></td>
+<td><code>array of string</code></td>
+<td>Yes</td>
+<td>The transactions the rule applies to</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="201-the-request-was-successfully-processed-2" class="status" data-status="2xx">201: The request was successfully processed</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.rule_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique identifier for the created correction rule</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: {
+    &quot;rule_id&quot;: &quot;f7b27dc2-fd30-4dd4-9f50-1d1713733811&quot;
+  },
+  &quot;operation_id&quot;: &quot;corrections_v3_similar_post&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload-4" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;validation_error&quot;,
+  &quot;errors&quot;: {
+    &quot;transaction_ids&quot;: &quot;This value should not be blank&quot;
+  },
+  &quot;message&quot;: &quot;Bad request payload&quot;,
+  &quot;operation_id&quot;: &quot;corrections_v3_similar_post&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-3" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="405-an-unexpected-http-method-was-used-3" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-4">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="post-correctionsv2merchant-feedbackmerchantmerchant_id" class="operation" data-method="post"><code>POST</code> /corrections/v2/merchant-feedback/merchant/{merchant_id}</h3>
+<p>Operation ID: <code>corrections_v2_merchant_feedback_post</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>merchant_id</code> | <code>path</code> | <code>string</code> | Yes | The ID of the merchant to submit feedback for. |</p>
+<h4 id="request-body-5">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>logo_feedback</code></td>
+<td><code>enum: missing_logo, wrong_logo, low_quality_logo, out_of_date_logo</code></td>
+<td>Yes</td>
+<td>The type of feedback for the merchant.</td>
+</tr>
+<tr>
+<td><code>suggested_logo</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>suggested_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-5">Responses</h4>
+<h5 id="202-accepted" class="status" data-status="2xx">202: Accepted</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Merchant Feedback Response</td>
+</tr>
+<tr>
+<td><code>data.logo_feedback</code></td>
+<td><code>enum: missing_logo, wrong_logo, low_quality_logo, out_of_date_logo</code></td>
+<td>Yes</td>
+<td>The type of feedback for the merchant.</td>
+</tr>
+<tr>
+<td><code>data.merchant_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The merchant the feedback has been created for.</td>
+</tr>
+<tr>
+<td><code>data.suggested_logo</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.suggested_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>enum: corrections_v2_merchant_feedback_post</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="400-the-request-contains-an-invalid-payload-5" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;validation_errors&quot;: [
+      &quot;$.logo_feedback must be valid enum&quot;
+    ]
+  },
+  &quot;message&quot;: &quot;validation failed&quot;,
+  &quot;operation_id&quot;: &quot;corrections_v2_merchant_feedback_post&quot;
+}
+</code></pre>
+<h5 id="404-the-merchant-was-not-found" class="status" data-status="4xx">404: The merchant was not found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;unknown&quot;,
+  &quot;errors&quot;: {},
+  &quot;message&quot;: &quot;Route or resource not found&quot;,
+  &quot;operation_id&quot;: &quot;unknown&quot;
+}
+</code></pre>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-5">5XX: An unexpected error occurred on the server side</h5>
+<h2 id="list">list</h2>
+<h3 id="get-correctionsv2custom-merchants" class="operation" data-method="get"><code>GET</code> /corrections/v2/custom-merchants</h3>
+<p>Operation ID: <code>corrections_v2_custom_merchants_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-ok" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Date that the custom merchant was created, compliant with RFC3339.</td>
+</tr>
+<tr>
+<td><code>data[].custom_merchant_id</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>UUID representing the custom merchant.</td>
+</tr>
+<tr>
+<td><code>data[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Provided name for the custom merchant.</td>
+</tr>
+<tr>
+<td><code>data[].online_or_billing_only</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Provided online or billing only identifier for the custom merchant.</td>
+</tr>
+<tr>
+<td><code>data[].suggested_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Provided URL for the custom merchant</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>enum: corrections_v2_custom_merchants_get</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;created_at&quot;: &quot;2024-11-14T12:15:52Z&quot;,
+      &quot;custom_merchant_id&quot;: &quot;43297d36-2d86-460f-832c-c384f319af64&quot;,
+      &quot;name&quot;: &quot;Krystian Wines&quot;,
+      &quot;online_or_billing_only&quot;: false,
+      &quot;suggested_url&quot;: &quot;https://www.example.com/&quot;
+    }
+  ],
+  &quot;operation_id&quot;: &quot;corrections_v2_custom_merchants_get&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload-6" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;failed_validation&quot;,
+  &quot;errors&quot;: {
+    &quot;validation_errors&quot;: [
+      &quot;X-Customer-ID header must be valid UUID&quot;
+    ]
+  },
+  &quot;message&quot;: &quot;validation failed&quot;,
+  &quot;operation_id&quot;: &quot;corrections_v2_custom_merchants_get&quot;
+}
+</code></pre>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-6">5XX: An unexpected error occurred on the server side</h5>
+<h2 id="load">load</h2>
+<h3 id="get-correctionsv2merchantssearchmerchant_query" class="operation" data-method="get"><code>GET</code> /corrections/v2/merchants/search/{merchant_query}</h3>
+<p>Operation ID: <code>corrections_v2_merchant_search_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>merchant_query</code> | <code>path</code> | <code>string</code> | Yes | Merchant Name Query |</p>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-the-request-was-successfully-processed-1" class="status" data-status="2xx">200: The request was successfully processed</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>List of merchant that matched the query. Best match first</td>
+</tr>
+<tr>
+<td><code>data[].display_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>UI friendly display name for the merchant.</td>
+</tr>
+<tr>
+<td><code>data[].id</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>UUID corresponding to the merchant, if available. Subject to version control.</td>
+</tr>
+<tr>
+<td><code>data[].logo</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A url to the merchant logo. If not available a placeholder is used</td>
+</tr>
+<tr>
+<td><code>data[].slug</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique human readable identifier of the merchant. Not subject to version control.</td>
+</tr>
+<tr>
+<td><code>data[].website</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>URL supplying merchant website, if available.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Customer Merchant Corrections Search Response Metadata</td>
+</tr>
+<tr>
+<td><code>metadata.query</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Query used in the request</td>
+</tr>
+<tr>
+<td><code>metadata.results</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>Number of results returned</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;display_name&quot;: &quot;Apple&quot;,
+      &quot;id&quot;: &quot;f2b21ff7-836d-468c-8928-e81060d49988&quot;,
+      &quot;logo&quot;: &quot;https://assets.thisisbud.com/datasci-images/merchant_logos/f2b21ff7-836d-468c-8928-e81060d49988/v1/apple.jpeg&quot;,
+      &quot;slug&quot;: &quot;apple&quot;,
+      &quot;website&quot;: &quot;https://www.apple.com&quot;
+    },
+    {
+      &quot;display_name&quot;: &quot;Tappily&quot;,
+      &quot;id&quot;: &quot;a3240c82-728d-4d63-b1b8-9569cae844e8&quot;,
+      &quot;logo&quot;: &quot;https://assets.thisisbud.com/datasci-images/merchant_logos/a3240c82-728d-4d63-b1b8-9569cae844e8/v1/tappily.jpeg&quot;,
+      &quot;slug&quot;: &quot;tappily&quot;,
+      &quot;website&quot;: &quot;https://www.tappily.co.uk&quot;
+    },
+    {
+      &quot;display_name&quot;: &quot;Zapp&quot;,
+      &quot;id&quot;: &quot;bbf422fd-0db3-4988-a037-36476f6bd774&quot;,
+      &quot;logo&quot;: &quot;https://assets.thisisbud.com/datasci-images/merchant_logos/bbf422fd-0db3-4988-a037-36476f6bd774/v1/zapp.jpeg&quot;,
+      &quot;slug&quot;: &quot;zapp&quot;,
+      &quot;website&quot;: &quot;https://tryzapp.com&quot;
+    },
+    {
+      &quot;display_name&quot;: &quot;WAPPA LTD&quot;,
+      &quot;id&quot;: &quot;b97244e4-c1bf-4c70-a529-e250fc5baf39&quot;,
+      &quot;logo&quot;: &quot;https://assets.thisisbud.com/bud-datasci-images/merchant_logo_placeholder.png&quot;,
+      &quot;slug&quot;: &quot;wappaltd&quot;
+    },
+    {
+      &quot;display_name&quot;: &quot;Apple Pay&quot;,
+      &quot;id&quot;: &quot;2270343a-110d-4554-8871-33f2e18f8311&quot;,
+      &quot;logo&quot;: &quot;https://assets.thisisbud.com/datasci-images/merchant_logos/2270343a-110d-4554-8871-33f2e18f8311/v2/applepay.jpeg&quot;,
+      &quot;slug&quot;: &quot;applepay&quot;,
+      &quot;website&quot;: &quot;https://www.apple.com&quot;
+    }
+  ],
+  &quot;metadata&quot;: {
+    &quot;query&quot;: &quot;appl&quot;,
+    &quot;results&quot;: 5
+  },
+  &quot;operation_id&quot;: &quot;corrections_v2_merchant_search_get&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload-7" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorised-request-4" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="405-an-unexpected-http-method-was-used-4" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="429-too-many-requests" class="status" data-status="4xx">429: Too many requests</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-7">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="get-correctionsv3rulesrule_id" class="operation" data-method="get"><code>GET</code> /corrections/v3/rules/{rule_id}</h3>
+<p>Operation ID: <code>corrections_v3_rules_rule_id_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>rule_id</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the correction rule. |</p>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-the-request-was-successfully-processed-2" class="status" data-status="2xx">200: The request was successfully processed</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data.rule_definition</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The definition of the rule, mirroring the request body that created it.</td>
+</tr>
+<tr>
+<td><code>data.rule_type</code></td>
+<td><code>enum: regularity_correction, regularity_end, transactions_relative_similar, transactions_similar, transactions_unsimilar</code></td>
+<td>Yes</td>
+<td>The type of correction rule</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="400-the-request-contains-an-invalid-payload-8" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;validation_error&quot;,
+  &quot;errors&quot;: {
+    &quot;rule_id&quot;: &quot;This value should not be blank&quot;
+  },
+  &quot;message&quot;: &quot;Bad request payload&quot;,
+  &quot;operation_id&quot;: &quot;corrections_v3_rules_rule_id_get&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-5" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="404-the-rule-was-not-found" class="status" data-status="4xx">404: The rule was not found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;unknown&quot;,
+  &quot;errors&quot;: {},
+  &quot;message&quot;: &quot;Route or resource not found&quot;,
+  &quot;operation_id&quot;: &quot;unknown&quot;
+}
+</code></pre>
+<h5 id="405-an-unexpected-http-method-was-used-5" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-8">5XX: An unexpected error occurred on the server side</h5>
+<h2 id="remove">remove</h2>
+<h3 id="delete-correctionsv3rulesrule_id" class="operation" data-method="delete"><code>DELETE</code> /corrections/v3/rules/{rule_id}</h3>
+<p>Operation ID: <code>corrections_v3_rules_rule_id_delete</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-9">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>rule_id</code> | <code>path</code> | <code>string</code> | Yes | The unique identifier of the correction rule. |</p>
+<h4 id="responses-9">Responses</h4>
+<h5 id="204-the-rule-was-successfully-deleted" class="status" data-status="2xx">204: The rule was successfully deleted</h5>
+<h5 id="400-the-request-contains-an-invalid-payload-9" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;validation_error&quot;,
+  &quot;errors&quot;: {
+    &quot;rule_id&quot;: &quot;This value should not be blank&quot;
+  },
+  &quot;message&quot;: &quot;Bad request payload&quot;,
+  &quot;operation_id&quot;: &quot;corrections_v3_rules_rule_id_delete&quot;
+}
+</code></pre>
+<h5 id="401-unauthorised-request-6" class="status" data-status="4xx">401: Unauthorised request</h5>
+<h5 id="404-the-rule-was-not-found-1" class="status" data-status="4xx">404: The rule was not found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;unknown&quot;,
+  &quot;errors&quot;: {},
+  &quot;message&quot;: &quot;Route or resource not found&quot;,
+  &quot;operation_id&quot;: &quot;unknown&quot;
+}
+</code></pre>
+<h5 id="405-an-unexpected-http-method-was-used-6" class="status" data-status="4xx">405: An unexpected HTTP method was used</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-9">5XX: An unexpected error occurred on the server side</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

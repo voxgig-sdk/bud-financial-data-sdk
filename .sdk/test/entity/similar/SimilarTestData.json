@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "similar": {
+      "SIMILAR00": {
+        "data": [],
+        "id": "SIMILAR00",
+        "metadata": {},
+        "operation_id": "OPERATION01"
+      },
+      "SIMILAR01": {
+        "data": [],
+        "id": "SIMILAR01",
+        "metadata": {},
+        "operation_id": "OPERATION01"
+      },
+      "SIMILAR02": {
+        "data": [],
+        "id": "SIMILAR02",
+        "metadata": {},
+        "operation_id": "OPERATION01"
+      }
+    }
+  },
+  "new": {
+    "similar": {
+      "similar_ref01": {
+        "data": [],
+        "metadata": {},
+        "operation_id": "OPERATION01"
+      }
+    }
+  },
+  "requests": {
+    "GET /corrections/v2/categories/similar/{transaction_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /corrections/v2/merchants/similar/{transaction_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

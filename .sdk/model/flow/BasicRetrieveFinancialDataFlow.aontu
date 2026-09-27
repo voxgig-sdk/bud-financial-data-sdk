@@ -1,0 +1,44 @@
+# BasicRetrieveFinancialDataFlow
+
+main: kit: flow: BasicRetrieveFinancialDataFlow:
+{
+  entity: "retrieve_financial_data",
+  kind: "basic",
+  name: "BasicRetrieveFinancialDataFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "retrieve_financial_data_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "retrieve_financial_data_ref01",
+        srcdatavar: "retrieve_financial_data_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "retrieve_financial_data01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-retrieve_financial_data_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRetrieveFinancialDataFlow"
+}

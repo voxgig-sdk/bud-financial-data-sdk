@@ -1,0 +1,9 @@
+# BasicManageTransactionLabelFlow
+
+main: kit: flow: BasicManageTransactionLabelFlow:
+{
+  entity: "manage_transaction_label",
+  kind: "basic",
+  name: "BasicManageTransactionLabelFlow",
+  "key$": "BasicManageTransactionLabelFlow"
+}

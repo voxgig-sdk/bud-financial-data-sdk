@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "manage_financial_data": {
+      "MANAGE_FINANCIAL_DATA00": {
+        "label_id": "LABEL01",
+        "transaction_id": "TRANSACTION01",
+        "account_id": "ACCOUNT01",
+        "provider": "PROVIDER01",
+        "id": "MANAGE_FINANCIAL_DATA00"
+      },
+      "MANAGE_FINANCIAL_DATA01": {
+        "label_id": "LABEL01",
+        "transaction_id": "TRANSACTION01",
+        "account_id": "ACCOUNT01",
+        "provider": "PROVIDER01",
+        "id": "MANAGE_FINANCIAL_DATA01"
+      },
+      "MANAGE_FINANCIAL_DATA02": {
+        "label_id": "LABEL01",
+        "transaction_id": "TRANSACTION01",
+        "account_id": "ACCOUNT01",
+        "provider": "PROVIDER01",
+        "id": "MANAGE_FINANCIAL_DATA02"
+      }
+    }
+  },
+  "new": {
+    "manage_financial_data": {
+      "manage_financial_data_ref01": {
+        "label_id": "LABEL01"
+      }
+    }
+  },
+  "requests": {
+    "POST /financial/v2/transactions/{transaction_id}/labels": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /financial/v2/transactions/{transaction_id}/labels/{label_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /financial/v2/accounts/{account_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v1/provider/{provider}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

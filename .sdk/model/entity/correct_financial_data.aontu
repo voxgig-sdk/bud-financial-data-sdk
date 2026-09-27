@@ -1,0 +1,806 @@
+# Entity: correct_financial_data
+
+main: kit: entity: correct_financial_data: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "Date that the custom merchant was created, compliant with RFC3339."
+      t: "`$STRING`"
+    }
+    custom_merchant_id: {
+      fo: "uuid"
+      h: "Custom Merchant Id"
+      n: "custom_merchant_id"
+      r: true
+      sh: "UUID representing the custom merchant."
+      t: "`$STRING`"
+    }
+    data: {
+      h: "Data"
+      n: "data"
+      r: true
+      sh: "List of merchant that matched the query."
+      t: "`$ARRAY`"
+    }
+    frequency: {
+      h: "Frequency"
+      n: "frequency"
+      r: true
+      sh: "The frequency to assign."
+      t: "`$STRING`"
+    }
+    include_similar: {
+      h: "Include Similar"
+      n: "include_similar"
+      r: false
+      sh: "Apply the correction to the whole group of transactions similar to the specified transaction, rather than just the transaction itself"
+      t: "`$BOOLEAN`"
+    }
+    logo_feedback: {
+      h: "Logo Feedback"
+      n: "logo_feedback"
+      r: true
+      sh: "The type of feedback for the merchant."
+      t: "`$STRING`"
+    }
+    metadata: {
+      h: "Metadata"
+      n: "metadata"
+      r: true
+      sh: "Metadata associated with the response schema"
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The display name of the custom merchant to be created"
+      t: "`$STRING`"
+    }
+    online_or_billing_only: {
+      h: "Online Or Billing Only"
+      n: "online_or_billing_only"
+      op: {
+        list: {
+          req: true
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: false
+      sh: "This is used to indicate if the custom merchant being created is an exclusively online or billing merchant."
+      t: "`$BOOLEAN`"
+    }
+    operation_id: {
+      h: "Operation Id"
+      n: "operation_id"
+      r: true
+      sh: "A unique identifier/reference associated with a given endpoint/operation"
+      t: "`$STRING`"
+    }
+    reference_transaction_id: {
+      h: "Reference Transaction Id"
+      n: "reference_transaction_id"
+      r: false
+      sh: "The transaction whose group the specified transactions should join or leave."
+      t: "`$STRING`"
+    }
+    rule_definition: {
+      h: "Rule Definition"
+      n: "rule_definition"
+      r: true
+      sh: "The definition of the rule, mirroring the request body that created it."
+      t: "`$OBJECT`"
+    }
+    rule_type: {
+      h: "Rule Type"
+      n: "rule_type"
+      r: true
+      sh: "The type of correction rule"
+      t: "`$STRING`"
+    }
+    similar: {
+      h: "Similar"
+      n: "similar"
+      r: false
+      sh: "Whether the specified transactions are similar to each other (or to `reference_transaction_id`, if supplied)"
+      t: "`$BOOLEAN`"
+    }
+    suggested_logo: {
+      h: "Suggested Logo"
+      n: "suggested_logo"
+      r: false
+      t: "`$STRING`"
+    }
+    suggested_url: {
+      h: "Suggested Url"
+      n: "suggested_url"
+      op: {
+        list: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "A suggested URL for the merchant, to help bud identify it and expand our merchant database."
+      t: "`$STRING`"
+    }
+    transaction_id: {
+      h: "Transaction Id"
+      n: "transaction_id"
+      r: true
+      sh: "The unique identifier for the transaction"
+      t: "`$STRING`"
+    }
+    transaction_ids: {
+      h: "Transaction Ids"
+      n: "transaction_ids"
+      r: true
+      sh: "The transactions the rule applies to"
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "correct_financial_data"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /corrections/v2/categories"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/corrections/v2/categories"
+          q: {
+            exist: [
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "corrections"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "categories"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /corrections/v2/custom-merchants"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/corrections/v2/custom-merchants"
+          q: {
+            exist: [
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+            ]
+          }
+          s: [
+            {
+              lit: "corrections"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "custom-merchants"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "POST /corrections/v3/regularity"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/corrections/v3/regularity"
+          q: {
+            exist: [
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+            ]
+          }
+          s: [
+            {
+              lit: "corrections"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "regularity"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "POST /corrections/v3/regularity/end"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/corrections/v3/regularity/end"
+          q: {
+            exist: [
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+            ]
+          }
+          s: [
+            {
+              lit: "corrections"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "regularity"
+            }
+            {
+              lit: "end"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "POST /corrections/v3/similar"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/corrections/v3/similar"
+          q: {
+            exist: [
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+            ]
+          }
+          s: [
+            {
+              lit: "corrections"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "similar"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "POST /corrections/v2/merchant-feedback/merchant/{merchant_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "merchant_id"
+                or: "merchant_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/corrections/v2/merchant-feedback/merchant/{merchant_id}"
+          q: {
+            exist: [
+              "merchant_id"
+              "x_client_id"
+            ]
+          }
+          s: [
+            {
+              lit: "corrections"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "merchant-feedback"
+            }
+            {
+              lit: "merchant"
+            }
+            {
+              var: "merchant_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /corrections/v2/custom-merchants"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/corrections/v2/custom-merchants"
+          q: {
+            exist: [
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+            ]
+          }
+          s: [
+            {
+              lit: "corrections"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "custom-merchants"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /corrections/v2/merchants/search/{merchant_query}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "merchant_query"
+                or: "merchant_query"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/corrections/v2/merchants/search/{merchant_query}"
+          q: {
+            exist: [
+              "merchant_query"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+            ]
+          }
+          s: [
+            {
+              lit: "corrections"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "merchants"
+            }
+            {
+              lit: "search"
+            }
+            {
+              var: "merchant_query"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /corrections/v3/rules/{rule_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "rule_id"
+                or: "rule_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/corrections/v3/rules/{rule_id}"
+          q: {
+            exist: [
+              "rule_id"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+            ]
+          }
+          s: [
+            {
+              lit: "corrections"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "rules"
+            }
+            {
+              var: "rule_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /corrections/v3/rules/{rule_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "rule_id"
+                or: "rule_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/corrections/v3/rules/{rule_id}"
+          q: {
+            exist: [
+              "rule_id"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+            ]
+          }
+          s: [
+            {
+              lit: "corrections"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "rules"
+            }
+            {
+              var: "rule_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

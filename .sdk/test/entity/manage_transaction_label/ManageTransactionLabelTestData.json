@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "manage_transaction_label": {
+      "MANAGE_TRANSACTION_LABEL00": {
+        "id": "MANAGE_TRANSACTION_LABEL00"
+      },
+      "MANAGE_TRANSACTION_LABEL01": {
+        "id": "MANAGE_TRANSACTION_LABEL01"
+      },
+      "MANAGE_TRANSACTION_LABEL02": {
+        "id": "MANAGE_TRANSACTION_LABEL02"
+      }
+    }
+  },
+  "new": {
+    "manage_transaction_label": {
+      "manage_transaction_label_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /financial/v2/transactions/labels/{label_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

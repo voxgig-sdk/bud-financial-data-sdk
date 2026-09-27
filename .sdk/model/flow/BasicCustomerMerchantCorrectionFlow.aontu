@@ -1,0 +1,18 @@
+# BasicCustomerMerchantCorrectionFlow
+
+main: kit: flow: BasicCustomerMerchantCorrectionFlow:
+{
+  entity: "customer_merchant_correction",
+  kind: "basic",
+  name: "BasicCustomerMerchantCorrectionFlow",
+  step: [
+    {
+      i: {
+        ref: "customer_merchant_correction_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicCustomerMerchantCorrectionFlow"
+}

@@ -1,0 +1,1326 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Similar | Financial Data API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Financial Data API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/bud-financial-data-sdk">voxgig-sdk/bud-financial-data-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Financial Data API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/correct_financial_data.html">CorrectFinancialData</a>
+<a href="../api/customer_merchant_correction.html">CustomerMerchantCorrection</a>
+<a href="../api/label.html">Label</a>
+<a href="../api/list_label.html">ListLabel</a>
+<a href="../api/list_transaction.html">ListTransaction</a>
+<a href="../api/manage_financial_data.html">ManageFinancialData</a>
+<a href="../api/manage_transaction_label.html">ManageTransactionLabel</a>
+<a href="../api/retrieve_financial_data.html">RetrieveFinancialData</a>
+<a aria-current="page" href="../api/similar.html">Similar</a><div class="nav-sections"><a class="nav-section" href="#get-correctionsv2categoriessimilartransaction_id">GET /corrections/v2/categories/similar/{transaction_id}</a>
+<a class="nav-section" href="#get-correctionsv2merchantssimilartransaction_id">GET /corrections/v2/merchants/similar/{transaction_id}</a></div></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="similar">Similar</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-correctionsv2categoriessimilartransaction_id"><code>/corrections/v2/categories/similar/{transaction_id}</code></a></td>
+<td><code>load</code></td>
+<td>The request was successfully processed</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-correctionsv2merchantssimilartransaction_id"><code>/corrections/v2/merchants/similar/{transaction_id}</code></a></td>
+<td><code>load</code></td>
+<td>The request was successfully processed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">similar, err := client.Similar(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(similar)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const similar = await client.Similar().load({ id: &quot;example_id&quot; })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local similar, err = client:Similar():load({ id = &quot;example_id&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$similar = $client-&gt;Similar()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">similar = client.Similar().load({&quot;id&quot;: &quot;example_id&quot;})
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const similar = await client.Similar().load({ id: &quot;example_id&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>Data</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Id</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Metadata</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Operation Id</td>
+</tr>
+</tbody>
+</table>
+<h2 id="load">load</h2>
+<h3 id="get-correctionsv2categoriessimilartransaction_id" class="operation" data-method="get"><code>GET</code> /corrections/v2/categories/similar/{transaction_id}</h3>
+<p>Operation ID: <code>corrections_v2_similar_categories_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>X-Customer-Secret</code> | <code>header</code> | <code>string</code> | No | The Bud Customer secret used to encrypt customer data. This is required only if the customer secret is not already stored with Bud. |
+| <code>exclude_source</code> | <code>query</code> | <code>boolean</code> | No | Toggle whether the endpoint returns the transaction used as part of the request |
+| <code>transaction_id</code> | <code>path</code> | <code>string (uuid)</code> | Yes | A transaction identifier |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-the-request-was-successfully-processed" class="status" data-status="2xx">200: The request was successfully processed</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].account_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Identifier for the account associated with the transaction.</td>
+</tr>
+<tr>
+<td><code>data[].amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].client_attributes</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>An optional map of key-value string pairs that allows clients to attach arbitrary metadata to the transaction. This field can be used to store any relevant information specific to the client's needs, such as: These attributes can be added using the <a href="#operation/%60v2_ingest_transactions_post%60">Ingest Transactions</a> endpoint.</td>
+</tr>
+<tr>
+<td><code>data[].client_attributes.key</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An arbitrary key-value pair for the client attribute.</td>
+</tr>
+<tr>
+<td><code>data[].counterparty</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>An object containing details of the counterparty in this transaction</td>
+</tr>
+<tr>
+<td><code>data[].counterparty.identifier</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An identifier for the account of the other party</td>
+</tr>
+<tr>
+<td><code>data[].counterparty.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the counterparty involved in this transaction.</td>
+</tr>
+<tr>
+<td><code>data[].credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>Yes</td>
+<td>Credit/Debit Indicator</td>
+</tr>
+<tr>
+<td><code>data[].date_time</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Date that the transaction occured compliant with RFC3339.</td>
+</tr>
+<tr>
+<td><code>data[].description</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Description of the transaction.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contextual enrichments associated with a Transaction</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.categories</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Categories enrichment associated with a Transaction, as generated by Bud's artificial intelligence models. Currently two levels of category are supported, with <code>l1</code> being a coarse-grained category level and <code>l2</code> being more refined.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.categories.l1</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Level 1 Category</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.categories.l1.confidence</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Degree of belief of correct assignment, expressed as a probability.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.categories.l1.slug</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique human readable identifier of the category. Not subject to version control.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.categories.l2</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Level 2 Category</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.categories.l2.confidence</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Degree of belief of correct assignment, expressed as a probability.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.categories.l2.slug</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique human readable identifier of the category. Not subject to version control.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.corrections</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Identifiers for correction rules that were applied to this transaction during enrichment. Returned only when correction-rule surfacing is enabled for your organisation.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.corrections.applied_rule_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>IDs of correction rules that were applied to this transaction.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Location enrichment associated with a Transaction</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The address where the transaction occurred. The level of detail depends on the resolution with which we are able to detect the transaction location.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.address.address_lines</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>A list of all the address lines detected for the transaction. This could be anything from a full street address down to just the region.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The city or town where the transaction occurred.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.address.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ISO 3166-1 alpha-2 country code representing the country where the transaction occurred. If a location could not be determined, but a <code>country_code</code> was supplied in the ingestion request; that value will be reflected here.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.address.postal_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The postcode where the transaction occurred.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.address.region</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The county or region where the transaction occurred.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.address.street_address</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The street address where the transaction occurred. Typically this will consist of the street number and street name with an optional suite.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.geolocation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The geolocation where the transaction occurred. This is only available if we are able to narrow down the transaction location to an exact match.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.geolocation.latitude</code></td>
+<td><code>number (double)</code></td>
+<td>No</td>
+<td>The latitudinal position where the transaction occurred.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.geolocation.longitude</code></td>
+<td><code>number (double)</code></td>
+<td>No</td>
+<td>The longitudinal position where the transaction occurred.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.tokens</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>A list of substrings from the description identified as being relevant to the transaction location.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Merchant enrichment associated with a Transaction, as generated using a combination of Bud's artificial intelligence models and database of known merchants.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.display_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>UI friendly display name for the merchant.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>UUID corresponding to the merchant, if available. Subject to version control.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.logo</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>URL supplying merchant logo, if available.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.slug</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique human readable identifier of the merchant. Not subject to version control.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.tags</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>A list of tags describing the merchant</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.tokens</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>A list of tokens calculated from the transaction model, used to identify the Merchant. This list is often present even if the merchant details (id, slug, <code>disply_name</code>, logo) are not returned.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.tokens[].confidence</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Degree of belief of correct assignment, expressed as a probability.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.tokens[].value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.website</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>URL supplying merchant website, if available.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.names</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Names that were detected in the transaction description</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Processor enrichment associated with a Transaction, as generated using a combination of Bud's artificial intelligence models and database of known payment processors.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.display_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>UI friendly display name for the processor.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>UUID corresponding to the processor, if available. Subject to version control.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.logo</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>URL supplying processor logo, if available.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.slug</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique human readable identifier of the processor. Not subject to version control.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.tokens</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>A list of tokens calculated from the transaction model, used to identify the Merchant. This list is often present even if the merchant details (id, slug, <code>disply_name</code>, logo) are not returned.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.tokens[].confidence</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Degree of belief of correct assignment, expressed as a probability.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.tokens[].value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.website</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>URL supplying merchant website, if available.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.regularity</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Regularity enrichment associated with a Transaction, as generated by Bud's artificial intelligence models. Transactions that are similar and have a known frequency will all have the same regularity enrichment.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.regularity.frequency</code></td>
+<td><code>enum: unknown, daily, weekly, biweekly, monthly, quarterly</code></td>
+<td>No</td>
+<td>Detected frequency of the Transaction.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.regularity.group_label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique label applied to multiple transactions in the same group.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.regularity.predicted_date_times</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Expected date times for the Transaction to repeat.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.transaction_types</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Transaction types associated with the transaction</td>
+</tr>
+<tr>
+<td><code>data[].labels</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Customer-defined labels currently attached to this transaction. Managed via the <strong>Manage Transaction Labels</strong> endpoints, and attached/removed via the <strong>Assign Transaction Label</strong> and <strong>Unassign Transaction Label</strong> endpoints.</td>
+</tr>
+<tr>
+<td><code>data[].labels[].id</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>Unique identifier of the label.</td>
+</tr>
+<tr>
+<td><code>data[].labels[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Display name of the label.</td>
+</tr>
+<tr>
+<td><code>data[].merchant_category_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Merchant category code conforming to ISO 18245, related to the type of services or goods the merchant provides for the transaction.</td>
+</tr>
+<tr>
+<td><code>data[].posted_date_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date the assets involved in the transaction transferred compliant with RFC3339. For credits this is the date that the asset becomes available, for debits this is the date that the asset ceased to be available</td>
+</tr>
+<tr>
+<td><code>data[].provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the transaction source provider. Optional as it may not have been supplied when using first party data.</td>
+</tr>
+<tr>
+<td><code>data[].running_balance</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The running balance for the account that the transaction takes place against</td>
+</tr>
+<tr>
+<td><code>data[].running_balance.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].running_balance.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].running_balance_credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>No</td>
+<td>Credit/Debit Indicator for the running balance field</td>
+</tr>
+<tr>
+<td><code>data[].status</code></td>
+<td><code>enum: booked, pending, declined</code></td>
+<td>Yes</td>
+<td>Status of the transaction. Defaults to booked. Note: declined transactions are only available for transactions ingested by First Party Ingestion endpoints.</td>
+</tr>
+<tr>
+<td><code>data[].suggested_description</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The description Bud suggests client apps show for a given transaction.</td>
+</tr>
+<tr>
+<td><code>data[].suggested_logo</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The logo Bud suggests client apps show for a given transaction.</td>
+</tr>
+<tr>
+<td><code>data[].tags</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>A list of potential tags associated with the transaction after contextual enrichment, which can be used for filtering. Region and client specific. | Value | Description | |:------------------------|:----------------------------------------------------------| | <code>benefit</code> | A government/non-profit benefit transaction | | <code>debt-collection</code> | A transaction associated with a known debt-collector | | <code>loan</code> | A transaction associated with a loan | | <code>hcst</code> | A transaction associated with a high cost short term loan | | <code>income</code> | A transaction associated with income | | <code>pending</code> | A transaction which has not been booked | | <code>regular-transaction</code> | A transaction predicted to occur with a regular frequency | | <code>subscription</code> | A transaction associated with a subscription service | | <code>online</code> | A transaction associated with an online merchant | | <code>bill</code> | A transaction associated with an bill payment | | <code>internal-transfer</code> | A transaction between a customers accounts |</td>
+</tr>
+<tr>
+<td><code>data[].transaction_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique identifier for the transaction. May be mutable depending on original ingestion source.</td>
+</tr>
+<tr>
+<td><code>data[].transaction_type</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The code and a description of the transaction type. Providing these fields may help improve enrichment accuracy.</td>
+</tr>
+<tr>
+<td><code>data[].transaction_type.bud_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The code representing the type of the given transaction. This typically comes in the form of a proprietary code respective to the <strong>provider</strong>. Current list of valid accepted codes: | Code | Meaning |:------|:-------------------------------------------------------------------| | DEB | [Debit / Credit] Card | | CSQ | Cash / Cheque(s) | | CHG | Charge | | COR | Correction | | CPT | Cashpoint / ATM | | INT | Interest | | OTH | Other | | BAT | Bank Transfer (for example FP/MP/IB/BACS/CHAPS/SWIFT) | | DD | Direct Debit | | SO | Standing Order |</td>
+</tr>
+<tr>
+<td><code>data[].transaction_type.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A human-readable description of the given <strong><code>bud_code</code></strong>. example: <code>Contactless POS</code></td>
+</tr>
+<tr>
+<td><code>data[].value_date_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date the assets involved in the transaction transferred compliant with RFC3339. For credits this is the date that the asset becomes available, for debits this is the date that the asset ceased to be available</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata.exclude_source</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Is the request transaction being excluded from the response</td>
+</tr>
+<tr>
+<td><code>metadata.results</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The number of results returned.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>enum: corrections_v2_similar_categories_get</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="400-the-request-contains-an-invalid-payload" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="404-unknown-transaction" class="status" data-status="4xx">404: Unknown transaction</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side">5XX: An unexpected error occurred on the server side</h5>
+<h3 id="get-correctionsv2merchantssimilartransaction_id" class="operation" data-method="get"><code>GET</code> /corrections/v2/merchants/similar/{transaction_id}</h3>
+<p>Operation ID: <code>corrections_v2_similar_merchants_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>X-Customer-Secret</code> | <code>header</code> | <code>string</code> | No | The Bud Customer secret used to encrypt customer data. This is required only if the customer secret is not already stored with Bud. |
+| <code>exclude_source</code> | <code>query</code> | <code>boolean</code> | No | Toggle whether the endpoint returns the transaction used as part of the request |
+| <code>transaction_id</code> | <code>path</code> | <code>string (uuid)</code> | Yes | A transaction identifier |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-the-request-was-successfully-processed-1" class="status" data-status="2xx">200: The request was successfully processed</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].account_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Identifier for the account associated with the transaction.</td>
+</tr>
+<tr>
+<td><code>data[].amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].client_attributes</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>An optional map of key-value string pairs that allows clients to attach arbitrary metadata to the transaction. This field can be used to store any relevant information specific to the client's needs, such as: These attributes can be added using the <a href="#operation/%60v2_ingest_transactions_post%60">Ingest Transactions</a> endpoint.</td>
+</tr>
+<tr>
+<td><code>data[].client_attributes.key</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An arbitrary key-value pair for the client attribute.</td>
+</tr>
+<tr>
+<td><code>data[].counterparty</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>An object containing details of the counterparty in this transaction</td>
+</tr>
+<tr>
+<td><code>data[].counterparty.identifier</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An identifier for the account of the other party</td>
+</tr>
+<tr>
+<td><code>data[].counterparty.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the counterparty involved in this transaction.</td>
+</tr>
+<tr>
+<td><code>data[].credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>Yes</td>
+<td>Credit/Debit Indicator</td>
+</tr>
+<tr>
+<td><code>data[].date_time</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Date that the transaction occured compliant with RFC3339.</td>
+</tr>
+<tr>
+<td><code>data[].description</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Description of the transaction.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contextual enrichments associated with a Transaction</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.categories</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Categories enrichment associated with a Transaction, as generated by Bud's artificial intelligence models. Currently two levels of category are supported, with <code>l1</code> being a coarse-grained category level and <code>l2</code> being more refined.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.categories.l1</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Level 1 Category</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.categories.l1.confidence</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Degree of belief of correct assignment, expressed as a probability.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.categories.l1.slug</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique human readable identifier of the category. Not subject to version control.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.categories.l2</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Level 2 Category</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.categories.l2.confidence</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Degree of belief of correct assignment, expressed as a probability.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.categories.l2.slug</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique human readable identifier of the category. Not subject to version control.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.corrections</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Identifiers for correction rules that were applied to this transaction during enrichment. Returned only when correction-rule surfacing is enabled for your organisation.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.corrections.applied_rule_ids</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>IDs of correction rules that were applied to this transaction.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Location enrichment associated with a Transaction</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The address where the transaction occurred. The level of detail depends on the resolution with which we are able to detect the transaction location.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.address.address_lines</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>A list of all the address lines detected for the transaction. This could be anything from a full street address down to just the region.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The city or town where the transaction occurred.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.address.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The ISO 3166-1 alpha-2 country code representing the country where the transaction occurred. If a location could not be determined, but a <code>country_code</code> was supplied in the ingestion request; that value will be reflected here.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.address.postal_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The postcode where the transaction occurred.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.address.region</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The county or region where the transaction occurred.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.address.street_address</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The street address where the transaction occurred. Typically this will consist of the street number and street name with an optional suite.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.geolocation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The geolocation where the transaction occurred. This is only available if we are able to narrow down the transaction location to an exact match.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.geolocation.latitude</code></td>
+<td><code>number (double)</code></td>
+<td>No</td>
+<td>The latitudinal position where the transaction occurred.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.geolocation.longitude</code></td>
+<td><code>number (double)</code></td>
+<td>No</td>
+<td>The longitudinal position where the transaction occurred.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.location.tokens</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>A list of substrings from the description identified as being relevant to the transaction location.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Merchant enrichment associated with a Transaction, as generated using a combination of Bud's artificial intelligence models and database of known merchants.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.display_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>UI friendly display name for the merchant.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>UUID corresponding to the merchant, if available. Subject to version control.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.logo</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>URL supplying merchant logo, if available.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.slug</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique human readable identifier of the merchant. Not subject to version control.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.tags</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>A list of tags describing the merchant</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.tokens</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>A list of tokens calculated from the transaction model, used to identify the Merchant. This list is often present even if the merchant details (id, slug, <code>disply_name</code>, logo) are not returned.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.tokens[].confidence</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Degree of belief of correct assignment, expressed as a probability.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.tokens[].value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].enrichments.merchant.website</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>URL supplying merchant website, if available.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.names</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Names that were detected in the transaction description</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Processor enrichment associated with a Transaction, as generated using a combination of Bud's artificial intelligence models and database of known payment processors.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.display_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>UI friendly display name for the processor.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>UUID corresponding to the processor, if available. Subject to version control.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.logo</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>URL supplying processor logo, if available.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.slug</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique human readable identifier of the processor. Not subject to version control.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.tokens</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>A list of tokens calculated from the transaction model, used to identify the Merchant. This list is often present even if the merchant details (id, slug, <code>disply_name</code>, logo) are not returned.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.tokens[].confidence</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Degree of belief of correct assignment, expressed as a probability.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.tokens[].value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].enrichments.processor.website</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>URL supplying merchant website, if available.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.regularity</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Regularity enrichment associated with a Transaction, as generated by Bud's artificial intelligence models. Transactions that are similar and have a known frequency will all have the same regularity enrichment.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.regularity.frequency</code></td>
+<td><code>enum: unknown, daily, weekly, biweekly, monthly, quarterly</code></td>
+<td>No</td>
+<td>Detected frequency of the Transaction.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.regularity.group_label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique label applied to multiple transactions in the same group.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.regularity.predicted_date_times</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Expected date times for the Transaction to repeat.</td>
+</tr>
+<tr>
+<td><code>data[].enrichments.transaction_types</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Transaction types associated with the transaction</td>
+</tr>
+<tr>
+<td><code>data[].labels</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Customer-defined labels currently attached to this transaction. Managed via the <strong>Manage Transaction Labels</strong> endpoints, and attached/removed via the <strong>Assign Transaction Label</strong> and <strong>Unassign Transaction Label</strong> endpoints.</td>
+</tr>
+<tr>
+<td><code>data[].labels[].id</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>Unique identifier of the label.</td>
+</tr>
+<tr>
+<td><code>data[].labels[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Display name of the label.</td>
+</tr>
+<tr>
+<td><code>data[].merchant_category_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Merchant category code conforming to ISO 18245, related to the type of services or goods the merchant provides for the transaction.</td>
+</tr>
+<tr>
+<td><code>data[].posted_date_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date the assets involved in the transaction transferred compliant with RFC3339. For credits this is the date that the asset becomes available, for debits this is the date that the asset ceased to be available</td>
+</tr>
+<tr>
+<td><code>data[].provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the transaction source provider. Optional as it may not have been supplied when using first party data.</td>
+</tr>
+<tr>
+<td><code>data[].running_balance</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The running balance for the account that the transaction takes place against</td>
+</tr>
+<tr>
+<td><code>data[].running_balance.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].running_balance.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].running_balance_credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>No</td>
+<td>Credit/Debit Indicator for the running balance field</td>
+</tr>
+<tr>
+<td><code>data[].status</code></td>
+<td><code>enum: booked, pending, declined</code></td>
+<td>Yes</td>
+<td>Status of the transaction. Defaults to booked. Note: declined transactions are only available for transactions ingested by First Party Ingestion endpoints.</td>
+</tr>
+<tr>
+<td><code>data[].suggested_description</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The description Bud suggests client apps show for a given transaction.</td>
+</tr>
+<tr>
+<td><code>data[].suggested_logo</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The logo Bud suggests client apps show for a given transaction.</td>
+</tr>
+<tr>
+<td><code>data[].tags</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>A list of potential tags associated with the transaction after contextual enrichment, which can be used for filtering. Region and client specific. | Value | Description | |:------------------------|:----------------------------------------------------------| | <code>benefit</code> | A government/non-profit benefit transaction | | <code>debt-collection</code> | A transaction associated with a known debt-collector | | <code>loan</code> | A transaction associated with a loan | | <code>hcst</code> | A transaction associated with a high cost short term loan | | <code>income</code> | A transaction associated with income | | <code>pending</code> | A transaction which has not been booked | | <code>regular-transaction</code> | A transaction predicted to occur with a regular frequency | | <code>subscription</code> | A transaction associated with a subscription service | | <code>online</code> | A transaction associated with an online merchant | | <code>bill</code> | A transaction associated with an bill payment | | <code>internal-transfer</code> | A transaction between a customers accounts |</td>
+</tr>
+<tr>
+<td><code>data[].transaction_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique identifier for the transaction. May be mutable depending on original ingestion source.</td>
+</tr>
+<tr>
+<td><code>data[].transaction_type</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The code and a description of the transaction type. Providing these fields may help improve enrichment accuracy.</td>
+</tr>
+<tr>
+<td><code>data[].transaction_type.bud_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The code representing the type of the given transaction. This typically comes in the form of a proprietary code respective to the <strong>provider</strong>. Current list of valid accepted codes: | Code | Meaning |:------|:-------------------------------------------------------------------| | DEB | [Debit / Credit] Card | | CSQ | Cash / Cheque(s) | | CHG | Charge | | COR | Correction | | CPT | Cashpoint / ATM | | INT | Interest | | OTH | Other | | BAT | Bank Transfer (for example FP/MP/IB/BACS/CHAPS/SWIFT) | | DD | Direct Debit | | SO | Standing Order |</td>
+</tr>
+<tr>
+<td><code>data[].transaction_type.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A human-readable description of the given <strong><code>bud_code</code></strong>. example: <code>Contactless POS</code></td>
+</tr>
+<tr>
+<td><code>data[].value_date_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date the assets involved in the transaction transferred compliant with RFC3339. For credits this is the date that the asset becomes available, for debits this is the date that the asset ceased to be available</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata.exclude_source</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Is the request transaction being excluded from the response</td>
+</tr>
+<tr>
+<td><code>metadata.results</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The number of results returned.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>enum: corrections_v2_similar_merchants_get</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="400-the-request-contains-an-invalid-payload-1" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="404-unknown-transaction-1" class="status" data-status="4xx">404: Unknown transaction</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side-1">5XX: An unexpected error occurred on the server side</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

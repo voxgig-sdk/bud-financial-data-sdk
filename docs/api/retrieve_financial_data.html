@@ -1,0 +1,3980 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>RetrieveFinancialData | Financial Data API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Financial Data API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/bud-financial-data-sdk">voxgig-sdk/bud-financial-data-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Financial Data API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/correct_financial_data.html">CorrectFinancialData</a>
+<a href="../api/customer_merchant_correction.html">CustomerMerchantCorrection</a>
+<a href="../api/label.html">Label</a>
+<a href="../api/list_label.html">ListLabel</a>
+<a href="../api/list_transaction.html">ListTransaction</a>
+<a href="../api/manage_financial_data.html">ManageFinancialData</a>
+<a href="../api/manage_transaction_label.html">ManageTransactionLabel</a>
+<a aria-current="page" href="../api/retrieve_financial_data.html">RetrieveFinancialData</a><div class="nav-sections"><a class="nav-section" href="#get-financialv3accounts">GET /financial/v3/accounts</a>
+<a class="nav-section" href="#get-financialv2accounts">GET /financial/v2/accounts</a>
+<a class="nav-section" href="#get-financialv2accountsaccount_idbalances">GET /financial/v2/accounts/{account_id}/balances</a>
+<a class="nav-section" href="#get-financialv3accountsaccount_idbalances">GET /financial/v3/accounts/{account_id}/balances</a>
+<a class="nav-section" href="#get-financialv2authorised-payments">GET /financial/v2/authorised-payments</a>
+<a class="nav-section" href="#get-financialv2balances">GET /financial/v2/balances</a>
+<a class="nav-section" href="#get-financialv3balances">GET /financial/v3/balances</a>
+<a class="nav-section" href="#get-financialv3accountstransaction-dates">GET /financial/v3/accounts/transaction-dates</a>
+<a class="nav-section" href="#get-financialv2accountsaccount_id">GET /financial/v2/accounts/{account_id}</a>
+<a class="nav-section" href="#get-financialv3accountsaccount_id">GET /financial/v3/accounts/{account_id}</a></div>
+<a href="../api/similar.html">Similar</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="retrievefinancialdata">RetrieveFinancialData</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-financialv3accounts"><code>/financial/v3/accounts</code></a></td>
+<td><code>list</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-financialv2accounts"><code>/financial/v2/accounts</code></a></td>
+<td><code>list</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-financialv2accountsaccount_idbalances"><code>/financial/v2/accounts/{account_id}/balances</code></a></td>
+<td><code>list</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-financialv3accountsaccount_idbalances"><code>/financial/v3/accounts/{account_id}/balances</code></a></td>
+<td><code>list</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-financialv2authorised-payments"><code>/financial/v2/authorised-payments</code></a></td>
+<td><code>list</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-financialv2balances"><code>/financial/v2/balances</code></a></td>
+<td><code>list</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-financialv3balances"><code>/financial/v3/balances</code></a></td>
+<td><code>list</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-financialv3accountstransaction-dates"><code>/financial/v3/accounts/transaction-dates</code></a></td>
+<td><code>list</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-financialv2accountsaccount_id"><code>/financial/v2/accounts/{account_id}</code></a></td>
+<td><code>load</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-financialv3accountsaccount_id"><code>/financial/v3/accounts/{account_id}</code></a></td>
+<td><code>load</code></td>
+<td>OK</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">retrieve_financial_datas, err := client.RetrieveFinancialData(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(retrieve_financial_datas)
+retrieve_financial_data, err := client.RetrieveFinancialData(nil).Load(map[string]any{&quot;account_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(retrieve_financial_data)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const retrieve_financial_datas = await client.RetrieveFinancialData().list()
+const retrieve_financial_data = await client.RetrieveFinancialData().load({ account_id: &quot;example&quot; })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local retrieve_financial_datas, err = client:RetrieveFinancialData():list()
+local retrieve_financial_data, err = client:RetrieveFinancialData():load({ account_id = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$retrieve_financial_datas = $client-&gt;RetrieveFinancialData()-&gt;list();
+$retrieve_financial_data = $client-&gt;RetrieveFinancialData()-&gt;load([&quot;account_id&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">retrieve_financial_datas = client.RetrieveFinancialData().list()
+retrieve_financial_data = client.RetrieveFinancialData().load({&quot;account_id&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const retrieve_financial_datas = await client.RetrieveFinancialData().list()
+const retrieve_financial_data = await client.RetrieveFinancialData().load({ account_id: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>account_category</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The account category that the account type is a part of Currently supported values include (but are not necessarily limited to): - <code>credit</code> - <code>depository</code> - <code>insurance</code> - <code>investment</code> - <code>loan</code> - <code>savings</code> - <code>other</code></td>
+</tr>
+<tr>
+<td><code>account_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique id associated with the account.</td>
+</tr>
+<tr>
+<td><code>account_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name associated with the account, this is often a friendly name assigned to the account to make it easier to refer to.</td>
+</tr>
+<tr>
+<td><code>account_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of account.</td>
+</tr>
+<tr>
+<td><code>balances</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The balances ingested for the account.</td>
+</tr>
+<tr>
+<td><code>booked</code></td>
+<td><code>any</code></td>
+<td>Yes</td>
+<td>The current balance of the account</td>
+</tr>
+<tr>
+<td><code>closed_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The datetime the account was closed in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>.</td>
+</tr>
+<tr>
+<td><code>credit_lines</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The latest credit limit available for the account.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Data</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date of the given balance in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>.</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Provides more details for the authorised payment.</td>
+</tr>
+<tr>
+<td><code>first_transaction_date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date of the first transaction that bud has stored for this account.</td>
+</tr>
+<tr>
+<td><code>frequency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The frequency of the authorised payment.</td>
+</tr>
+<tr>
+<td><code>holder</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The account holder.</td>
+</tr>
+<tr>
+<td><code>holders</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>The account holder(s).</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The id for the authorised payment.</td>
+</tr>
+<tr>
+<td><code>identifiers</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>These are wellknown fields which uniquely identify the account.</td>
+</tr>
+<tr>
+<td><code>last_transaction_date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date of the last transaction that bud has stored for this account.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Metadata</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the payment.</td>
+</tr>
+<tr>
+<td><code>opening_date_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The datetime the account was opened in the format [RFC 3339]</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Operation Id</td>
+</tr>
+<tr>
+<td><code>pending</code></td>
+<td><code>any</code></td>
+<td>Yes</td>
+<td>The balance of the account if all pending transactions have settled.</td>
+</tr>
+<tr>
+<td><code>provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The account's provider, this is usually the bank or building society the account is held with.</td>
+</tr>
+<tr>
+<td><code>provider_display_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The display name for the account's provider.</td>
+</tr>
+<tr>
+<td><code>provider_logo</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A link to an image for the accounts provider's logo.</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The reference associated with the authorised payment.</td>
+</tr>
+<tr>
+<td><code>restriction</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The restriction on the account, if any.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status of the account.</td>
+</tr>
+<tr>
+<td><code>suggested_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name Bud suggests client apps show for the account.</td>
+</tr>
+<tr>
+<td><code>transaction_windows</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>The transaction windows indicate for which periods we have full coverage of transactions ingested for the account.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type of the authorised payment.</td>
+</tr>
+<tr>
+<td><code>usage_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The intended usage of the account.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-financialv3accounts" class="operation" data-method="get"><code>GET</code> /financial/v3/accounts</h3>
+<p>Operation ID: <code>financial_v3_accounts_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>X-Customer-Secret</code> | <code>header</code> | <code>string</code> | No | The Bud Customer secret used to encrypt customer data. This is required only if the customer secret is not already stored with Bud. |
+| <code>currency</code> | <code>query</code> | <code>string</code> | No | Use this parameter to filter the results returned on the <code>currency</code> associated with each result. Multiple values are accepted. If this parameter is not provided then results of any <code>currency</code> will be returned. |
+| <code>provider</code> | <code>query</code> | <code>string</code> | No | Use this parameter to filter the results returned on the <code>provider</code> associated with each result. Multiple values are accepted. If this parameter is not provided then results of any <code>provider</code> will be returned. |
+| <code>account_type</code> | <code>query</code> | <code>string</code> | No | Use this parameter to filter the results returned on the <code>account_type</code> associated with each result. Multiple values are accepted. If this parameter is not provided then results of any <code>account_type</code> will be returned. Currently supported values include (but are not necessarily limited to): - <code>auto_loan</code> - <code>boat_loan</code> - <code>brokerage</code> - <code>business_loan</code> - <code>certificate_of_deposit</code> - <code>charge_card</code> - <code>checking_account</code> - <code>credit_card</code> - <code>current_account</code> - <code>debit_card</code> - <code>disability_insurance</code> - <code>e_money</code> - <code>health_insurance</code> - <code>home_equity_loan</code> - <code>insurance</code> - <code>investment</code> - <code>ira</code> - <code>liability_insurance</code> - <code>life_insurance</code> - <code>line_of_credit</code> - <code>loan</code> - <code>money_market</code> - <code>mortgage</code> - <code>other</code> - <code>personal_loan</code> - <code>pre_paid_card</code> - <code>property_insurance</code> - <code>roth</code> - <code>rv_loan</code> - <code>safe_deposit_box</code> - <code>savings</code> - <code>student_loan</code> - <code>travel_insurance</code> - <code>vehicle_insurance</code> - <code>wealth_account</code> |
+| <code>usage_type</code> | <code>query</code> | <code>string</code> | No | Use this parameter to filter the results returned on the <code>usage_type</code> associated with each result. Multiple values are accepted. If this parameter is not provided then results of any <code>usage_type</code> will be returned. Currently supported values include (but are not necessarily limited to): - <code>personal</code> - <code>business</code> |
+| <code>holder_relationship_type</code> | <code>query</code> | <code>string</code> | No | Use this parameter to filter the results returned on the <code>holder_relationship_type</code> associated with each result. Multiple values are accepted. If this parameter is not provided then results of any <code>holder_relationship_type</code> will be returned. Currently supported values include (but are not necessarily limited to): - <code>sole</code> - <code>joint</code> - <code>delegate</code> - <code>unknown</code> |
+| <code>include_all_balances</code> | <code>query</code> | <code>boolean</code> | No | Use this parameter to include all balances associated with each account. If this parameter is not provided then only the pending and booked balance will be returned where available. |
+| <code>exclude_restricted</code> | <code>query</code> | <code>boolean</code> | No | Exclude accounts with a <code>restriction</code> of <code>restricted</code>. |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-ok" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].account_category</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The account category that the account type is a part of Currently supported values include (but are not necessarily limited to): - <code>credit</code> - <code>depository</code> - <code>insurance</code> - <code>investment</code> - <code>loan</code> - <code>savings</code> - <code>other</code></td>
+</tr>
+<tr>
+<td><code>data[].account_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique id associated with the account. Example: <code>sdb4eRMaad8XVEvdIoISOQ</code></td>
+</tr>
+<tr>
+<td><code>data[].account_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name associated with the account, this is often a friendly name assigned to the account to make it easier to refer to. Example: <code>Household Savings Account</code> Not present if empty.</td>
+</tr>
+<tr>
+<td><code>data[].account_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of account. Currently supported values include (but are not necessarily limited to): - <code>auto_loan</code> - <code>boat_loan</code> - <code>brokerage</code> - <code>business_loan</code> - <code>certificate_of_deposit</code> - <code>charge_card</code> - <code>checking_account</code> - <code>credit_card</code> - <code>current_account</code> - <code>debit_card</code> - <code>disability_insurance</code> - <code>e_money</code> - <code>health_insurance</code> - <code>home_equity_loan</code> - <code>insurance</code> - <code>investment</code> - <code>ira</code> - <code>liability_insurance</code> - <code>life_insurance</code> - <code>line_of_credit</code> - <code>loan</code> - <code>money_market</code> - <code>mortgage</code> - <code>other</code> - <code>personal_loan</code> - <code>pre_paid_card</code> - <code>property_insurance</code> - <code>roth</code> - <code>rv_loan</code> - <code>safe_deposit_box</code> - <code>savings</code> - <code>student_loan</code> - <code>travel_insurance</code> - <code>vehicle_insurance</code> - <code>wealth_account</code> Not present if empty.</td>
+</tr>
+<tr>
+<td><code>data[].balances</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The balances ingested for the account. &gt; 📘 Note &gt; &gt; Normalised balances are derived from ingested data, therefore we're unable to guarantee that either a <code>booked</code> or <code>pending</code> balance will always be present. Where possible we will look to return both.</td>
+</tr>
+<tr>
+<td><code>data[].balances.all_balances</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>A granular breakdown of balance types ingested for the account. <strong>NOTE: Only included if the <code>include_all_balances</code> query parameter is set.</strong></td>
+</tr>
+<tr>
+<td><code>data[].balances.all_balances[].amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].balances.all_balances[].amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].balances.all_balances[].amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].balances.all_balances[].credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>Yes</td>
+<td>The credit or debit state of the given balance</td>
+</tr>
+<tr>
+<td><code>data[].balances.all_balances[].date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date when the balance was last updated in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-01-17T17:29:51Z</code> - <code>2023-01-17T17:29:51-08:00</code></td>
+</tr>
+<tr>
+<td><code>data[].balances.all_balances[].type</code></td>
+<td><code>enum: closing_available, closing_booked, closing_cleared, expected, forward_available, information, ...</code></td>
+<td>No</td>
+<td>The type for the given balance Currently supported values include (but are not necessarily limited to): - <code>closing_available</code> - <code>closing_booked</code> - <code>closing_cleared</code> - <code>expected</code> - <code>forward_available</code> - <code>information</code> - <code>interim_available</code> - <code>interim_booked</code> - <code>interim_cleared</code> - <code>opening_available</code> - <code>opening_booked</code> - <code>opening_cleared</code> - <code>previously_closed_booked</code></td>
+</tr>
+<tr>
+<td><code>data[].balances.booked</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The booked balance for the account at the given date. This field is not guaranteed to be present. It will only exist if a booked balance was found from ingested balances.</td>
+</tr>
+<tr>
+<td><code>data[].balances.pending</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The pending balance for the account at the given date. This field is not guaranteed to be present. It will only exist if a pending balance was found from ingested balances.</td>
+</tr>
+<tr>
+<td><code>data[].closed_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The datetime the account was closed in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. If the account is not closed, this field will not be present.</td>
+</tr>
+<tr>
+<td><code>data[].credit_lines</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The latest credit limit available for the account. This field will only be present if the credit limit was found from ingested balances.</td>
+</tr>
+<tr>
+<td><code>data[].credit_lines.all_credit_lines</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>All credit lines stored for the account. Only included if the <code>include_all_balances</code> query parameter is set</td>
+</tr>
+<tr>
+<td><code>data[].credit_lines.all_credit_lines[].amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].credit_lines.all_credit_lines[].amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].credit_lines.all_credit_lines[].amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].credit_lines.all_credit_lines[].date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date when the credit line was last updated in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-01-17T17:29:51Z</code> - <code>2023-01-17T17:29:51-08:00</code></td>
+</tr>
+<tr>
+<td><code>data[].credit_lines.all_credit_lines[].type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type of the given credit line. Currently supported values include (but are not necessarily limited to): - <code>available</code> - <code>credit</code> - <code>emergency</code> - <code>pre_agreed</code> - <code>temporary</code></td>
+</tr>
+<tr>
+<td><code>data[].credit_lines.limit</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The credit limit for the account at the given date. This field will only be present if the credit limit was found from ingested balances.</td>
+</tr>
+<tr>
+<td><code>data[].currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].holders</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The account holder(s).</td>
+</tr>
+<tr>
+<td><code>data[].holders[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the given account holder. Example: <code>John Smith</code></td>
+</tr>
+<tr>
+<td><code>data[].holders[].relationship</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The relationship that the individual holder has with the account. If parties data is not present, this will always be <code>unknown</code>. Currently supported values include (but are not necessarily limited to): - <code>sole</code> - <code>joint</code> - <code>delegate</code> - <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>data[].identifiers</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>These are wellknown fields which uniquely identify the account.</td>
+</tr>
+<tr>
+<td><code>data[].identifiers.iban</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A thirty-four character alphanumerical code (ISO 13616), internationally and uniquely identifying the account. Example: <code>GB29NWBK60161331926819</code></td>
+</tr>
+<tr>
+<td><code>data[].identifiers.nz_account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A sixteen digit number uniquely identifying the account and New Zealand bank the account is held with. Example: <code>1212341234567123</code></td>
+</tr>
+<tr>
+<td><code>data[].identifiers.pan</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A number between 14 and 19 digits that uniquely identifies the account, this is usually the number printed on the card assigned to the account. Example: <code>4444333322221111</code></td>
+</tr>
+<tr>
+<td><code>data[].identifiers.uk_account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An eight digit number uniquely identifying the account for the UK bank or building society the account is held with. This is usually supplied alongside a <code>uk_sort_code</code> to uniquely identify the account from accounts with other UK banks or building societies. Example: <code>31926819</code></td>
+</tr>
+<tr>
+<td><code>data[].identifiers.uk_sort_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A six digit number identifying the UK bank or building society the account is held with. This is usually supplied alongside a <code>uk_account_number</code> to uniquely identify the account. Example: <code>601613</code></td>
+</tr>
+<tr>
+<td><code>data[].identifiers.us_account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The account number associated with this account Example: <code>...3750</code></td>
+</tr>
+<tr>
+<td><code>data[].opening_date_time</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The datetime the account was opened in the format [RFC 3339]</td>
+</tr>
+<tr>
+<td><code>data[].provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The account's provider, this is usually the bank or building society the account is held with. Example: <code>Nationwide</code> Not present if empty.</td>
+</tr>
+<tr>
+<td><code>data[].provider_display_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The display name for the account's provider. Not present if empty.</td>
+</tr>
+<tr>
+<td><code>data[].provider_logo</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A link to an image for the accounts provider's logo. Not present if empty.</td>
+</tr>
+<tr>
+<td><code>data[].restriction</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The restriction on the account, if any. Supported values: <code>view_only</code>, <code>restricted</code>.</td>
+</tr>
+<tr>
+<td><code>data[].status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status of the account. If this field is not present, then the account is considered open. Currently supported values include (but are not necessarily limited to): - <code>closed</code></td>
+</tr>
+<tr>
+<td><code>data[].suggested_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name Bud suggests client apps show for the account.</td>
+</tr>
+<tr>
+<td><code>data[].transaction_windows</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The transaction windows indicate for which periods we have full coverage of transactions ingested for the account. Not present if no transaction data has been ingested.</td>
+</tr>
+<tr>
+<td><code>data[].transaction_windows[].from</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a> datetime recording the start of the window</td>
+</tr>
+<tr>
+<td><code>data[].transaction_windows[].to</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a> datetime recording the end of the window</td>
+</tr>
+<tr>
+<td><code>data[].usage_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The intended usage of the account. Currently supported values include (but are not necessarily limited to): - <code>personal</code> - <code>business</code> Not present if empty.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata.parameters</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata.parameters.account_types</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The Account Type values supplied in the request to generate the given result set. Currently supported values include (but are not necessarily limited to): - <code>charge_card</code> - <code>credit_card</code> - <code>current_account</code> - <code>e_money</code> - <code>investment</code> - <code>loan</code> - <code>mortgage</code> - <code>other</code> - <code>pre_paid_card</code> - <code>savings</code></td>
+</tr>
+<tr>
+<td><code>metadata.parameters.currencies</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The Currency values supplied in the request to generate the given result set.</td>
+</tr>
+<tr>
+<td><code>metadata.parameters.holder_types</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The Holder Type values supplied in the request to generate the given result set. Currently supported values include (but are not necessarily limited to): - <code>sole</code> - <code>joint</code> - <code>delegate</code> - <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>metadata.parameters.include_all_balances</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>All balances and credit lines stored for the accounts are returned</td>
+</tr>
+<tr>
+<td><code>metadata.parameters.providers</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The Provider values supplied in the request to generate the given result set.</td>
+</tr>
+<tr>
+<td><code>metadata.parameters.usage_types</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The Usage Type values supplied in the request to generate the given result set. Currently supported values include (but are not necessarily limited to): - <code>personal</code> - <code>business</code></td>
+</tr>
+<tr>
+<td><code>metadata.results</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The number of accounts returned in the results</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>enum: financial_v3_accounts_get</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="400-the-request-contains-an-invalid-payload" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorised" class="status" data-status="4xx">401: Unauthorised</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;unknown&quot;,
+  &quot;message&quot;: &quot;Unauthorised request&quot;,
+  &quot;operation_id&quot;: &quot;unknown&quot;
+}
+</code></pre>
+<h5 id="500-server-error" class="status" data-status="5xx">500: Server Error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;unknown&quot;,
+  &quot;message&quot;: &quot;An error occurred while processing your request. Get in touch with us and provide us your request id: 7ef63242-ba6d-4661-8014-f9eaa9cb2ad8&quot;,
+  &quot;operation_id&quot;: &quot;unknown&quot;
+}
+</code></pre>
+<h3 id="get-financialv2accounts" class="operation" data-method="get"><code>GET</code> /financial/v2/accounts</h3>
+<p>Operation ID: <code>financial_v2_accounts</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>X-Customer-Secret</code> | <code>header</code> | <code>string</code> | No | The Bud Customer secret used to encrypt customer data. This is required only if the customer secret is not already stored with Bud. |
+| <code>currency</code> | <code>query</code> | <code>string</code> | No | Use this parameter to filter the results returned on the <code>currency</code> associated with each result. Multiple values are accepted. If this parameter is not provided then results of any <code>currency</code> will be returned. |
+| <code>provider</code> | <code>query</code> | <code>string</code> | No | Use this parameter to filter the results returned on the <code>provider</code> associated with each result. Multiple values are accepted. If this parameter is not provided then results of any <code>provider</code> will be returned. |
+| <code>account_type</code> | <code>query</code> | <code>string</code> | No | Use this parameter to filter the results returned on the <code>account_type</code> associated with each result. Multiple values are accepted. If this parameter is not provided then results of any <code>account_type</code> will be returned. Currently supported values include (but are not necessarily limited to): - <code>charge_card</code> - <code>credit_card</code> - <code>current_account</code> - <code>e_money</code> - <code>investment</code> - <code>loan</code> - <code>mortgage</code> - <code>other</code> - <code>pre_paid_card</code> - <code>savings</code> |
+| <code>usage_type</code> | <code>query</code> | <code>string</code> | No | Use this parameter to filter the results returned on the <code>usage_type</code> associated with each result. Multiple values are accepted. If this parameter is not provided then results of any <code>usage_type</code> will be returned. Currently supported values include (but are not necessarily limited to): - <code>personal</code> - <code>business</code> |
+| <code>holder_relationship_type</code> | <code>query</code> | <code>string</code> | No | Use this parameter to filter the results returned on the <code>holder_relationship_type</code> associated with each result. Multiple values are accepted. If this parameter is not provided then results of any <code>holder_relationship_type</code> will be returned. Currently supported values include (but are not necessarily limited to): - <code>sole</code> - <code>joint</code> - <code>delegate</code> - <code>unknown</code> |
+| <code>exclude_restricted</code> | <code>query</code> | <code>boolean</code> | No | Exclude accounts with a <code>restriction</code> of <code>restricted</code>. |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-ok-1" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].account_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique id associated with the account. Example: <code>sdb4eRMaad8XVEvdIoISOQ</code></td>
+</tr>
+<tr>
+<td><code>data[].account_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name associated with the account, this is often a friendly name assigned to the account to make it easier to refer to. Example: <code>Household Savings Account</code></td>
+</tr>
+<tr>
+<td><code>data[].account_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of account. Currently supported values include (but are not necessarily limited to): - <code>charge_card</code> - <code>credit_card</code> - <code>current_account</code> - <code>e_money</code> - <code>investment</code> - <code>loan</code> - <code>mortgage</code> - <code>other</code> - <code>pre_paid_card</code> - <code>savings</code></td>
+</tr>
+<tr>
+<td><code>data[].balances</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The latest balances for the account.</td>
+</tr>
+<tr>
+<td><code>data[].balances[].amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].balances[].amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].balances[].amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].balances[].credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>Yes</td>
+<td>The credit or debit state of the given balance</td>
+</tr>
+<tr>
+<td><code>data[].balances[].date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date when the balance was last updated in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-01-17T17:29:51Z</code> - <code>2023-01-17T17:29:51-08:00</code></td>
+</tr>
+<tr>
+<td><code>data[].balances[].type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type for the given balance Currently supported values include (but are not necessarily limited to): - <code>closing_available</code> - <code>closing_booked</code> - <code>closing_cleared</code> - <code>expected</code> - <code>forward_available</code> - <code>information</code> - <code>interim_available</code> - <code>interim_booked</code> - <code>interim_cleared</code> - <code>opening_available</code> - <code>opening_booked</code> - <code>opening_cleared</code> - <code>previously_closed_booked</code></td>
+</tr>
+<tr>
+<td><code>data[].closed_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The datetime the account was closed in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. If the account is not closed, this field will not be present.</td>
+</tr>
+<tr>
+<td><code>data[].credit_lines</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The latest lines of credit available to the account. This is typically a representation of the overdraft or credit limits.</td>
+</tr>
+<tr>
+<td><code>data[].credit_lines[].amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].credit_lines[].amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].credit_lines[].amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].credit_lines[].date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date when the credit line was last updated in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-01-17T17:29:51Z</code> - <code>2023-01-17T17:29:51-08:00</code></td>
+</tr>
+<tr>
+<td><code>data[].credit_lines[].type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type of the given credit line. Currently supported values include (but are not necessarily limited to): - <code>available</code> - <code>credit</code> - <code>emergency</code> - <code>pre_agreed</code> - <code>temporary</code></td>
+</tr>
+<tr>
+<td><code>data[].currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].holder</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The account holder. This field is only present if parties data <strong>is not</strong> available. Parties data will only be present if you are a Check customer, and the provider is support by Check. Providers that support Check can be found in the Connect coverage table in Guides, under Connect.</td>
+</tr>
+<tr>
+<td><code>data[].holder.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the given account holder. Example: <code>John Smith</code></td>
+</tr>
+<tr>
+<td><code>data[].holder.relationship</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The relationship that the individual holder has with the account. If parties data is not present, this will always be <code>unknown</code>. Currently supported values include (but are not necessarily limited to): - <code>sole</code> - <code>joint</code> - <code>delegate</code> - <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>data[].holders</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The account holders. This field is only present if parties data <strong>is</strong> available. Parties data will only be present if you are a Check customer, and the provider is supported by Check. Providers that support Check can be found in the Connect coverage table in Guides, under Connect.</td>
+</tr>
+<tr>
+<td><code>data[].holders[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the given account holder. Example: <code>John Smith</code></td>
+</tr>
+<tr>
+<td><code>data[].holders[].relationship</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The relationship that the individual holder has with the account. If parties data is not present, this will always be <code>unknown</code>. Currently supported values include (but are not necessarily limited to): - <code>sole</code> - <code>joint</code> - <code>delegate</code> - <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>data[].identifiers</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>These are wellknown fields which uniquely identify the account.</td>
+</tr>
+<tr>
+<td><code>data[].identifiers.iban</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A thirty-four character alphanumerical code (ISO 13616), internationally and uniquely identifying the account. Example: <code>GB29NWBK60161331926819</code></td>
+</tr>
+<tr>
+<td><code>data[].identifiers.nz_account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A sixteen digit number uniquely identifying the account and New Zealand bank the account is held with. Example: <code>1212341234567123</code></td>
+</tr>
+<tr>
+<td><code>data[].identifiers.pan</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A number between 14 and 19 digits that uniquely identifies the account, this is usually the number printed on the card assigned to the account. Example: <code>4444333322221111</code></td>
+</tr>
+<tr>
+<td><code>data[].identifiers.uk_account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An eight digit number uniquely identifying the account for the UK bank or building society the account is held with. This is usually supplied alongside a <code>uk_sort_code</code> to uniquely identify the account from accounts with other UK banks or building societies. Example: <code>31926819</code></td>
+</tr>
+<tr>
+<td><code>data[].identifiers.uk_sort_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A six digit number identifying the UK bank or building society the account is held with. This is usually supplied alongside a <code>uk_account_number</code> to uniquely identify the account. Example: <code>601613</code></td>
+</tr>
+<tr>
+<td><code>data[].provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The account's provider, this is usually the bank or building society the account is held with. Example: <code>Nationwide</code></td>
+</tr>
+<tr>
+<td><code>data[].restriction</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The restriction on the account, if any. Supported values: <code>view_only</code>, <code>restricted</code>.</td>
+</tr>
+<tr>
+<td><code>data[].status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status of the account. If this field is not present, then the account is considered open. Currently supported values include (but are not necessarily limited to): - <code>closed</code></td>
+</tr>
+<tr>
+<td><code>data[].transaction_windows</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The transaction windows indicate for which periods we have full coverage of transactions ingested for the account.</td>
+</tr>
+<tr>
+<td><code>data[].transaction_windows[].from</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a> datetime recording the start of the window</td>
+</tr>
+<tr>
+<td><code>data[].transaction_windows[].to</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a> datetime recording the end of the window</td>
+</tr>
+<tr>
+<td><code>data[].usage_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The intended usage of the account. Currently supported values include (but are not necessarily limited to): - <code>personal</code> - <code>business</code></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata.parameters</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata.parameters.account_types</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The Account Type values supplied in the request to generate the given result set. Currently supported values include (but are not necessarily limited to): - <code>charge_card</code> - <code>credit_card</code> - <code>current_account</code> - <code>e_money</code> - <code>investment</code> - <code>loan</code> - <code>mortgage</code> - <code>other</code> - <code>pre_paid_card</code> - <code>savings</code></td>
+</tr>
+<tr>
+<td><code>metadata.parameters.currencies</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The Currency values supplied in the request to generate the given result set.</td>
+</tr>
+<tr>
+<td><code>metadata.parameters.holder_types</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The Holder Type values supplied in the request to generate the given result set. Currently supported values include (but are not necessarily limited to): - <code>sole</code> - <code>joint</code> - <code>delegate</code> - <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>metadata.parameters.providers</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The Provider values supplied in the request to generate the given result set.</td>
+</tr>
+<tr>
+<td><code>metadata.parameters.usage_types</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The Usage Type values supplied in the request to generate the given result set. Currently supported values include (but are not necessarily limited to): - <code>personal</code> - <code>business</code></td>
+</tr>
+<tr>
+<td><code>metadata.result_count</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The number of accounts returned in the results</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>enum: financial_v2_accounts</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="400-the-request-contains-an-invalid-payload-1" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorised-1" class="status" data-status="4xx">401: Unauthorised</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;unknown&quot;,
+  &quot;message&quot;: &quot;Unauthorised request&quot;,
+  &quot;operation_id&quot;: &quot;unknown&quot;
+}
+</code></pre>
+<h5 id="500-server-error-1" class="status" data-status="5xx">500: Server Error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;unknown&quot;,
+  &quot;message&quot;: &quot;An error occurred while processing your request. Get in touch with us and provide us your request id: 7ef63242-ba6d-4661-8014-f9eaa9cb2ad8&quot;,
+  &quot;operation_id&quot;: &quot;unknown&quot;
+}
+</code></pre>
+<h3 id="get-financialv2accountsaccount_idbalances" class="operation" data-method="get"><code>GET</code> /financial/v2/accounts/{account_id}/balances</h3>
+<p>Operation ID: <code>financial_v2_accounts_balances_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>X-Customer-Secret</code> | <code>header</code> | <code>string</code> | No | The Bud Customer secret used to encrypt customer data. This is required only if the customer secret is not already stored with Bud. |
+| <code>from</code> | <code>query</code> | <code>string</code> | No | The date from when results are to be retrieved in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-01-17T17:29:51Z</code> - <code>2023-01-17T17:29:51-08:00</code> |
+| <code>to</code> | <code>query</code> | <code>string</code> | No | The date up to when results are to be retrieved in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-03-17T17:29:51Z</code> - <code>2023-03-17T17:29:51-08:00</code> |
+| <code>account_id</code> | <code>path</code> | <code>string</code> | Yes | The account ID to retrieve data for. |
+| <code>granularity</code> | <code>query</code> | <code>string</code> | No | Specifies in what interval the balance over time should be retrieved. Currently supported values include (but are not necessarily limited to): - <code>daily</code> - <code>weekly</code> - <code>biweekly</code> - <code>monthly</code> - <code>quarterly</code> - <code>six_monthly</code> - <code>annually</code> Defaults to <code>weekly</code>. |
+| <code>date-field</code> | <code>query</code> | <code>string</code> | No | Specifies which date field as returned from the <code>/financial/v2/transactions</code> endpoint should be used in the calculation of balance over time. Currently supported values include (but are not necessarily limited to): - <code>date_time</code> - <code>posted_date_time</code> Defaults to <code>date_time</code>. |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-ok-2" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].booked</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The current balance of the account</td>
+</tr>
+<tr>
+<td><code>data[].booked.amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].booked.amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].booked.amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].booked.credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>Yes</td>
+<td>Indication as to whether the balance is in credit or debit</td>
+</tr>
+<tr>
+<td><code>data[].booked.type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type for the given balance. Currently supported values include (but are not necessarily limited to): - <code>closing_available</code> - <code>closing_booked</code> - <code>closing_cleared</code> - <code>expected</code> - <code>forward_available</code> - <code>information</code> - <code>interim_available</code> - <code>interim_booked</code> - <code>interim_cleared</code> - <code>opening_available</code> - <code>opening_booked</code> - <code>opening_cleared</code> - <code>previously_closed_booked</code></td>
+</tr>
+<tr>
+<td><code>data[].date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date of the given balance in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-03-17T23:59:59Z</code> - <code>2023-03-17T23:59:59-08:00</code></td>
+</tr>
+<tr>
+<td><code>data[].pending</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The balance of the account if all pending transactions have settled. This field is only present if the pending balance is different than the booked balance.</td>
+</tr>
+<tr>
+<td><code>data[].pending.amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].pending.amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].pending.amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].pending.credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>Yes</td>
+<td>Indication as to whether the balance is in credit or debit</td>
+</tr>
+<tr>
+<td><code>data[].pending.type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type for the given balance. Currently supported values include (but are not necessarily limited to): - <code>closing_available</code> - <code>closing_booked</code> - <code>closing_cleared</code> - <code>expected</code> - <code>forward_available</code> - <code>information</code> - <code>interim_available</code> - <code>interim_booked</code> - <code>interim_cleared</code> - <code>opening_available</code> - <code>opening_booked</code> - <code>opening_cleared</code> - <code>previously_closed_booked</code></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata.accounts</code></td>
+<td><code>object and object and object and object and object</code></td>
+<td>No</td>
+<td>Metadata about the response for the given <code>account_id</code></td>
+</tr>
+<tr>
+<td><code>metadata.parameters</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;booked&quot;: {
+        &quot;amount&quot;: {
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;value&quot;: &quot;900.00&quot;
+        },
+        &quot;credit_debit_indicator&quot;: &quot;credit&quot;,
+        &quot;type&quot;: &quot;interim_booked&quot;
+      },
+      &quot;date&quot;: &quot;2022-11-15T23:59:59Z&quot;,
+      &quot;pending&quot;: {
+        &quot;amount&quot;: {
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;value&quot;: &quot;850.00&quot;
+        },
+        &quot;credit_debit_indicator&quot;: &quot;credit&quot;,
+        &quot;type&quot;: &quot;expected&quot;
+      }
+    },
+    {
+      &quot;booked&quot;: {
+        &quot;amount&quot;: {
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;value&quot;: &quot;950.00&quot;
+        },
+        &quot;credit_debit_indicator&quot;: &quot;credit&quot;,
+        &quot;type&quot;: &quot;interim_booked&quot;
+      },
+      &quot;date&quot;: &quot;2022-11-14T23:59:59Z&quot;,
+      &quot;pending&quot;: {
+        &quot;amount&quot;: {
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;value&quot;: &quot;900.00&quot;
+        },
+        &quot;credit_debit_indicator&quot;: &quot;credit&quot;,
+        &quot;type&quot;: &quot;expected&quot;
+      }
+    }
+  ],
+  &quot;metadata&quot;: {
+    &quot;accounts&quot;: {
+      &quot;balance_count&quot;: 2,
+      &quot;from&quot;: &quot;2022-11-14T23:59:59Z&quot;,
+      &quot;last_updated_at&quot;: &quot;2022-11-15T09:12:04Z&quot;,
+      &quot;max_balance&quot;: {
+        &quot;currency&quot;: &quot;GBP&quot;,
+        &quot;value&quot;: &quot;500.12&quot;
+      },
+      &quot;min_balance&quot;: {
+        &quot;currency&quot;: &quot;GBP&quot;,
+        &quot;value&quot;: &quot;0.00&quot;
+      },
+      &quot;to&quot;: &quot;2022-11-15T23:59:59Z&quot;
+    },
+    &quot;parameters&quot;: {
+      &quot;from&quot;: &quot;2020-12-22T00:00:00Z&quot;,
+      &quot;granularity&quot;: &quot;daily&quot;,
+      &quot;to&quot;: &quot;2022-11-15T00:00:00Z&quot;
+    }
+  },
+  &quot;operation_id&quot;: &quot;financial_v2_accounts_balances_get&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload-2" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-an-unauthenticated-request-was-received" class="status" data-status="4xx">401: An unauthenticated request was received</h5>
+<h5 id="404-not-found" class="status" data-status="4xx">404: Not Found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;account_not_found&quot;,
+  &quot;message&quot;: &quot;The specified account could not be found. Please check the account identifier is correct. The account might be closed or suspended.&quot;,
+  &quot;operation_id&quot;: &quot;financial_v2_accounts_balances_get&quot;
+}
+</code></pre>
+<h5 id="500-server-error-2" class="status" data-status="5xx">500: Server Error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;internal_error&quot;,
+  &quot;message&quot;: &quot;Internal server error has occurred.&quot;,
+  &quot;operation_id&quot;: &quot;financial_v2_accounts_balances_get&quot;
+}
+</code></pre>
+<h3 id="get-financialv3accountsaccount_idbalances" class="operation" data-method="get"><code>GET</code> /financial/v3/accounts/{account_id}/balances</h3>
+<p>Operation ID: <code>financial_v3_accounts_balances_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>X-Customer-Secret</code> | <code>header</code> | <code>string</code> | No | The Bud Customer secret used to encrypt customer data. This is required only if the customer secret is not already stored with Bud. |
+| <code>from</code> | <code>query</code> | <code>string</code> | No | The date from when results are to be retrieved in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-01-17T17:29:51Z</code> - <code>2023-01-17T17:29:51-08:00</code> |
+| <code>to</code> | <code>query</code> | <code>string</code> | No | The date up to when results are to be retrieved in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-03-17T17:29:51Z</code> - <code>2023-03-17T17:29:51-08:00</code> |
+| <code>account_id</code> | <code>path</code> | <code>string</code> | Yes | The account ID to retrieve data for. |
+| <code>granularity</code> | <code>query</code> | <code>string</code> | No | Specifies in what interval the balance over time should be retrieved. Currently supported values include (but are not necessarily limited to): - <code>daily</code> - <code>weekly</code> - <code>biweekly</code> - <code>monthly</code> - <code>quarterly</code> - <code>six_monthly</code> - <code>annually</code> Defaults to <code>weekly</code>. |
+| <code>date-field</code> | <code>query</code> | <code>string</code> | No | Specifies which date field as returned from the <code>/financial/v2/transactions</code> endpoint should be used in the calculation of balance over time. Currently supported values include (but are not necessarily limited to): - <code>date_time</code> - <code>posted_date_time</code> Defaults to <code>date_time</code>. |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-ok-3" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].booked</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The current balance of the account</td>
+</tr>
+<tr>
+<td><code>data[].booked.amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].booked.amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].booked.amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].booked.credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>Yes</td>
+<td>Indication as to whether the balance is in credit or debit</td>
+</tr>
+<tr>
+<td><code>data[].date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date of the given balance in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-03-17T23:59:59Z</code> - <code>2023-03-17T23:59:59-08:00</code></td>
+</tr>
+<tr>
+<td><code>data[].pending</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The balance of the account if all pending transactions have settled.</td>
+</tr>
+<tr>
+<td><code>data[].pending.amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].pending.amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].pending.amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].pending.credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>Yes</td>
+<td>Indication as to whether the balance is in credit or debit</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata.accounts</code></td>
+<td><code>object and object and object and object and object</code></td>
+<td>No</td>
+<td>Metadata about the response for the given <code>account_id</code></td>
+</tr>
+<tr>
+<td><code>metadata.parameters</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;booked&quot;: {
+        &quot;amount&quot;: {
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;value&quot;: &quot;900.00&quot;
+        },
+        &quot;credit_debit_indicator&quot;: &quot;credit&quot;
+      },
+      &quot;date&quot;: &quot;2022-11-15T23:59:59Z&quot;,
+      &quot;pending&quot;: {
+        &quot;amount&quot;: {
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;value&quot;: &quot;850.00&quot;
+        },
+        &quot;credit_debit_indicator&quot;: &quot;credit&quot;
+      }
+    },
+    {
+      &quot;booked&quot;: {
+        &quot;amount&quot;: {
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;value&quot;: &quot;950.00&quot;
+        },
+        &quot;credit_debit_indicator&quot;: &quot;credit&quot;
+      },
+      &quot;date&quot;: &quot;2022-11-14T23:59:59Z&quot;,
+      &quot;pending&quot;: {
+        &quot;amount&quot;: {
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;value&quot;: &quot;900.00&quot;
+        },
+        &quot;credit_debit_indicator&quot;: &quot;credit&quot;
+      }
+    }
+  ],
+  &quot;metadata&quot;: {
+    &quot;accounts&quot;: {
+      &quot;balance_count&quot;: 2,
+      &quot;from&quot;: &quot;2022-11-14T23:59:59Z&quot;,
+      &quot;last_updated_at&quot;: &quot;2022-11-15T09:12:04Z&quot;,
+      &quot;max_balance&quot;: {
+        &quot;currency&quot;: &quot;GBP&quot;,
+        &quot;value&quot;: &quot;500.12&quot;
+      },
+      &quot;min_balance&quot;: {
+        &quot;currency&quot;: &quot;GBP&quot;,
+        &quot;value&quot;: &quot;0.00&quot;
+      },
+      &quot;to&quot;: &quot;2022-11-15T23:59:59Z&quot;
+    },
+    &quot;parameters&quot;: {
+      &quot;from&quot;: &quot;2020-12-22T00:00:00Z&quot;,
+      &quot;granularity&quot;: &quot;daily&quot;,
+      &quot;to&quot;: &quot;2022-11-15T00:00:00Z&quot;
+    }
+  },
+  &quot;operation_id&quot;: &quot;financial_v3_accounts_balances_get&quot;
+}
+</code></pre>
+<h5 id="400-bad-request" class="status" data-status="4xx">400: Bad Request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-an-unauthenticated-request-was-received-1" class="status" data-status="4xx">401: An unauthenticated request was received</h5>
+<h5 id="404-not-found-1" class="status" data-status="4xx">404: Not Found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;account_not_found&quot;,
+  &quot;message&quot;: &quot;The specified account could not be found. Please check the account identifier is correct. The account might be closed or suspended.&quot;,
+  &quot;operation_id&quot;: &quot;financial_v3_accounts_balances_get&quot;
+}
+</code></pre>
+<h5 id="500-server-error-3" class="status" data-status="5xx">500: Server Error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;internal_error&quot;,
+  &quot;message&quot;: &quot;Internal server error has occurred.&quot;,
+  &quot;operation_id&quot;: &quot;financial_v3_accounts_balances_get&quot;
+}
+</code></pre>
+<h3 id="get-financialv2authorised-payments" class="operation" data-method="get"><code>GET</code> /financial/v2/authorised-payments</h3>
+<p>Operation ID: <code>financial_v2_authorised_payments_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>X-Customer-Secret</code> | <code>header</code> | <code>string</code> | No | The Bud Customer secret used to encrypt customer data. This is required only if the customer secret is not already stored with Bud. |
+| <code>account_id</code> | <code>query</code> | <code>string</code> | No | Identifier of the accounts from which transactions should be returned. Example: &quot;5bd9ecaf31fc2d5172fd89cb61b89fc6&quot; |
+| <code>page_size</code> | <code>query</code> | <code>integer</code> | No | Maximum number of results to be returned. Defaults to 100, maximum is 200. Example: 100 |
+| <code>page_token</code> | <code>query</code> | <code>string</code> | No | The token required to fetch a specific page of results. Provided by the <code>next_page_token</code> field in the previous request. Example: <code>eyJvZmZzZXQiOjEwMH0</code> |
+| <code>status</code> | <code>query</code> | <code>string</code> | No | Use this parameter to filter the results returned on the <code>status</code> associated with each result. If this parameter is not provided then results of any <code>status</code> will be returned. Currently supported values include (but are not necessarily limited to): - <code>active`` - </code>inactive<code>-</code>cancelled<code>-</code>expired<code>-</code>suspended<code>-</code>unknown<code>| |</code>type<code>|</code>query<code>|</code>string<code>| No | Use this parameter to filter the results returned on the</code>type<code>associated with each result. If this parameter is not provided then results of any</code>type` will be returned. Currently supported values include (but are not necessarily limited to): - <code>direct_debit</code> - <code>standing_order</code> - <code>scheduled_payment</code> |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-ok-4" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].account_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique id associated with the account. example: <code>22289</code></td>
+</tr>
+<tr>
+<td><code>data[].details</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Provides more details for the authorised payment.</td>
+</tr>
+<tr>
+<td><code>data[].details[].amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].details[].amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].details[].amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].details[].credit_debit_indicator</code></td>
+<td><code>enum: debit</code></td>
+<td>Yes</td>
+<td>To describe whether the transaction is debit or credit.</td>
+</tr>
+<tr>
+<td><code>data[].details[].date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date of the payment in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-01-17T17:29:51Z</code> - <code>2023-01-17T17:29:51-08:00</code></td>
+</tr>
+<tr>
+<td><code>data[].details[].type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type of the transaction. Examples: - <code>previous_payment</code> - <code>first_payment</code> - <code>next_payment</code> - <code>final_payment</code> - <code>schedule_payment</code></td>
+</tr>
+<tr>
+<td><code>data[].frequency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The frequency of the authorised payment. Currently supported values include (but are not necessarily limited to): - <code>intra_day</code> - <code>daily</code> - <code>working_daily</code> - <code>weekly</code> - <code>biweekly</code> - <code>four_weekly</code> - <code>monthly</code> - <code>alternate_monthly</code> - <code>two_monthly</code> - <code>quarterly</code> - <code>four_monthly</code> - <code>five_monthly</code> - <code>six_monthly</code> - <code>annually</code> - <code>adhoc</code> - <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>data[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The id for the authorised payment. Example: <code>d23fcaa3-8ac0-43ba-a44d-d7c41935f76f</code></td>
+</tr>
+<tr>
+<td><code>data[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the payment. Example: `XY Club entrance fee&quot;</td>
+</tr>
+<tr>
+<td><code>data[].reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The reference associated with the authorised payment. Example: <code>Streaming subscription</code></td>
+</tr>
+<tr>
+<td><code>data[].status</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The status of the authorised payment. Currently supported values include (but are not necessarily limited to): - <code>active`` - </code>inactive<code>-</code>cancelled<code>-</code>expired<code>-</code>suspended<code>-</code>unknown`</td>
+</tr>
+<tr>
+<td><code>data[].type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type of the authorised payment. Currently supported values include (but are not necessarily limited to): - <code>direct_debit</code></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata.next_page_token</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Token is present if you have more pages.</td>
+</tr>
+<tr>
+<td><code>metadata.results</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The number of results returned.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>enum: financial_v2_authorised_payments_get</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="400-the-request-contains-an-invalid-payload-3" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorised-2" class="status" data-status="4xx">401: Unauthorised</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;unknown&quot;,
+  &quot;message&quot;: &quot;Unauthorised request.&quot;,
+  &quot;operation_id&quot;: &quot;unknown&quot;
+}
+</code></pre>
+<h5 id="500-server-error-4" class="status" data-status="5xx">500: Server Error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;unknown&quot;,
+  &quot;message&quot;: &quot;An error occurred while processing your request. Get in touch with us and provide us your request id: 7ef63242-ba6d-4661-8014-f9eaa9cb2ad8.&quot;,
+  &quot;operation_id&quot;: &quot;unknown&quot;
+}
+</code></pre>
+<h3 id="get-financialv2balances" class="operation" data-method="get"><code>GET</code> /financial/v2/balances</h3>
+<p>Operation ID: <code>financial_v2_balances_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>X-Customer-Secret</code> | <code>header</code> | <code>string</code> | No | The Bud Customer secret used to encrypt customer data. This is required only if the customer secret is not already stored with Bud. |
+| <code>from</code> | <code>query</code> | <code>string</code> | No | The date from when results are to be retrieved in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-01-17T17:29:51Z</code> - <code>2023-01-17T17:29:51-08:00</code> |
+| <code>to</code> | <code>query</code> | <code>string</code> | No | The date up to when results are to be retrieved in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-03-17T17:29:51Z</code> - <code>2023-03-17T17:29:51-08:00</code> |
+| <code>granularity</code> | <code>query</code> | <code>string</code> | No | Specifies in what interval the balance over time should be retrieved. Currently supported values include (but are not necessarily limited to): - <code>daily</code> - <code>weekly</code> - <code>biweekly</code> - <code>monthly</code> - <code>quarterly</code> - <code>six_monthly</code> - <code>annually</code> Defaults to <code>weekly</code>. |
+| <code>date-field</code> | <code>query</code> | <code>string</code> | No | Specifies which date field as returned from the <code>/financial/v2/transactions</code> endpoint should be used in the calculation of balance over time. Currently supported values include (but are not necessarily limited to): - <code>date_time</code> - <code>posted_date_time</code> Defaults to <code>date_time</code>. |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-ok-5" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].account_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Identifier of the accounts from which the balances have been calculated</td>
+</tr>
+<tr>
+<td><code>data[].balances</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].balances[].booked</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The current balance of the account</td>
+</tr>
+<tr>
+<td><code>data[].balances[].booked.amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].balances[].booked.amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].balances[].booked.amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].balances[].booked.credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>Yes</td>
+<td>Indication as to whether the balance is in credit or debit</td>
+</tr>
+<tr>
+<td><code>data[].balances[].booked.type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type for the given balance. Currently supported values include (but are not necessarily limited to): - <code>closing_available</code> - <code>closing_booked</code> - <code>closing_cleared</code> - <code>expected</code> - <code>forward_available</code> - <code>information</code> - <code>interim_available</code> - <code>interim_booked</code> - <code>interim_cleared</code> - <code>opening_available</code> - <code>opening_booked</code> - <code>opening_cleared</code> - <code>previously_closed_booked</code></td>
+</tr>
+<tr>
+<td><code>data[].balances[].date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date of the given balance in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-03-17T23:59:59Z</code> - <code>2023-03-17T23:59:59-08:00</code></td>
+</tr>
+<tr>
+<td><code>data[].balances[].pending</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The balance of the account if all pending transactions have settled. This field is only present if the pending balance is different than the booked balance.</td>
+</tr>
+<tr>
+<td><code>data[].balances[].pending.amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].balances[].pending.amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].balances[].pending.amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].balances[].pending.credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>Yes</td>
+<td>Indication as to whether the balance is in credit or debit</td>
+</tr>
+<tr>
+<td><code>data[].balances[].pending.type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type for the given balance. Currently supported values include (but are not necessarily limited to): - <code>closing_available</code> - <code>closing_booked</code> - <code>closing_cleared</code> - <code>expected</code> - <code>forward_available</code> - <code>information</code> - <code>interim_available</code> - <code>interim_booked</code> - <code>interim_cleared</code> - <code>opening_available</code> - <code>opening_booked</code> - <code>opening_cleared</code> - <code>previously_closed_booked</code></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata.accounts</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td>This is a hashmap representing <code>account_ids</code> and metadata about the results returned from the balances endpoint</td>
+</tr>
+<tr>
+<td><code>metadata.parameters</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>The parameters used to calculated balances</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;account_id&quot;: &quot;705e95fea8312d9a9b227b682033d55f&quot;,
+      &quot;balances&quot;: [
+        {
+          &quot;booked&quot;: {
+            &quot;amount&quot;: {
+              &quot;currency&quot;: &quot;GBP&quot;,
+              &quot;value&quot;: &quot;900.00&quot;
+            },
+            &quot;credit_debit_indicator&quot;: &quot;credit&quot;,
+            &quot;type&quot;: &quot;interim_booked&quot;
+          },
+          &quot;date&quot;: &quot;2022-11-15T23:59:59Z&quot;,
+          &quot;pending&quot;: {
+            &quot;amount&quot;: {
+              &quot;currency&quot;: &quot;GBP&quot;,
+              &quot;value&quot;: &quot;850.00&quot;
+            },
+            &quot;credit_debit_indicator&quot;: &quot;credit&quot;,
+            &quot;type&quot;: &quot;expected&quot;
+          }
+        },
+        {
+          &quot;booked&quot;: {
+            &quot;amount&quot;: {
+              &quot;currency&quot;: &quot;GBP&quot;,
+              &quot;value&quot;: &quot;950.00&quot;
+            },
+            &quot;credit_debit_indicator&quot;: &quot;credit&quot;,
+            &quot;type&quot;: &quot;interim_booked&quot;
+          },
+          &quot;date&quot;: &quot;2022-11-14T23:59:59Z&quot;,
+          &quot;pending&quot;: {
+            &quot;amount&quot;: {
+              &quot;currency&quot;: &quot;GBP&quot;,
+              &quot;value&quot;: &quot;900.00&quot;
+            },
+            &quot;credit_debit_indicator&quot;: &quot;credit&quot;,
+            &quot;type&quot;: &quot;expected&quot;
+          }
+        }
+      ]
+    },
+    {
+      &quot;account_id&quot;: &quot;9df0b46c8ab58277abc432fee26067ad&quot;,
+      &quot;balances&quot;: [
+        {
+          &quot;booked&quot;: {
+            &quot;amount&quot;: {
+              &quot;currency&quot;: &quot;JPY&quot;,
+              &quot;value&quot;: &quot;500&quot;
+            },
+            &quot;credit_debit_indicator&quot;: &quot;credit&quot;,
+            &quot;type&quot;: &quot;interim_booked&quot;
+          },
+          &quot;date&quot;: &quot;2022-11-15T23:59:59Z&quot;
+        }
+      ]
+    }
+  ],
+  &quot;metadata&quot;: {
+    &quot;accounts&quot;: {
+      &quot;5b271e24-9ea5-4d7e-b5da-64f01d32db22&quot;: {
+        &quot;balance_count&quot;: 2,
+        &quot;from&quot;: &quot;2022-11-14T23:59:59Z&quot;,
+        &quot;last_updated_at&quot;: &quot;2022-11-15T09:12:04Z&quot;,
+        &quot;max_balance&quot;: {
+          &quot;currency&quot;: &quot;JPY&quot;,
+          &quot;value&quot;: &quot;500.00&quot;
+        },
+        &quot;min_balance&quot;: {
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;value&quot;: &quot;200.00&quot;
+        },
+        &quot;to&quot;: &quot;2022-11-15T23:59:59Z&quot;
+      },
+      &quot;b6e9ea3c-71f9-4572-983a-3e5e85470dad&quot;: {
+        &quot;balance_count&quot;: 1,
+        &quot;from&quot;: &quot;2022-11-15T23:59:59Z&quot;,
+        &quot;last_updated_at&quot;: &quot;2022-11-15T14:47:31Z&quot;,
+        &quot;max_balance&quot;: {
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;value&quot;: &quot;500.12&quot;
+        },
+        &quot;min_balance&quot;: {
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;value&quot;: &quot;0.00&quot;
+        },
+        &quot;to&quot;: &quot;2022-11-15T23:59:59Z&quot;
+      }
+    },
+    &quot;parameters&quot;: {
+      &quot;from&quot;: &quot;2020-12-22T00:00:00Z&quot;,
+      &quot;granularity&quot;: &quot;daily&quot;,
+      &quot;to&quot;: &quot;2022-11-15T00:00:00Z&quot;
+    }
+  },
+  &quot;operation_id&quot;: &quot;financial_v2_balances_get&quot;
+}
+</code></pre>
+<h5 id="400-the-request-contains-an-invalid-payload-4" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-an-unauthenticated-request-was-received-2" class="status" data-status="4xx">401: An unauthenticated request was received</h5>
+<h5 id="500-server-error-5" class="status" data-status="5xx">500: Server Error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;internal_error&quot;,
+  &quot;message&quot;: &quot;Internal server error has occurred.&quot;,
+  &quot;operation_id&quot;: &quot;financial_v2_balances_get&quot;
+}
+</code></pre>
+<h3 id="get-financialv3balances" class="operation" data-method="get"><code>GET</code> /financial/v3/balances</h3>
+<p>Operation ID: <code>financial_v3_balances_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>X-Customer-Secret</code> | <code>header</code> | <code>string</code> | No | The Bud Customer secret used to encrypt customer data. This is required only if the customer secret is not already stored with Bud. |
+| <code>from</code> | <code>query</code> | <code>string</code> | No | The date from when results are to be retrieved in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-01-17T17:29:51Z</code> - <code>2023-01-17T17:29:51-08:00</code> |
+| <code>to</code> | <code>query</code> | <code>string</code> | No | The date up to when results are to be retrieved in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-03-17T17:29:51Z</code> - <code>2023-03-17T17:29:51-08:00</code> |
+| <code>granularity</code> | <code>query</code> | <code>string</code> | No | Specifies in what interval the balance over time should be retrieved. Currently supported values include (but are not necessarily limited to): - <code>daily</code> - <code>weekly</code> - <code>biweekly</code> - <code>monthly</code> - <code>quarterly</code> - <code>six_monthly</code> - <code>annually</code> Defaults to <code>weekly</code>. |
+| <code>date-field</code> | <code>query</code> | <code>string</code> | No | Specifies which date field as returned from the <code>/financial/v2/transactions</code> endpoint should be used in the calculation of balance over time. Currently supported values include (but are not necessarily limited to): - <code>date_time</code> - <code>posted_date_time</code> Defaults to <code>date_time</code>. |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-ok-6" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].account_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Identifier of the accounts from which the balances have been calculated</td>
+</tr>
+<tr>
+<td><code>data[].balances</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].balances[].booked</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The current balance of the account</td>
+</tr>
+<tr>
+<td><code>data[].balances[].booked.amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].balances[].booked.amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].balances[].booked.amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].balances[].booked.credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>Yes</td>
+<td>Indication as to whether the balance is in credit or debit</td>
+</tr>
+<tr>
+<td><code>data[].balances[].date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date of the given balance in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-03-17T23:59:59Z</code> - <code>2023-03-17T23:59:59-08:00</code></td>
+</tr>
+<tr>
+<td><code>data[].balances[].pending</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The balance of the account if all pending transactions have settled.</td>
+</tr>
+<tr>
+<td><code>data[].balances[].pending.amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data[].balances[].pending.amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data[].balances[].pending.amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data[].balances[].pending.credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>Yes</td>
+<td>Indication as to whether the balance is in credit or debit</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata.accounts</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td>This is a hashmap representing <code>account_ids</code> and metadata about the results returned from the balances endpoint</td>
+</tr>
+<tr>
+<td><code>metadata.parameters</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>The parameters used to calculated balances</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;account_id&quot;: &quot;705e95fea8312d9a9b227b682033d55f&quot;,
+      &quot;balances&quot;: [
+        {
+          &quot;booked&quot;: {
+            &quot;amount&quot;: {
+              &quot;currency&quot;: &quot;GBP&quot;,
+              &quot;value&quot;: &quot;900.00&quot;
+            },
+            &quot;credit_debit_indicator&quot;: &quot;credit&quot;
+          },
+          &quot;date&quot;: &quot;2022-11-15T23:59:59Z&quot;,
+          &quot;pending&quot;: {
+            &quot;amount&quot;: {
+              &quot;currency&quot;: &quot;GBP&quot;,
+              &quot;value&quot;: &quot;850.00&quot;
+            },
+            &quot;credit_debit_indicator&quot;: &quot;credit&quot;
+          }
+        },
+        {
+          &quot;booked&quot;: {
+            &quot;amount&quot;: {
+              &quot;currency&quot;: &quot;GBP&quot;,
+              &quot;value&quot;: &quot;950.00&quot;
+            },
+            &quot;credit_debit_indicator&quot;: &quot;credit&quot;
+          },
+          &quot;date&quot;: &quot;2022-11-14T23:59:59Z&quot;,
+          &quot;pending&quot;: {
+            &quot;amount&quot;: {
+              &quot;currency&quot;: &quot;GBP&quot;,
+              &quot;value&quot;: &quot;900.00&quot;
+            },
+            &quot;credit_debit_indicator&quot;: &quot;credit&quot;
+          }
+        }
+      ]
+    },
+    {
+      &quot;account_id&quot;: &quot;9df0b46c8ab58277abc432fee26067ad&quot;,
+      &quot;balances&quot;: [
+        {
+          &quot;booked&quot;: {
+            &quot;amount&quot;: {
+              &quot;currency&quot;: &quot;JPY&quot;,
+              &quot;value&quot;: &quot;500&quot;
+            },
+            &quot;credit_debit_indicator&quot;: &quot;credit&quot;
+          },
+          &quot;date&quot;: &quot;2022-11-15T23:59:59Z&quot;,
+          &quot;pending&quot;: {
+            &quot;amount&quot;: {
+              &quot;currency&quot;: &quot;JPY&quot;,
+              &quot;value&quot;: &quot;500&quot;
+            },
+            &quot;credit_debit_indicator&quot;: &quot;credit&quot;
+          }
+        }
+      ]
+    }
+  ],
+  &quot;metadata&quot;: {
+    &quot;accounts&quot;: {
+      &quot;5b271e24-9ea5-4d7e-b5da-64f01d32db22&quot;: {
+        &quot;balance_count&quot;: 2,
+        &quot;from&quot;: &quot;2022-11-14T23:59:59Z&quot;,
+        &quot;last_updated_at&quot;: &quot;2022-11-15T09:12:04Z&quot;,
+        &quot;max_balance&quot;: {
+          &quot;currency&quot;: &quot;JPY&quot;,
+          &quot;value&quot;: &quot;500.00&quot;
+        },
+        &quot;min_balance&quot;: {
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;value&quot;: &quot;200.00&quot;
+        },
+        &quot;to&quot;: &quot;2022-11-15T23:59:59Z&quot;
+      },
+      &quot;b6e9ea3c-71f9-4572-983a-3e5e85470dad&quot;: {
+        &quot;balance_count&quot;: 1,
+        &quot;from&quot;: &quot;2022-11-15T23:59:59Z&quot;,
+        &quot;last_updated_at&quot;: &quot;2022-11-15T14:47:31Z&quot;,
+        &quot;max_balance&quot;: {
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;value&quot;: &quot;500.12&quot;
+        },
+        &quot;min_balance&quot;: {
+          &quot;currency&quot;: &quot;GBP&quot;,
+          &quot;value&quot;: &quot;0.00&quot;
+        },
+        &quot;to&quot;: &quot;2022-11-15T23:59:59Z&quot;
+      }
+    },
+    &quot;parameters&quot;: {
+      &quot;from&quot;: &quot;2020-12-22T00:00:00Z&quot;,
+      &quot;granularity&quot;: &quot;daily&quot;,
+      &quot;to&quot;: &quot;2022-11-15T00:00:00Z&quot;
+    }
+  },
+  &quot;operation_id&quot;: &quot;financial_v3_balances_get&quot;
+}
+</code></pre>
+<h5 id="400-bad-request-1" class="status" data-status="4xx">400: Bad Request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-an-unauthenticated-request-was-received-3" class="status" data-status="4xx">401: An unauthenticated request was received</h5>
+<h5 id="500-server-error-6" class="status" data-status="5xx">500: Server Error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;internal_error&quot;,
+  &quot;message&quot;: &quot;Internal server error has occurred.&quot;,
+  &quot;operation_id&quot;: &quot;financial_v3_balances_get&quot;
+}
+</code></pre>
+<h3 id="get-financialv3accountstransaction-dates" class="operation" data-method="get"><code>GET</code> /financial/v3/accounts/transaction-dates</h3>
+<p>Operation ID: <code>financial_v3_accounts_transaction_dates_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>X-Customer-Secret</code> | <code>header</code> | <code>string</code> | No | The Bud Customer secret used to encrypt customer data. This is required only if the customer secret is not already stored with Bud. |</p>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-ok-7" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].account_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique id associated with the account. Example: <code>sdb4eRMaad8XVEvdIoISOQ</code></td>
+</tr>
+<tr>
+<td><code>data[].first_transaction_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>The date of the first transaction that bud has stored for this account.</td>
+</tr>
+<tr>
+<td><code>data[].last_transaction_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>The date of the last transaction that bud has stored for this account.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata.first_transaction_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The first transaction date across all accounts returned in the results</td>
+</tr>
+<tr>
+<td><code>metadata.last_transaction_date</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The last transaction date across all accounts returned in the results</td>
+</tr>
+<tr>
+<td><code>metadata.results</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The number of accounts returned in the results</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>enum: financial_v3_accounts_transaction_dates_get</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="400-the-request-contains-an-invalid-payload-5" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorised-3" class="status" data-status="4xx">401: Unauthorised</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;unknown&quot;,
+  &quot;message&quot;: &quot;Unauthorised request&quot;,
+  &quot;operation_id&quot;: &quot;unknown&quot;
+}
+</code></pre>
+<h5 id="500-server-error-7" class="status" data-status="5xx">500: Server Error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;unknown&quot;,
+  &quot;message&quot;: &quot;An error occurred while processing your request. Get in touch with us and provide us your request id: 7ef63242-ba6d-4661-8014-f9eaa9cb2ad8&quot;,
+  &quot;operation_id&quot;: &quot;unknown&quot;
+}
+</code></pre>
+<h2 id="load">load</h2>
+<h3 id="get-financialv2accountsaccount_id" class="operation" data-method="get"><code>GET</code> /financial/v2/accounts/{account_id}</h3>
+<p>Operation ID: <code>financial_v2_accounts_account_id</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>X-Customer-Secret</code> | <code>header</code> | <code>string</code> | No | The Bud Customer secret used to encrypt customer data. This is required only if the customer secret is not already stored with Bud. |
+| <code>account_id</code> | <code>path</code> | <code>string</code> | Yes | The account ID to retrieve data for. |</p>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-ok-8" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Account</td>
+</tr>
+<tr>
+<td><code>data.account_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique id associated with the account. Example: <code>sdb4eRMaad8XVEvdIoISOQ</code></td>
+</tr>
+<tr>
+<td><code>data.account_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name associated with the account, this is often a friendly name assigned to the account to make it easier to refer to. Example: <code>Household Savings Account</code></td>
+</tr>
+<tr>
+<td><code>data.account_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of account. Currently supported values include (but are not necessarily limited to): - <code>charge_card</code> - <code>credit_card</code> - <code>current_account</code> - <code>e_money</code> - <code>investment</code> - <code>loan</code> - <code>mortgage</code> - <code>other</code> - <code>pre_paid_card</code> - <code>savings</code></td>
+</tr>
+<tr>
+<td><code>data.balances</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The latest balances for the account.</td>
+</tr>
+<tr>
+<td><code>data.balances[].amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data.balances[].amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data.balances[].amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data.balances[].credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>Yes</td>
+<td>The credit or debit state of the given balance</td>
+</tr>
+<tr>
+<td><code>data.balances[].date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date when the balance was last updated in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-01-17T17:29:51Z</code> - <code>2023-01-17T17:29:51-08:00</code></td>
+</tr>
+<tr>
+<td><code>data.balances[].type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type for the given balance Currently supported values include (but are not necessarily limited to): - <code>closing_available</code> - <code>closing_booked</code> - <code>closing_cleared</code> - <code>expected</code> - <code>forward_available</code> - <code>information</code> - <code>interim_available</code> - <code>interim_booked</code> - <code>interim_cleared</code> - <code>opening_available</code> - <code>opening_booked</code> - <code>opening_cleared</code> - <code>previously_closed_booked</code></td>
+</tr>
+<tr>
+<td><code>data.closed_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The datetime the account was closed in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. If the account is not closed, this field will not be present.</td>
+</tr>
+<tr>
+<td><code>data.credit_lines</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The latest lines of credit available to the account. This is typically a representation of the overdraft or credit limits.</td>
+</tr>
+<tr>
+<td><code>data.credit_lines[].amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data.credit_lines[].amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data.credit_lines[].amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data.credit_lines[].date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date when the credit line was last updated in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-01-17T17:29:51Z</code> - <code>2023-01-17T17:29:51-08:00</code></td>
+</tr>
+<tr>
+<td><code>data.credit_lines[].type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type of the given credit line. Currently supported values include (but are not necessarily limited to): - <code>available</code> - <code>credit</code> - <code>emergency</code> - <code>pre_agreed</code> - <code>temporary</code></td>
+</tr>
+<tr>
+<td><code>data.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data.holder</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The account holder. This field is only present if parties data <strong>is not</strong> available. Parties data will only be present if you are a Check customer, and the provider is support by Check. Providers that support Check can be found in the Connect coverage table in Guides, under Connect.</td>
+</tr>
+<tr>
+<td><code>data.holder.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the given account holder. Example: <code>John Smith</code></td>
+</tr>
+<tr>
+<td><code>data.holder.relationship</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The relationship that the individual holder has with the account. If parties data is not present, this will always be <code>unknown</code>. Currently supported values include (but are not necessarily limited to): - <code>sole</code> - <code>joint</code> - <code>delegate</code> - <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>data.holders</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The account holders. This field is only present if parties data <strong>is</strong> available. Parties data will only be present if you are a Check customer, and the provider is supported by Check. Providers that support Check can be found in the Connect coverage table in Guides, under Connect.</td>
+</tr>
+<tr>
+<td><code>data.holders[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the given account holder. Example: <code>John Smith</code></td>
+</tr>
+<tr>
+<td><code>data.holders[].relationship</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The relationship that the individual holder has with the account. If parties data is not present, this will always be <code>unknown</code>. Currently supported values include (but are not necessarily limited to): - <code>sole</code> - <code>joint</code> - <code>delegate</code> - <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>data.identifiers</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>These are wellknown fields which uniquely identify the account.</td>
+</tr>
+<tr>
+<td><code>data.identifiers.iban</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A thirty-four character alphanumerical code (ISO 13616), internationally and uniquely identifying the account. Example: <code>GB29NWBK60161331926819</code></td>
+</tr>
+<tr>
+<td><code>data.identifiers.nz_account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A sixteen digit number uniquely identifying the account and New Zealand bank the account is held with. Example: <code>1212341234567123</code></td>
+</tr>
+<tr>
+<td><code>data.identifiers.pan</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A number between 14 and 19 digits that uniquely identifies the account, this is usually the number printed on the card assigned to the account. Example: <code>4444333322221111</code></td>
+</tr>
+<tr>
+<td><code>data.identifiers.uk_account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An eight digit number uniquely identifying the account for the UK bank or building society the account is held with. This is usually supplied alongside a <code>uk_sort_code</code> to uniquely identify the account from accounts with other UK banks or building societies. Example: <code>31926819</code></td>
+</tr>
+<tr>
+<td><code>data.identifiers.uk_sort_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A six digit number identifying the UK bank or building society the account is held with. This is usually supplied alongside a <code>uk_account_number</code> to uniquely identify the account. Example: <code>601613</code></td>
+</tr>
+<tr>
+<td><code>data.provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The account's provider, this is usually the bank or building society the account is held with. Example: <code>Nationwide</code></td>
+</tr>
+<tr>
+<td><code>data.restriction</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The restriction on the account, if any. Supported values: <code>view_only</code>, <code>restricted</code>.</td>
+</tr>
+<tr>
+<td><code>data.status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status of the account. If this field is not present, then the account is considered open. Currently supported values include (but are not necessarily limited to): - <code>closed</code></td>
+</tr>
+<tr>
+<td><code>data.transaction_windows</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The transaction windows indicate for which periods we have full coverage of transactions ingested for the account.</td>
+</tr>
+<tr>
+<td><code>data.transaction_windows[].from</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a> datetime recording the start of the window</td>
+</tr>
+<tr>
+<td><code>data.transaction_windows[].to</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a> datetime recording the end of the window</td>
+</tr>
+<tr>
+<td><code>data.usage_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The intended usage of the account. Currently supported values include (but are not necessarily limited to): - <code>personal</code> - <code>business</code></td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>enum: financial_v2_accounts_account_id</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="400-the-request-contains-an-invalid-payload-6" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorised-4" class="status" data-status="4xx">401: Unauthorised</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;unknown&quot;,
+  &quot;message&quot;: &quot;Unauthorised request&quot;,
+  &quot;operation_id&quot;: &quot;unknown&quot;
+}
+</code></pre>
+<h5 id="500-server-error-8" class="status" data-status="5xx">500: Server Error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;unknown&quot;,
+  &quot;message&quot;: &quot;An error occurred while processing your request. Get in touch with us and provide us your request id: 7ef63242-ba6d-4661-8014-f9eaa9cb2ad8&quot;,
+  &quot;operation_id&quot;: &quot;unknown&quot;
+}
+</code></pre>
+<h3 id="get-financialv3accountsaccount_id" class="operation" data-method="get"><code>GET</code> /financial/v3/accounts/{account_id}</h3>
+<p>Operation ID: <code>financial_v3_accounts_account_id_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters-9">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>X-Customer-Secret</code> | <code>header</code> | <code>string</code> | No | The Bud Customer secret used to encrypt customer data. This is required only if the customer secret is not already stored with Bud. |
+| <code>account_id</code> | <code>path</code> | <code>string</code> | Yes | The account ID to retrieve data for. |</p>
+<h4 id="responses-9">Responses</h4>
+<h5 id="200-ok-9" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Account</td>
+</tr>
+<tr>
+<td><code>data.account_category</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The account category that the account type is a part of Currently supported values include (but are not necessarily limited to): - <code>credit</code> - <code>depository</code> - <code>insurance</code> - <code>investment</code> - <code>loan</code> - <code>savings</code> - <code>other</code></td>
+</tr>
+<tr>
+<td><code>data.account_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique id associated with the account. Example: <code>sdb4eRMaad8XVEvdIoISOQ</code></td>
+</tr>
+<tr>
+<td><code>data.account_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name associated with the account, this is often a friendly name assigned to the account to make it easier to refer to. Example: <code>Household Savings Account</code> Not present if empty.</td>
+</tr>
+<tr>
+<td><code>data.account_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of account. Currently supported values include (but are not necessarily limited to): - <code>auto_loan</code> - <code>boat_loan</code> - <code>brokerage</code> - <code>business_loan</code> - <code>certificate_of_deposit</code> - <code>charge_card</code> - <code>checking_account</code> - <code>credit_card</code> - <code>current_account</code> - <code>debit_card</code> - <code>disability_insurance</code> - <code>e_money</code> - <code>health_insurance</code> - <code>home_equity_loan</code> - <code>insurance</code> - <code>investment</code> - <code>ira</code> - <code>liability_insurance</code> - <code>life_insurance</code> - <code>line_of_credit</code> - <code>loan</code> - <code>money_market</code> - <code>mortgage</code> - <code>other</code> - <code>personal_loan</code> - <code>pre_paid_card</code> - <code>property_insurance</code> - <code>roth</code> - <code>rv_loan</code> - <code>safe_deposit_box</code> - <code>savings</code> - <code>student_loan</code> - <code>travel_insurance</code> - <code>vehicle_insurance</code> - <code>wealth_account</code> Not present if empty.</td>
+</tr>
+<tr>
+<td><code>data.balances</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The balances ingested for the account. &gt; 📘 Note &gt; &gt; Normalised balances are derived from ingested data, therefore we're unable to guarantee that either a <code>booked</code> or <code>pending</code> balance will always be present. Where possible we will look to return both.</td>
+</tr>
+<tr>
+<td><code>data.balances.all_balances</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>A granular breakdown of balance types ingested for the account. <strong>NOTE: Only included if the <code>include_all_balances</code> query parameter is set.</strong></td>
+</tr>
+<tr>
+<td><code>data.balances.all_balances[].amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data.balances.all_balances[].amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data.balances.all_balances[].amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data.balances.all_balances[].credit_debit_indicator</code></td>
+<td><code>enum: credit, debit</code></td>
+<td>Yes</td>
+<td>The credit or debit state of the given balance</td>
+</tr>
+<tr>
+<td><code>data.balances.all_balances[].date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date when the balance was last updated in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-01-17T17:29:51Z</code> - <code>2023-01-17T17:29:51-08:00</code></td>
+</tr>
+<tr>
+<td><code>data.balances.all_balances[].type</code></td>
+<td><code>enum: closing_available, closing_booked, closing_cleared, expected, forward_available, information, ...</code></td>
+<td>No</td>
+<td>The type for the given balance Currently supported values include (but are not necessarily limited to): - <code>closing_available</code> - <code>closing_booked</code> - <code>closing_cleared</code> - <code>expected</code> - <code>forward_available</code> - <code>information</code> - <code>interim_available</code> - <code>interim_booked</code> - <code>interim_cleared</code> - <code>opening_available</code> - <code>opening_booked</code> - <code>opening_cleared</code> - <code>previously_closed_booked</code></td>
+</tr>
+<tr>
+<td><code>data.balances.booked</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The booked balance for the account at the given date. This field is not guaranteed to be present. It will only exist if a booked balance was found from ingested balances.</td>
+</tr>
+<tr>
+<td><code>data.balances.pending</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The pending balance for the account at the given date. This field is not guaranteed to be present. It will only exist if a pending balance was found from ingested balances.</td>
+</tr>
+<tr>
+<td><code>data.closed_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The datetime the account was closed in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. If the account is not closed, this field will not be present.</td>
+</tr>
+<tr>
+<td><code>data.credit_lines</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The latest credit limit available for the account. This field will only be present if the credit limit was found from ingested balances.</td>
+</tr>
+<tr>
+<td><code>data.credit_lines.all_credit_lines</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>All credit lines stored for the account. Only included if the <code>include_all_balances</code> query parameter is set</td>
+</tr>
+<tr>
+<td><code>data.credit_lines.all_credit_lines[].amount</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The monetary amount.</td>
+</tr>
+<tr>
+<td><code>data.credit_lines.all_credit_lines[].amount.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data.credit_lines.all_credit_lines[].amount.value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The value of the monetary amount. The value is formatted with the number of decimal places for the respective currency. Example: <code>10.98</code></td>
+</tr>
+<tr>
+<td><code>data.credit_lines.all_credit_lines[].date</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The date when the credit line was last updated in the format <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a>. Examples: - <code>2023-01-17T17:29:51Z</code> - <code>2023-01-17T17:29:51-08:00</code></td>
+</tr>
+<tr>
+<td><code>data.credit_lines.all_credit_lines[].type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type of the given credit line. Currently supported values include (but are not necessarily limited to): - <code>available</code> - <code>credit</code> - <code>emergency</code> - <code>pre_agreed</code> - <code>temporary</code></td>
+</tr>
+<tr>
+<td><code>data.credit_lines.limit</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The credit limit for the account at the given date. This field will only be present if the credit limit was found from ingested balances.</td>
+</tr>
+<tr>
+<td><code>data.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> of the monetary amount. Example: <code>GBP</code></td>
+</tr>
+<tr>
+<td><code>data.holders</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The account holder(s).</td>
+</tr>
+<tr>
+<td><code>data.holders[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the given account holder. Example: <code>John Smith</code></td>
+</tr>
+<tr>
+<td><code>data.holders[].relationship</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The relationship that the individual holder has with the account. If parties data is not present, this will always be <code>unknown</code>. Currently supported values include (but are not necessarily limited to): - <code>sole</code> - <code>joint</code> - <code>delegate</code> - <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>data.identifiers</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>These are wellknown fields which uniquely identify the account.</td>
+</tr>
+<tr>
+<td><code>data.identifiers.iban</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A thirty-four character alphanumerical code (ISO 13616), internationally and uniquely identifying the account. Example: <code>GB29NWBK60161331926819</code></td>
+</tr>
+<tr>
+<td><code>data.identifiers.nz_account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A sixteen digit number uniquely identifying the account and New Zealand bank the account is held with. Example: <code>1212341234567123</code></td>
+</tr>
+<tr>
+<td><code>data.identifiers.pan</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A number between 14 and 19 digits that uniquely identifies the account, this is usually the number printed on the card assigned to the account. Example: <code>4444333322221111</code></td>
+</tr>
+<tr>
+<td><code>data.identifiers.uk_account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An eight digit number uniquely identifying the account for the UK bank or building society the account is held with. This is usually supplied alongside a <code>uk_sort_code</code> to uniquely identify the account from accounts with other UK banks or building societies. Example: <code>31926819</code></td>
+</tr>
+<tr>
+<td><code>data.identifiers.uk_sort_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A six digit number identifying the UK bank or building society the account is held with. This is usually supplied alongside a <code>uk_account_number</code> to uniquely identify the account. Example: <code>601613</code></td>
+</tr>
+<tr>
+<td><code>data.identifiers.us_account_number</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The account number associated with this account Example: <code>...3750</code></td>
+</tr>
+<tr>
+<td><code>data.opening_date_time</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The datetime the account was opened in the format [RFC 3339]</td>
+</tr>
+<tr>
+<td><code>data.provider</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The account's provider, this is usually the bank or building society the account is held with. Example: <code>Nationwide</code> Not present if empty.</td>
+</tr>
+<tr>
+<td><code>data.provider_display_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The display name for the account's provider. Not present if empty.</td>
+</tr>
+<tr>
+<td><code>data.provider_logo</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A link to an image for the accounts provider's logo. Not present if empty.</td>
+</tr>
+<tr>
+<td><code>data.restriction</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The restriction on the account, if any. Supported values: <code>view_only</code>, <code>restricted</code>.</td>
+</tr>
+<tr>
+<td><code>data.status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The status of the account. If this field is not present, then the account is considered open. Currently supported values include (but are not necessarily limited to): - <code>closed</code></td>
+</tr>
+<tr>
+<td><code>data.suggested_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name Bud suggests client apps show for the account.</td>
+</tr>
+<tr>
+<td><code>data.transaction_windows</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The transaction windows indicate for which periods we have full coverage of transactions ingested for the account. Not present if no transaction data has been ingested.</td>
+</tr>
+<tr>
+<td><code>data.transaction_windows[].from</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a> datetime recording the start of the window</td>
+</tr>
+<tr>
+<td><code>data.transaction_windows[].to</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A <a href="https://www.rfc-editor.org/rfc/rfc3339">RFC 3339</a> datetime recording the end of the window</td>
+</tr>
+<tr>
+<td><code>data.usage_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The intended usage of the account. Currently supported values include (but are not necessarily limited to): - <code>personal</code> - <code>business</code> Not present if empty.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata.parameters</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>metadata.parameters.account_types</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The Account Type values supplied in the request to generate the given result set. Currently supported values include (but are not necessarily limited to): - <code>charge_card</code> - <code>credit_card</code> - <code>current_account</code> - <code>e_money</code> - <code>investment</code> - <code>loan</code> - <code>mortgage</code> - <code>other</code> - <code>pre_paid_card</code> - <code>savings</code></td>
+</tr>
+<tr>
+<td><code>metadata.parameters.currencies</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The Currency values supplied in the request to generate the given result set.</td>
+</tr>
+<tr>
+<td><code>metadata.parameters.holder_types</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The Holder Type values supplied in the request to generate the given result set. Currently supported values include (but are not necessarily limited to): - <code>sole</code> - <code>joint</code> - <code>delegate</code> - <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>metadata.parameters.include_all_balances</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>All balances and credit lines stored for the accounts are returned</td>
+</tr>
+<tr>
+<td><code>metadata.parameters.providers</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The Provider values supplied in the request to generate the given result set.</td>
+</tr>
+<tr>
+<td><code>metadata.parameters.usage_types</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>The Usage Type values supplied in the request to generate the given result set. Currently supported values include (but are not necessarily limited to): - <code>personal</code> - <code>business</code></td>
+</tr>
+<tr>
+<td><code>metadata.results</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The number of accounts returned in the results</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>enum: financial_v3_accounts_account_id_get</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="400-the-request-contains-an-invalid-payload-7" class="status" data-status="4xx">400: The request contains an invalid payload</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorised-5" class="status" data-status="4xx">401: Unauthorised</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;unknown&quot;,
+  &quot;message&quot;: &quot;Unauthorised request&quot;,
+  &quot;operation_id&quot;: &quot;unknown&quot;
+}
+</code></pre>
+<h5 id="500-server-error-9" class="status" data-status="5xx">500: Server Error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A descriptive enough string that is linked to the reason for the error.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>object or object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>An actual user friendly error message.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A unique identifier/reference associated with a given endpoint/operation</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code_id&quot;: &quot;unknown&quot;,
+  &quot;message&quot;: &quot;An error occurred while processing your request. Get in touch with us and provide us your request id: 7ef63242-ba6d-4661-8014-f9eaa9cb2ad8&quot;,
+  &quot;operation_id&quot;: &quot;unknown&quot;
+}
+</code></pre>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

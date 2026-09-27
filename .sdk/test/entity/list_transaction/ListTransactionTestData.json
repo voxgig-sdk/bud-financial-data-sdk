@@ -1,0 +1,109 @@
+{
+  "existing": {
+    "list_transaction": {
+      "LIST_TRANSACTION00": {
+        "account_id": "ACCOUNT01",
+        "amount": {},
+        "client_attributes": {},
+        "counterparty": {},
+        "credit_debit_indicator": "sd6",
+        "date_time": "sd7",
+        "description": "sd8",
+        "enrichments": {},
+        "labels": [],
+        "merchant_category_code": "sdb",
+        "posted_date_time": "sdc",
+        "provider": "sdd",
+        "running_balance": {},
+        "running_balance_credit_debit_indicator": "sdf",
+        "status": "se0",
+        "suggested_description": "se1",
+        "suggested_logo": "se2",
+        "tags": [],
+        "transaction_id": "TRANSACTION01",
+        "transaction_type": {},
+        "value_date_time": "se6"
+      },
+      "LIST_TRANSACTION01": {
+        "account_id": "ACCOUNT01",
+        "amount": {},
+        "client_attributes": {},
+        "counterparty": {},
+        "credit_debit_indicator": "s1a8",
+        "date_time": "s1a9",
+        "description": "s1aa",
+        "enrichments": {},
+        "labels": [],
+        "merchant_category_code": "s1ad",
+        "posted_date_time": "s1ae",
+        "provider": "s1af",
+        "running_balance": {},
+        "running_balance_credit_debit_indicator": "s1b1",
+        "status": "s1b2",
+        "suggested_description": "s1b3",
+        "suggested_logo": "s1b4",
+        "tags": [],
+        "transaction_id": "TRANSACTION01",
+        "transaction_type": {},
+        "value_date_time": "s1b8"
+      },
+      "LIST_TRANSACTION02": {
+        "account_id": "ACCOUNT01",
+        "amount": {},
+        "client_attributes": {},
+        "counterparty": {},
+        "credit_debit_indicator": "s27a",
+        "date_time": "s27b",
+        "description": "s27c",
+        "enrichments": {},
+        "labels": [],
+        "merchant_category_code": "s27f",
+        "posted_date_time": "s280",
+        "provider": "s281",
+        "running_balance": {},
+        "running_balance_credit_debit_indicator": "s283",
+        "status": "s284",
+        "suggested_description": "s285",
+        "suggested_logo": "s286",
+        "tags": [],
+        "transaction_id": "TRANSACTION01",
+        "transaction_type": {},
+        "value_date_time": "s28a"
+      }
+    }
+  },
+  "new": {
+    "list_transaction": {
+      "list_transaction_ref01": {
+        "account_id": "ACCOUNT01",
+        "amount": {},
+        "client_attributes": {},
+        "counterparty": {},
+        "credit_debit_indicator": "s34c",
+        "date_time": "s34d",
+        "description": "s34e",
+        "enrichments": {},
+        "labels": [],
+        "merchant_category_code": "s351",
+        "posted_date_time": "s352",
+        "provider": "s353",
+        "running_balance": {},
+        "running_balance_credit_debit_indicator": "s355",
+        "status": "s356",
+        "suggested_description": "s357",
+        "suggested_logo": "s358",
+        "tags": [],
+        "transaction_id": "TRANSACTION01",
+        "transaction_type": {},
+        "value_date_time": "s35c"
+      }
+    }
+  },
+  "requests": {
+    "GET /financial/v2/transactions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

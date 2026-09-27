@@ -1,0 +1,119 @@
+# Entity: manage_transaction_label
+
+main: kit: entity: manage_transaction_label: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "manage_transaction_label"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /financial/v2/transactions/labels/{label_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "label_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/financial/v2/transactions/labels/{label_id}"
+          q: {
+            exist: [
+              "id"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          r: {
+            param: {
+              label_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "financial"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "transactions"
+            }
+            {
+              lit: "labels"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

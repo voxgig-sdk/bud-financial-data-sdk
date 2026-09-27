@@ -1,0 +1,11 @@
+# Flows
+
+@"./BasicCorrectFinancialDataFlow.aontu"
+@"./BasicCustomerMerchantCorrectionFlow.aontu"
+@"./BasicLabelFlow.aontu"
+@"./BasicListLabelFlow.aontu"
+@"./BasicListTransactionFlow.aontu"
+@"./BasicManageFinancialDataFlow.aontu"
+@"./BasicManageTransactionLabelFlow.aontu"
+@"./BasicRetrieveFinancialDataFlow.aontu"
+@"./BasicSimilarFlow.aontu"

@@ -1,0 +1,1328 @@
+# Entity: retrieve_financial_data
+
+main: kit: entity: retrieve_financial_data: {
+
+  alias: field: {}
+
+  fields: {
+    account_category: {
+      h: "Account Category"
+      n: "account_category"
+      r: false
+      sh: "The account category that the account type is a part of Currently supported values include (but are not necessarily limited to): - `credit` - `depository` - `insurance` - `investment` - `loan` - `savings` - `other`"
+      t: "`$STRING`"
+    }
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "A unique id associated with the account."
+      t: "`$STRING`"
+    }
+    account_name: {
+      h: "Account Name"
+      n: "account_name"
+      r: false
+      sh: "The name associated with the account, this is often a friendly name assigned to the account to make it easier to refer to."
+      t: "`$STRING`"
+    }
+    account_type: {
+      h: "Account Type"
+      n: "account_type"
+      r: false
+      sh: "The type of account."
+      t: "`$STRING`"
+    }
+    balances: {
+      h: "Balances"
+      n: "balances"
+      op: {
+        list: {
+          req: true
+          type: "`$ARRAY`"
+        }
+      }
+      r: false
+      sh: "The balances ingested for the account."
+      t: "`$OBJECT`"
+    }
+    booked: {
+      h: "Booked"
+      n: "booked"
+      r: true
+      sh: "The current balance of the account"
+      t: "`$ANY`"
+    }
+    closed_at: {
+      fo: "date-time"
+      h: "Closed At"
+      n: "closed_at"
+      r: false
+      sh: "The datetime the account was closed in the format [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339)."
+      t: "`$STRING`"
+    }
+    credit_lines: {
+      h: "Credit Lines"
+      n: "credit_lines"
+      r: false
+      sh: "The latest credit limit available for the account."
+      t: "`$OBJECT`"
+    }
+    currency: {
+      h: "Currency"
+      n: "currency"
+      r: true
+      sh: "The three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html) of the monetary amount."
+      t: "`$STRING`"
+    }
+    data: {
+      h: "Data"
+      n: "data"
+      r: true
+      t: "`$OBJECT`"
+    }
+    date: {
+      h: "Date"
+      n: "date"
+      r: true
+      sh: "The date of the given balance in the format [RFC 3339](https://www.rfc-editor.org/rfc/rfc3339)."
+      t: "`$STRING`"
+    }
+    details: {
+      h: "Details"
+      n: "details"
+      r: false
+      sh: "Provides more details for the authorised payment."
+      t: "`$ARRAY`"
+    }
+    first_transaction_date: {
+      fo: "date-time"
+      h: "First Transaction Date"
+      n: "first_transaction_date"
+      r: true
+      sh: "The date of the first transaction that bud has stored for this account."
+      t: "`$STRING`"
+    }
+    frequency: {
+      h: "Frequency"
+      n: "frequency"
+      r: false
+      sh: "The frequency of the authorised payment."
+      t: "`$STRING`"
+    }
+    holder: {
+      h: "Holder"
+      n: "holder"
+      r: false
+      sh: "The account holder."
+      t: "`$OBJECT`"
+    }
+    holders: {
+      h: "Holders"
+      n: "holders"
+      r: false
+      sh: "The account holder(s)."
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The id for the authorised payment."
+      t: "`$STRING`"
+    }
+    identifiers: {
+      h: "Identifiers"
+      n: "identifiers"
+      r: false
+      sh: "These are wellknown fields which uniquely identify the account."
+      t: "`$OBJECT`"
+    }
+    last_transaction_date: {
+      fo: "date-time"
+      h: "Last Transaction Date"
+      n: "last_transaction_date"
+      r: true
+      sh: "The date of the last transaction that bud has stored for this account."
+      t: "`$STRING`"
+    }
+    metadata: {
+      h: "Metadata"
+      n: "metadata"
+      r: true
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the payment."
+      t: "`$STRING`"
+    }
+    opening_date_time: {
+      fo: "date-time"
+      h: "Opening Date Time"
+      n: "opening_date_time"
+      r: false
+      sh: "The datetime the account was opened in the format [RFC 3339]"
+      t: "`$STRING`"
+    }
+    operation_id: {
+      h: "Operation Id"
+      n: "operation_id"
+      r: true
+      t: "`$STRING`"
+    }
+    pending: {
+      h: "Pending"
+      n: "pending"
+      r: true
+      sh: "The balance of the account if all pending transactions have settled."
+      t: "`$ANY`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: false
+      sh: "The account's provider, this is usually the bank or building society the account is held with."
+      t: "`$STRING`"
+    }
+    provider_display_name: {
+      h: "Provider Display Name"
+      n: "provider_display_name"
+      r: false
+      sh: "The display name for the account's provider."
+      t: "`$STRING`"
+    }
+    provider_logo: {
+      h: "Provider Logo"
+      n: "provider_logo"
+      r: false
+      sh: "A link to an image for the accounts provider's logo."
+      t: "`$STRING`"
+    }
+    reference: {
+      h: "Reference"
+      n: "reference"
+      r: true
+      sh: "The reference associated with the authorised payment."
+      t: "`$STRING`"
+    }
+    restriction: {
+      h: "Restriction"
+      n: "restriction"
+      r: false
+      sh: "The restriction on the account, if any."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      op: {
+        list: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The status of the account."
+      t: "`$STRING`"
+    }
+    suggested_name: {
+      h: "Suggested Name"
+      n: "suggested_name"
+      r: true
+      sh: "The name Bud suggests client apps show for the account."
+      t: "`$STRING`"
+    }
+    transaction_windows: {
+      h: "Transaction Windows"
+      n: "transaction_windows"
+      r: false
+      sh: "The transaction windows indicate for which periods we have full coverage of transactions ingested for the account."
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "The type of the authorised payment."
+      t: "`$STRING`"
+    }
+    usage_type: {
+      h: "Usage Type"
+      n: "usage_type"
+      r: false
+      sh: "The intended usage of the account."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "retrieve_financial_data"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /financial/v3/accounts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "current_account"
+                k: "query"
+                n: "account_type"
+                or: "account_type"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "GBP"
+                k: "query"
+                n: "currency"
+                or: "currency"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "exclude_restricted"
+                or: "exclude_restricted"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: "joint"
+                k: "query"
+                n: "holder_relationship_type"
+                or: "holder_relationship_type"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "include_all_balance"
+                or: "include_all_balance"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: "BankOfBud"
+                k: "query"
+                n: "provider"
+                or: "provider"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "personal"
+                k: "query"
+                n: "usage_type"
+                or: "usage_type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/financial/v3/accounts"
+          q: {
+            exist: [
+              "account_type"
+              "currency"
+              "exclude_restricted"
+              "holder_relationship_type"
+              "include_all_balance"
+              "provider"
+              "usage_type"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "financial"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "accounts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /financial/v2/accounts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "current_account"
+                k: "query"
+                n: "account_type"
+                or: "account_type"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "GBP"
+                k: "query"
+                n: "currency"
+                or: "currency"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "exclude_restricted"
+                or: "exclude_restricted"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: "joint"
+                k: "query"
+                n: "holder_relationship_type"
+                or: "holder_relationship_type"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "BankOfBud"
+                k: "query"
+                n: "provider"
+                or: "provider"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "personal"
+                k: "query"
+                n: "usage_type"
+                or: "usage_type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/financial/v2/accounts"
+          q: {
+            exist: [
+              "account_type"
+              "currency"
+              "exclude_restricted"
+              "holder_relationship_type"
+              "provider"
+              "usage_type"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "financial"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "accounts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /financial/v2/accounts/{account_id}/balances"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "account_id"
+                or: "account_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "date_time"
+                k: "query"
+                n: "date_field"
+                or: "date_field"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2019-02-29T12:23:00Z"
+                k: "query"
+                n: "from"
+                or: "from"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "daily"
+                k: "query"
+                n: "granularity"
+                or: "granularity"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2019-02-29T12:23:00Z"
+                k: "query"
+                n: "to"
+                or: "to"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/financial/v2/accounts/{account_id}/balances"
+          q: {
+            exist: [
+              "account_id"
+              "date_field"
+              "from"
+              "granularity"
+              "to"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "financial"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "accounts"
+            }
+            {
+              var: "account_id"
+            }
+            {
+              lit: "balances"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /financial/v3/accounts/{account_id}/balances"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "account_id"
+                or: "account_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "date_time"
+                k: "query"
+                n: "date_field"
+                or: "date_field"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2019-02-29T12:23:00Z"
+                k: "query"
+                n: "from"
+                or: "from"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "daily"
+                k: "query"
+                n: "granularity"
+                or: "granularity"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2019-02-29T12:23:00Z"
+                k: "query"
+                n: "to"
+                or: "to"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/financial/v3/accounts/{account_id}/balances"
+          q: {
+            exist: [
+              "account_id"
+              "date_field"
+              "from"
+              "granularity"
+              "to"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "financial"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "accounts"
+            }
+            {
+              var: "account_id"
+            }
+            {
+              lit: "balances"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /financial/v2/authorised-payments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "account_id"
+                or: "account_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 100
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "eyJvZmZzZXQiOjEwMH0"
+                k: "query"
+                n: "page_token"
+                or: "page_token"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "active"
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "direct_debit"
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/financial/v2/authorised-payments"
+          q: {
+            exist: [
+              "account_id"
+              "page_size"
+              "page_token"
+              "status"
+              "type"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "financial"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "authorised-payments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /financial/v2/balances"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "date_time"
+                k: "query"
+                n: "date_field"
+                or: "date_field"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2019-02-29T12:23:00Z"
+                k: "query"
+                n: "from"
+                or: "from"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "daily"
+                k: "query"
+                n: "granularity"
+                or: "granularity"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2019-02-29T12:23:00Z"
+                k: "query"
+                n: "to"
+                or: "to"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/financial/v2/balances"
+          q: {
+            exist: [
+              "date_field"
+              "from"
+              "granularity"
+              "to"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "financial"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "balances"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /financial/v3/balances"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "date_time"
+                k: "query"
+                n: "date_field"
+                or: "date_field"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2019-02-29T12:23:00Z"
+                k: "query"
+                n: "from"
+                or: "from"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "daily"
+                k: "query"
+                n: "granularity"
+                or: "granularity"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2019-02-29T12:23:00Z"
+                k: "query"
+                n: "to"
+                or: "to"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/financial/v3/balances"
+          q: {
+            exist: [
+              "date_field"
+              "from"
+              "granularity"
+              "to"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "financial"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "balances"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /financial/v3/accounts/transaction-dates"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/financial/v3/accounts/transaction-dates"
+          q: {
+            exist: [
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "financial"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "accounts"
+            }
+            {
+              lit: "transaction-dates"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /financial/v2/accounts/{account_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "account_id"
+                or: "account_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/financial/v2/accounts/{account_id}"
+          q: {
+            exist: [
+              "account_id"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "financial"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "accounts"
+            }
+            {
+              var: "account_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /financial/v3/accounts/{account_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "account_id"
+                or: "account_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/financial/v3/accounts/{account_id}"
+          q: {
+            exist: [
+              "account_id"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "financial"
+            }
+            {
+              lit: "v3"
+            }
+            {
+              lit: "accounts"
+            }
+            {
+              var: "account_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

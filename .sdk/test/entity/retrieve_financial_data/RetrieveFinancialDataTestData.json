@@ -1,0 +1,205 @@
+{
+  "existing": {
+    "retrieve_financial_data": {
+      "RETRIEVE_FINANCIAL_DATA00": {
+        "account_category": "s154",
+        "account_id": "ACCOUNT01",
+        "account_name": "s156",
+        "account_type": "s157",
+        "balances": {},
+        "booked": "s159",
+        "closed_at": "s15a",
+        "credit_lines": {},
+        "currency": "s15c",
+        "data": {},
+        "date": "s15e",
+        "details": [],
+        "first_transaction_date": "s160",
+        "frequency": "s161",
+        "holder": {},
+        "holders": [],
+        "id": "RETRIEVE_FINANCIAL_DATA00",
+        "identifiers": {},
+        "last_transaction_date": "s166",
+        "metadata": {},
+        "name": "s168",
+        "opening_date_time": "s169",
+        "operation_id": "OPERATION01",
+        "pending": "s16b",
+        "provider": "s16c",
+        "provider_display_name": "s16d",
+        "provider_logo": "s16e",
+        "reference": "s16f",
+        "restriction": "s170",
+        "status": "s171",
+        "suggested_name": "s172",
+        "transaction_windows": [],
+        "type": "s174",
+        "usage_type": "s175"
+      },
+      "RETRIEVE_FINANCIAL_DATA01": {
+        "account_category": "s2a8",
+        "account_id": "ACCOUNT01",
+        "account_name": "s2aa",
+        "account_type": "s2ab",
+        "balances": {},
+        "booked": "s2ad",
+        "closed_at": "s2ae",
+        "credit_lines": {},
+        "currency": "s2b0",
+        "data": {},
+        "date": "s2b2",
+        "details": [],
+        "first_transaction_date": "s2b4",
+        "frequency": "s2b5",
+        "holder": {},
+        "holders": [],
+        "id": "RETRIEVE_FINANCIAL_DATA01",
+        "identifiers": {},
+        "last_transaction_date": "s2ba",
+        "metadata": {},
+        "name": "s2bc",
+        "opening_date_time": "s2bd",
+        "operation_id": "OPERATION01",
+        "pending": "s2bf",
+        "provider": "s2c0",
+        "provider_display_name": "s2c1",
+        "provider_logo": "s2c2",
+        "reference": "s2c3",
+        "restriction": "s2c4",
+        "status": "s2c5",
+        "suggested_name": "s2c6",
+        "transaction_windows": [],
+        "type": "s2c8",
+        "usage_type": "s2c9"
+      },
+      "RETRIEVE_FINANCIAL_DATA02": {
+        "account_category": "s3fc",
+        "account_id": "ACCOUNT01",
+        "account_name": "s3fe",
+        "account_type": "s3ff",
+        "balances": {},
+        "booked": "s401",
+        "closed_at": "s402",
+        "credit_lines": {},
+        "currency": "s404",
+        "data": {},
+        "date": "s406",
+        "details": [],
+        "first_transaction_date": "s408",
+        "frequency": "s409",
+        "holder": {},
+        "holders": [],
+        "id": "RETRIEVE_FINANCIAL_DATA02",
+        "identifiers": {},
+        "last_transaction_date": "s40e",
+        "metadata": {},
+        "name": "s410",
+        "opening_date_time": "s411",
+        "operation_id": "OPERATION01",
+        "pending": "s413",
+        "provider": "s414",
+        "provider_display_name": "s415",
+        "provider_logo": "s416",
+        "reference": "s417",
+        "restriction": "s418",
+        "status": "s419",
+        "suggested_name": "s41a",
+        "transaction_windows": [],
+        "type": "s41c",
+        "usage_type": "s41d"
+      }
+    }
+  },
+  "new": {
+    "retrieve_financial_data": {
+      "retrieve_financial_data_ref01": {
+        "account_category": "s550",
+        "account_id": "ACCOUNT01",
+        "account_name": "s552",
+        "account_type": "s553",
+        "balances": {},
+        "booked": "s555",
+        "closed_at": "s556",
+        "credit_lines": {},
+        "currency": "s558",
+        "data": {},
+        "date": "s55a",
+        "details": [],
+        "first_transaction_date": "s55c",
+        "frequency": "s55d",
+        "holder": {},
+        "holders": [],
+        "identifiers": {},
+        "last_transaction_date": "s562",
+        "metadata": {},
+        "name": "s564",
+        "opening_date_time": "s565",
+        "operation_id": "OPERATION01",
+        "pending": "s567",
+        "provider": "s568",
+        "provider_display_name": "s569",
+        "provider_logo": "s56a",
+        "reference": "s56b",
+        "restriction": "s56c",
+        "status": "s56d",
+        "suggested_name": "s56e",
+        "transaction_windows": [],
+        "type": "s570",
+        "usage_type": "s571"
+      }
+    }
+  },
+  "requests": {
+    "GET /financial/v3/accounts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /financial/v2/accounts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /financial/v2/accounts/{account_id}/balances": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /financial/v3/accounts/{account_id}/balances": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /financial/v2/authorised-payments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /financial/v2/balances": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /financial/v3/balances": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /financial/v3/accounts/transaction-dates": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /financial/v2/accounts/{account_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /financial/v3/accounts/{account_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

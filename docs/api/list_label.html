@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ListLabel | Financial Data API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Financial Data API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/bud-financial-data-sdk">voxgig-sdk/bud-financial-data-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Financial Data API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/correct_financial_data.html">CorrectFinancialData</a>
+<a href="../api/customer_merchant_correction.html">CustomerMerchantCorrection</a>
+<a href="../api/label.html">Label</a>
+<a aria-current="page" href="../api/list_label.html">ListLabel</a><div class="nav-sections"><a class="nav-section" href="#get-financialv2transactionslabels">GET /financial/v2/transactions/labels</a></div>
+<a href="../api/list_transaction.html">ListTransaction</a>
+<a href="../api/manage_financial_data.html">ManageFinancialData</a>
+<a href="../api/manage_transaction_label.html">ManageTransactionLabel</a>
+<a href="../api/retrieve_financial_data.html">RetrieveFinancialData</a>
+<a href="../api/similar.html">Similar</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="listlabel">ListLabel</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-financialv2transactionslabels"><code>/financial/v2/transactions/labels</code></a></td>
+<td><code>list</code></td>
+<td>The request was successfully processed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">list_labels, err := client.ListLabel(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(list_labels)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const list_labels = await client.ListLabel().list()
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local list_labels, err = client:ListLabel():list()
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$list_labels = $client-&gt;ListLabel()-&gt;list();
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">list_labels = client.ListLabel().list()
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const list_labels = await client.ListLabel().list()
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>RFC3339 timestamp at which the label was created.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique identifier of the label.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Display name of the label.</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>RFC3339 timestamp at which the label was last updated.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-financialv2transactionslabels" class="operation" data-method="get"><code>GET</code> /financial/v2/transactions/labels</h3>
+<p>Operation ID: <code>financial_v2_labels_get</code>.</p>
+<p>Authentication: oauth2 (<code>OAuth2</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>X-Client-Id</code> | <code>header</code> | <code>string</code> | Yes | The API Client Identifier (Service Application Identifier). |
+| <code>X-Customer-Id</code> | <code>header</code> | <code>string (uuid)</code> | Yes | A unique identifier for a Customer, as registered on Bud's platform. |
+| <code>X-Customer-Idempotent-Identifier</code> | <code>header</code> | <code>string</code> | No | Use the internal client identifier, provided in the <code>client_metadata</code> object when creating the customer in <strong>Create Customer V3</strong>, in place of an <code>X-Customer-Id</code> header. |
+| <code>X-Customer-Secret</code> | <code>header</code> | <code>string</code> | No | The Bud Customer secret used to encrypt customer data. This is required only if the customer secret is not already stored with Bud. |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-the-request-was-successfully-processed" class="status" data-status="2xx">200: The request was successfully processed</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>data[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>RFC3339 timestamp at which the label was created.</td>
+</tr>
+<tr>
+<td><code>data[].id</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>Unique identifier of the label.</td>
+</tr>
+<tr>
+<td><code>data[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Display name of the label.</td>
+</tr>
+<tr>
+<td><code>data[].updated_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>RFC3339 timestamp at which the label was last updated.</td>
+</tr>
+<tr>
+<td><code>operation_id</code></td>
+<td><code>enum: financial_v2_labels_get</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;data&quot;: [
+    {
+      &quot;created_at&quot;: &quot;2026-04-29T12:00:00Z&quot;,
+      &quot;id&quot;: &quot;1f10e6de-0f5f-4d8c-987a-9635a9d1b8c6&quot;,
+      &quot;name&quot;: &quot;Trip to Lisbon&quot;,
+      &quot;updated_at&quot;: &quot;2026-04-29T12:00:00Z&quot;
+    },
+    {
+      &quot;created_at&quot;: &quot;2026-04-29T12:00:00Z&quot;,
+      &quot;id&quot;: &quot;5fd8ed6e-289b-42ce-b729-9835b4e550b5&quot;,
+      &quot;name&quot;: &quot;Work expenses&quot;,
+      &quot;updated_at&quot;: &quot;2026-04-29T12:30:00Z&quot;
+    }
+  ],
+  &quot;operation_id&quot;: &quot;financial_v2_labels_get&quot;
+}
+</code></pre>
+<h5 id="401-an-unauthenticated-request-was-received" class="status" data-status="4xx">401: An unauthenticated request was received</h5>
+<h5 id="5xx-an-unexpected-error-occurred-on-the-server-side">5XX: An unexpected error occurred on the server side</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

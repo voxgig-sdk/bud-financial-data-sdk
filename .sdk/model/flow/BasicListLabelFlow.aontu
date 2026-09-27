@@ -1,0 +1,22 @@
+# BasicListLabelFlow
+
+main: kit: flow: BasicListLabelFlow:
+{
+  entity: "list_label",
+  kind: "basic",
+  name: "BasicListLabelFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "list_label_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicListLabelFlow"
+}

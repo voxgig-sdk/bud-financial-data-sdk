@@ -1,0 +1,367 @@
+# Entity: manage_financial_data
+
+main: kit: entity: manage_financial_data: {
+
+  alias: field: {}
+
+  fields: {
+    label_id: {
+      fo: "uuid"
+      h: "Label Id"
+      n: "label_id"
+      r: true
+      sh: "Identifier of the label to attach."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "manage_financial_data"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /financial/v2/transactions/{transaction_id}/labels"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "transaction_id"
+                or: "transaction_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/financial/v2/transactions/{transaction_id}/labels"
+          q: {
+            exist: [
+              "transaction_id"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "financial"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "transactions"
+            }
+            {
+              var: "transaction_id"
+            }
+            {
+              lit: "labels"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /financial/v2/transactions/{transaction_id}/labels/{label_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "label_id"
+                or: "label_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "transaction_id"
+                or: "transaction_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/financial/v2/transactions/{transaction_id}/labels/{label_id}"
+          q: {
+            exist: [
+              "label_id"
+              "transaction_id"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "financial"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "transactions"
+            }
+            {
+              var: "transaction_id"
+            }
+            {
+              lit: "labels"
+            }
+            {
+              var: "label_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /financial/v2/accounts/{account_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "account_id"
+                or: "account_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/financial/v2/accounts/{account_id}"
+          q: {
+            exist: [
+              "account_id"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "financial"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "accounts"
+            }
+            {
+              var: "account_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v1/provider/{provider}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "8711bbef-b357-4c2d-97ca-0d9df4206e9a"
+                k: "header"
+                n: "x_client_id"
+                or: "x_client_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "c3339af9-2426-44d4-9c4d-ddb8fd281e23"
+                k: "header"
+                n: "x_customer_id"
+                or: "x_customer_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_idempotent_identifier"
+                or: "x_customer_idempotent_identifier"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "header"
+                n: "x_customer_secret"
+                or: "x_customer_secret"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "provider"
+                or: "provider"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v1/provider/{provider}"
+          q: {
+            exist: [
+              "provider"
+              "x_client_id"
+              "x_customer_id"
+              "x_customer_idempotent_identifier"
+              "x_customer_secret"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "provider"
+            }
+            {
+              var: "provider"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.label")]
+  ]
+
+}

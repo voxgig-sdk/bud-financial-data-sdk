@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "label": {
+      "LABEL00": {
+        "created_at": "s28",
+        "id": "LABEL00",
+        "name": "s2a",
+        "updated_at": "s2b"
+      },
+      "LABEL01": {
+        "created_at": "s50",
+        "id": "LABEL01",
+        "name": "s52",
+        "updated_at": "s53"
+      },
+      "LABEL02": {
+        "created_at": "s78",
+        "id": "LABEL02",
+        "name": "s7a",
+        "updated_at": "s7b"
+      }
+    }
+  },
+  "new": {
+    "label": {
+      "label_ref01": {
+        "created_at": "sa0",
+        "name": "sa2",
+        "updated_at": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /financial/v2/transactions/labels": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /financial/v2/transactions/labels/{label_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

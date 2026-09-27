@@ -1,0 +1,35 @@
+# BasicManageFinancialDataFlow
+
+main: kit: flow: BasicManageFinancialDataFlow:
+{
+  entity: "manage_financial_data",
+  kind: "basic",
+  name: "BasicManageFinancialDataFlow",
+  step: [
+    {
+      i: {
+        ref: "manage_financial_data_ref01"
+      }
+
+      m: {
+        transaction_id: "transaction01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "manage_financial_data_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "manage_financial_data01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicManageFinancialDataFlow"
+}

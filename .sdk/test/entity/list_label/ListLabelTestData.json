@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "list_label": {
+      "LIST_LABEL00": {
+        "created_at": "s28",
+        "id": "LIST_LABEL00",
+        "name": "s2a",
+        "updated_at": "s2b"
+      },
+      "LIST_LABEL01": {
+        "created_at": "s50",
+        "id": "LIST_LABEL01",
+        "name": "s52",
+        "updated_at": "s53"
+      },
+      "LIST_LABEL02": {
+        "created_at": "s78",
+        "id": "LIST_LABEL02",
+        "name": "s7a",
+        "updated_at": "s7b"
+      }
+    }
+  },
+  "new": {
+    "list_label": {
+      "list_label_ref01": {
+        "created_at": "sa0",
+        "name": "sa2",
+        "updated_at": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /financial/v2/transactions/labels": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

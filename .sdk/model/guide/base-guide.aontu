@@ -1,0 +1,143 @@
+# Generated from the API definition and overwritten on every build: do not
+# edit this file. Put customizations in the guide entry file, which includes
+# this one and overrides its defaults:
+#   guide.aontu
+
+guide: {
+  metrics: count: entity: 9
+  metrics: count: path: 27
+  metrics: count: method: 32
+
+  entity: correct_financial_data: {
+    path: "/corrections/v2/categories": {
+      op: create: method: *POST
+    }
+    path: "/corrections/v2/custom-merchants": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
+    }
+    path: "/corrections/v2/merchant-feedback/merchant/{merchant_id}": {
+      op: create: method: *POST
+    }
+    path: "/corrections/v2/merchants/search/{merchant_query}": {
+      op: load: method: *GET
+    }
+    path: "/corrections/v3/regularity": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+    path: "/corrections/v3/regularity/end": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+    path: "/corrections/v3/rules/{rule_id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/corrections/v3/similar": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: customer_merchant_correction: {
+    path: "/corrections/v2/merchants": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: label: {
+    path: "/financial/v2/transactions/labels": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+    }
+    path: "/financial/v2/transactions/labels/{label_id}": {
+      rename: param: "label_id": *"id"
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: list_label: {
+    path: "/financial/v2/transactions/labels": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: list_transaction: {
+    path: "/financial/v2/transactions": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: manage_financial_data: {
+    path: "/financial/v2/accounts/{account_id}": {
+      op: remove: method: *DELETE
+    }
+    path: "/financial/v2/transactions/{transaction_id}/labels": {
+      op: create: method: *POST
+    }
+    path: "/financial/v2/transactions/{transaction_id}/labels/{label_id}": {
+      op: remove: method: *DELETE
+    }
+    path: "/v1/provider/{provider}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: manage_transaction_label: {
+    path: "/financial/v2/transactions/labels/{label_id}": {
+      rename: param: "label_id": *"id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: retrieve_financial_data: {
+    path: "/financial/v2/accounts": {
+      op: list: method: *GET
+    }
+    path: "/financial/v2/accounts/{account_id}": {
+      op: load: method: *GET
+    }
+    path: "/financial/v2/accounts/{account_id}/balances": {
+      op: list: method: *GET
+    }
+    path: "/financial/v2/authorised-payments": {
+      op: list: method: *GET
+    }
+    path: "/financial/v2/balances": {
+      op: list: method: *GET
+    }
+    path: "/financial/v3/accounts": {
+      op: list: method: *GET
+    }
+    path: "/financial/v3/accounts/transaction-dates": {
+      op: list: method: *GET
+    }
+    path: "/financial/v3/accounts/{account_id}": {
+      op: load: method: *GET
+    }
+    path: "/financial/v3/accounts/{account_id}/balances": {
+      op: list: method: *GET
+    }
+    path: "/financial/v3/balances": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: similar: {
+    path: "/corrections/v2/categories/similar/{transaction_id}": {
+      rename: param: "transaction_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/corrections/v2/merchants/similar/{transaction_id}": {
+      rename: param: "transaction_id": *"id"
+      op: load: method: *GET
+    }
+  }
+
+}
